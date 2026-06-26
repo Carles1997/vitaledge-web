@@ -554,20 +554,16 @@ body.menu-open { overflow: hidden; }
 /* ============================================================
    PHASE 3 — Servicios (blocks A–D)
    ============================================================ */
-/* Clip the horizontal slide-in and the full-bleed tonal bands */
-.servicios { overflow-x: hidden; }
-
 .servicios__head {
   max-width: 60rem;
   margin-bottom: clamp(3rem, 8vh, 6rem);
 }
 .servicios__head .section-title { margin-top: var(--space-sm); }
 
-/* Bands sit flush; each service supplies its own vertical rhythm */
-.services__list {
-  display: grid;
-  gap: 0;
-}
+/* Track lives outside .container so panels can span the full width.
+   Mobile / reduced-motion: a normal vertical stack. */
+.services-viewport { width: 100%; }
+.services__list { display: grid; }
 
 /* Placeholder note shared by all lens images */
 .placeholder-note {
@@ -580,31 +576,18 @@ body.menu-open { overflow: hidden; }
   color: var(--clay);
 }
 
-/* Single service block — zig-zag editorial */
+/* Single service panel — its own warm tone + zig-zag content */
 .service {
-  position: relative;
   display: grid;
   gap: var(--space-lg);
   align-items: center;
-  padding-block: clamp(3rem, 7vh, 5.5rem);
+  padding-block: clamp(3rem, 7vh, 5rem);
+  padding-inline: var(--gutter);
 }
-
-/* Full-bleed tonal band behind each service — a slightly different warm
-   tone per service to set them apart */
-.service::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-}
-.service:nth-child(1)::before { background-color: var(--ivory); }
-.service:nth-child(2)::before { background-color: #F2EDE3; }
-.service:nth-child(3)::before { background-color: #ECE6DA; }
-.service:nth-child(4)::before { background-color: var(--linen); }
+.service:nth-child(1) { background-color: var(--ivory); }
+.service:nth-child(2) { background-color: #F2EDE3; }
+.service:nth-child(3) { background-color: #ECE6DA; }
+.service:nth-child(4) { background-color: var(--linen); }
 
 .service__media { margin: 0; }
 
@@ -669,8 +652,30 @@ body.menu-open { overflow: hidden; }
   max-width: 40ch;
 }
 
-/* Zig-zag: image left on desktop, alternating each block */
-@media (min-width: 860px) {
+/* Desktop with motion allowed: horizontal-scroll track of full-screen
+   panels. GSAP pins the viewport and translates the track on scroll. */
+@media (min-width: 860px) and (prefers-reduced-motion: no-preference) {
+  .services-viewport { height: 100vh; overflow: hidden; }
+  .services__list {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    height: 100%;
+  }
+  .service {
+    flex: 0 0 100vw;
+    height: 100%;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+    /* centre content to container width within the full-width panel */
+    padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  }
+  .service:nth-child(even) .service__media { order: 2; }
+}
+
+/* Desktop, reduced motion: keep the zig-zag but as a normal vertical stack */
+@media (min-width: 860px) and (prefers-reduced-motion: reduce) {
   .service {
     grid-template-columns: 1fr 1.1fr;
     gap: clamp(3rem, 6vw, 6rem);

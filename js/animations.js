@@ -52,18 +52,47 @@
     });
   });
 
-  /* ---- Servicios: each block slides in horizontally from its image
-         side as it enters (alternating with the zig-zag) ---- */
-  gsap.utils.toArray('.service').forEach((service, i) => {
-    const dir = i % 2 === 0 ? -1 : 1;
-    const cols = service.querySelectorAll('.service__media, .service__body');
-    gsap.from(cols, {
-      x: 90 * dir,
-      opacity: 0,
-      duration: 1.1,
-      ease: 'power3.out',
-      stagger: 0.12,
-      scrollTrigger: { trigger: service, start: 'top 78%' }
+  /* ---- Servicios: on desktop the viewport pins and the service panels
+         scroll horizontally driven by vertical scroll (Bressi-style).
+         Each panel's content still slides in from its side as it appears,
+         tied to the horizontal scroll via containerAnimation. Mobile and
+         reduced-motion keep the normal vertical stack. ---- */
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 860px)', () => {
+    const track = document.querySelector('.services__list');
+    const panels = gsap.utils.toArray('.service');
+    if (!track || !panels.length) return;
+
+    const distance = () => track.scrollWidth - window.innerWidth;
+
+    const horizontal = gsap.to(track, {
+      x: () => -distance(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.services-viewport',
+        start: 'top top',
+        end: () => '+=' + distance(),
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    panels.forEach((panel, i) => {
+      const cols = panel.querySelectorAll('.service__media, .service__body');
+      gsap.from(cols, {
+        x: 90 * (i % 2 === 0 ? -1 : 1),
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: panel,
+          containerAnimation: horizontal,
+          start: 'left 80%'
+        }
+      });
     });
   });
 
