@@ -21,14 +21,73 @@
 
   <!-- ===================== NAVBAR ===================== -->
   <header class="site-header" data-nav>
-    <!-- Phase 1: logo · anchor links · "Solicita una propuesta" CTA -->
+    <div class="nav container">
+      <a class="nav__logo" href="#hero" aria-label="VitalEdge Lab — inicio">
+        VitalEdge<em class="nav__logo-lab">Lab</em>
+      </a>
+
+      <nav class="nav__primary" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--primary nav__cta" href="#contacto">Solicita una propuesta</a>
+
+      <button class="nav__toggle" type="button" aria-label="Abrir menú"
+              aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </div>
+
+    <!-- Full-screen mobile overlay -->
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav aria-label="Navegación móvil">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a class="btn btn--primary mobile-menu__cta" href="#contacto">Solicita una propuesta</a>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
 
     <!-- ===================== HERO ===================== -->
-    <section id="hero" class="hero section" aria-labelledby="hero-title">
-      <!-- Phase 1: eyebrow · H1 thesis · subtitle · dual CTA · circle texture -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <!-- Signature: subtle "lab lens" concentric circles + dot field -->
+      <div class="hero__signature" aria-hidden="true">
+        <span class="lens-ring lens-ring--1"></span>
+        <span class="lens-ring lens-ring--2"></span>
+        <span class="lens-ring lens-ring--3"></span>
+      </div>
+
+      <div class="hero__inner container">
+        <p class="eyebrow hero__eyebrow">Comunicación visual · Healthcare</p>
+        <h1 id="hero-title" class="hero__title display">
+          No diseñamos piezas.<br>
+          Diseñamos <em class="accent">soluciones</em>.
+        </h1>
+        <p class="hero__sub">
+          Ayudamos a las marcas del sector salud a comunicar mejor, combinando
+          estrategia, diseño y producción para generar impacto real en las personas.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contacto">Solicita una propuesta</a>
+          <a class="btn btn--ghost" href="#servicios">
+            Ver servicios <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- ===================== INTRO / QUIÉNES SOMOS ===================== -->

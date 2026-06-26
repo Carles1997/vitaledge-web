@@ -224,3 +224,260 @@ h1, h2, h3, h4 {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ============================================================
+   PHASE 1 — Buttons · Navbar · Hero
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Buttons (shared component)
+   ---------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+
+.btn--primary {
+  background-color: var(--sage);
+  color: var(--ivory);
+}
+.btn--primary:hover { background-color: var(--sage-deep); }
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--espresso);
+  padding-inline: 0.25rem;
+}
+.btn--ghost:hover { color: var(--sage-deep); }
+
+.btn__arrow {
+  display: inline-block;
+  transition: transform var(--dur) var(--ease);
+}
+.btn--ghost:hover .btn__arrow { transform: translateX(5px); }
+
+/* ----------------------------------------------------------
+   Navbar
+   ---------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.5s var(--ease),
+              border-color 0.5s var(--ease),
+              backdrop-filter 0.5s var(--ease);
+}
+
+/* Scrolled state — ivory glass with hairline */
+.site-header.is-scrolled {
+  background-color: var(--ivory-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom-color: var(--hairline);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-block: 1.15rem;
+}
+
+.nav__logo {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.nav__logo-lab {
+  font-style: italic;
+  color: var(--sage);
+  margin-left: 0.28em;
+}
+
+.nav__primary {
+  margin-left: auto;
+}
+.nav__primary ul {
+  display: flex;
+  gap: var(--space-md);
+}
+.nav__primary a {
+  position: relative;
+  font-size: 0.95rem;
+  padding-block: 0.25rem;
+  color: var(--espresso);
+}
+/* Underline drawn left → right on hover (briefing §5) */
+.nav__primary a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--sage);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+.nav__primary a:hover::after,
+.nav__primary a:focus-visible::after { transform: scaleX(1); }
+
+.nav__cta { white-space: nowrap; }
+
+/* Hamburger — hidden on desktop */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+}
+.nav__toggle-bar {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  margin-inline: auto;
+  background-color: var(--espresso);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+body.menu-open .nav__toggle-bar:nth-child(1) { transform: translateY(3.5px) rotate(45deg); }
+body.menu-open .nav__toggle-bar:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
+
+/* Mobile overlay menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background-color: var(--bone);
+}
+.mobile-menu[hidden] { display: none; }
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+.mobile-menu a:not(.btn) {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+  font-weight: 400;
+  color: var(--espresso);
+}
+.mobile-menu a:not(.btn):hover { color: var(--sage); }
+.mobile-menu nav { text-align: center; }
+
+body.menu-open { overflow: hidden; }
+
+/* ----------------------------------------------------------
+   Hero
+   ---------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bone);
+  /* faint dot field — the "Petri" texture */
+  background-image: radial-gradient(var(--hairline) 1px, transparent 1.4px);
+  background-size: 38px 38px;
+  background-position: center;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(7rem, 16vh, 11rem) var(--space-2xl);
+  max-width: calc(var(--container) + 2 * var(--gutter));
+}
+
+.hero__eyebrow { margin-bottom: var(--space-md); }
+
+.hero__title {
+  font-size: var(--fs-hero);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-md);
+  max-width: 16ch;
+}
+.hero__title .accent { font-weight: 400; }
+
+.hero__sub {
+  max-width: 56ch;
+  color: var(--espresso);
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Signature — concentric "lab lens" rings, off to the right */
+.hero__signature {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: -8vw;
+  transform: translateY(-50%);
+  width: min(60vw, 720px);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+.lens-ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid var(--clay);
+  opacity: 0.35;
+}
+.lens-ring--1 { width: 100%;  height: 100%; opacity: 0.18; }
+.lens-ring--2 { width: 66%;   height: 66%;  opacity: 0.26; }
+.lens-ring--3 {
+  width: 34%;   height: 34%;
+  border-color: var(--sage);
+  opacity: 0.5;
+}
+
+/* ----------------------------------------------------------
+   Navbar / hero responsive
+   ---------------------------------------------------------- */
+@media (max-width: 860px) {
+  .nav__primary,
+  .nav__cta { display: none; }
+  .nav__toggle { display: flex; }
+  .hero__signature { right: -28vw; width: min(90vw, 560px); }
+  .hero__actions .btn { flex: 1 1 auto; }
+}
