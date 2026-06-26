@@ -63,15 +63,16 @@
     });
   }
 
+  // Numbers stay put with their drawing line; each title+description is
+  // tied to scroll (scrub) so it fades in on the way down and back out on
+  // the way up, right as the line reaches that number.
   gsap.utils.toArray('.method__step').forEach((step) => {
-    const els = step.querySelectorAll('.method__num, .method__title, .method__desc');
-    gsap.from(els, {
-      y: 26,
+    const content = step.querySelector('.method__content');
+    gsap.from(content, {
+      y: 24,
       opacity: 0,
-      duration: 0.85,
-      ease: 'power3.out',
-      stagger: 0.07,
-      scrollTrigger: { trigger: step, start: 'top 82%' }
+      ease: 'none',
+      scrollTrigger: { trigger: step, start: 'top 80%', end: 'top 48%', scrub: true }
     });
   });
 
