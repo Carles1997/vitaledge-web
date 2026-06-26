@@ -1049,3 +1049,17 @@ a.contact-info__line:hover { color: var(--sage-deep); }
 .cta-band__inner .section-title { max-width: 18ch; }
 .cta-band__sub { color: var(--espresso-soft); }
 .cta-band__inner .btn { margin-top: var(--space-2xs); }
+
+/* ============================================================
+   PHASE 7 — Animation support (GSAP / Lenis)
+   ============================================================ */
+
+/* Hero headline line-by-line mask (lines wrapped by animations.js) */
+.line-mask { display: block; overflow: hidden; }
+.line-inner { display: block; will-change: transform; }
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }

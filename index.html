@@ -359,8 +359,9 @@
           <h2 id="metodologia-title" class="section-title">Un proceso claro, de principio a fin</h2>
         </header>
 
-        <ol class="method" data-reveal="group">
-          <span class="method__progress" data-progress aria-hidden="true"></span>
+        <div class="method">
+          <span class="method__progress" aria-hidden="true"></span>
+          <ol class="method__steps" data-reveal="group">
           <li class="method__step">
             <span class="method__num">01</span>
             <div class="method__content">
@@ -403,7 +404,8 @@
               <p class="method__desc">Medimos, ajustamos y acompañamos el resultado.</p>
             </div>
           </li>
-        </ol>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -547,7 +549,12 @@
     </div>
   </footer>
 
-  <!-- Scripts (libraries + behaviour added in Phase 7) -->
+  <!-- Libraries (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
+
+  <!-- Site behaviour + animations -->
   <script src="js/main.js" defer></script>
   <script src="js/animations.js" defer></script>
 </body>
