@@ -409,14 +409,142 @@
 
     <!-- ===================== CONTACTO ===================== -->
     <section id="contacto" class="contacto section" aria-labelledby="contacto-title">
-      <!-- Phase 5: H2 + Netlify form + direct contact details -->
+      <div class="container">
+        <header class="section-head contacto__head" data-reveal>
+          <p class="eyebrow">Contacto</p>
+          <h2 id="contacto-title" class="section-title">¿Hablamos de tu proyecto?</h2>
+          <p class="contacto__sub">
+            Si necesitas comunicar mejor, te ayudamos a convertir tu idea en una
+            solución real.
+          </p>
+        </header>
+
+        <div class="contact">
+          <!-- Netlify form -->
+          <form class="contact-form" name="contacto" method="POST"
+                data-netlify="true" netlify-honeypot="bot-field" data-reveal>
+            <input type="hidden" name="form-name" value="contacto">
+            <p class="hp" hidden>
+              <label>No llenar: <input name="bot-field"></label>
+            </p>
+
+            <div class="field-row">
+              <p class="field">
+                <label class="field__label" for="nombre">Nombre</label>
+                <input class="field__control" type="text" id="nombre" name="nombre"
+                       autocomplete="name" required>
+              </p>
+              <p class="field">
+                <label class="field__label" for="empresa">Empresa</label>
+                <input class="field__control" type="text" id="empresa" name="empresa"
+                       autocomplete="organization">
+              </p>
+            </div>
+
+            <p class="field">
+              <label class="field__label" for="email">Email</label>
+              <input class="field__control" type="email" id="email" name="email"
+                     autocomplete="email" required>
+            </p>
+
+            <p class="field">
+              <label class="field__label" for="tipo">Tipo de proyecto</label>
+              <select class="field__control" id="tipo" name="tipo" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option>Comunicación visual</option>
+                <option>Materiales corporativos</option>
+                <option>Espacios y stands</option>
+                <option>Branding</option>
+                <option>Otro</option>
+              </select>
+            </p>
+
+            <p class="field">
+              <label class="field__label" for="descripcion">Descripción del proyecto</label>
+              <textarea class="field__control" id="descripcion" name="descripcion"
+                        rows="5" required></textarea>
+            </p>
+
+            <p class="field">
+              <label class="field__label" for="timing">
+                Timing aproximado <span class="field__opt">(opcional)</span>
+              </label>
+              <input class="field__control" type="text" id="timing" name="timing"
+                     placeholder="Ej. próximo trimestre">
+            </p>
+
+            <button class="btn btn--primary contact-form__submit" type="submit">
+              Solicitar propuesta
+            </button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <!-- Direct contact -->
+          <aside class="contact-info" data-reveal>
+            <div class="contact-info__block">
+              <p class="contact-info__label">Escríbenos</p>
+              <a class="contact-info__line" href="mailto:hola@vitaledgelab.com">hola@vitaledgelab.com</a>
+              <a class="contact-info__line" href="tel:+34600000000">+34 600 000 000</a>
+            </div>
+            <div class="contact-info__block">
+              <p class="contact-info__label">Dónde estamos</p>
+              <p class="contact-info__line">San Francisco</p>
+              <p class="contact-info__line">París</p>
+              <p class="contact-info__line">Barcelona</p>
+            </div>
+            <div class="contact-info__block">
+              <p class="contact-info__label">Síguenos</p>
+              <a class="contact-info__line" href="#" rel="noopener">LinkedIn</a>
+              <a class="contact-info__line" href="#" rel="noopener">Instagram</a>
+            </div>
+          </aside>
+        </div>
+      </div>
     </section>
 
   </main>
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer" aria-labelledby="footer-title">
-    <!-- Phase 5: logo · tagline · mini-nav · socials · locations · legal -->
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo" href="#hero">VitalEdge<em>Lab</em></a>
+        <p id="footer-title" class="site-footer__tagline">Comunicación visual para healthcare.</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Navegación del pie">
+        <p class="site-footer__heading">Explora</p>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Estudios</p>
+        <ul>
+          <li>San Francisco</li>
+          <li>París</li>
+          <li>Barcelona</li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <p class="site-footer__heading">Social</p>
+        <ul>
+          <li><a href="#" rel="noopener">LinkedIn</a></li>
+          <li><a href="#" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container site-footer__legal">
+      <p>© 2026 VitalEdge Lab</p>
+      <p>Comunicación visual para el sector salud.</p>
+    </div>
   </footer>
 
   <!-- Scripts (libraries + behaviour added in Phase 7) -->

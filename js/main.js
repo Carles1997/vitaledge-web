@@ -44,4 +44,37 @@
       }
     });
   }
+
+  /* ---- Contact form: Netlify AJAX submit + brand-voice feedback ---- */
+  const form = document.querySelector('.contact-form');
+  const status = form && form.querySelector('.form-status');
+
+  if (form && status) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const submitBtn = form.querySelector('[type="submit"]');
+      submitBtn.disabled = true;
+      status.classList.remove('is-error');
+      status.textContent = 'Enviando…';
+
+      try {
+        const body = new URLSearchParams(new FormData(form)).toString();
+        const res = await fetch(form.getAttribute('action') || '/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body
+        });
+        if (!res.ok) throw new Error('Bad response');
+        form.reset();
+        status.textContent = 'Gracias. Te responderemos en breve.';
+      } catch (err) {
+        status.classList.add('is-error');
+        status.textContent = 'No hemos podido enviar el formulario. Escríbenos a hola@vitaledgelab.com.';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  }
 })();
