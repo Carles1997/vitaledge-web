@@ -17,6 +17,7 @@
   --sage:       #7C8A78;   /* accent — CTAs, hover, signature */
   --sage-deep:  #5C6A58;   /* accent hover */
   --espresso:   #2B2722;   /* primary text + headings */
+  --espresso-soft: #6B6358;/* muted body text — passes AA on bone */
 
   /* Translucent helpers derived from the palette */
   --hairline:   rgba(187, 174, 156, 0.4);   /* clay @ 40% */
@@ -480,4 +481,71 @@ body.menu-open { overflow: hidden; }
   .nav__toggle { display: flex; }
   .hero__signature { right: -28vw; width: min(90vw, 560px); }
   .hero__actions .btn { flex: 1 1 auto; }
+}
+
+/* ============================================================
+   PHASE 2 — Intro / Quiénes somos + Diferencial
+   ============================================================ */
+
+/* Editorial asymmetric lead: H2 left, copy offset right */
+.intro__lead {
+  display: grid;
+  gap: var(--space-lg);
+}
+.intro__head .section-title { margin-top: var(--space-sm); max-width: 14ch; }
+.intro__copy {
+  display: grid;
+  gap: var(--space-md);
+  max-width: var(--measure);
+  color: var(--espresso);
+}
+.intro__copy p:last-child { color: var(--espresso-soft); }
+
+@media (min-width: 860px) {
+  .intro__lead {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: var(--space-2xl);
+  }
+}
+
+/* Differentiator — hairline-separated editorial list (no numbering;
+   these are distinct points, not a sequence) */
+.diff {
+  margin-top: clamp(3rem, 7vh, 6rem);
+  border-bottom: 1px solid var(--hairline);
+}
+.diff__row {
+  display: grid;
+  gap: var(--space-2xs);
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--hairline);
+}
+.diff__label {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+/* Lens-dot — a small echo of the signature ring */
+.diff__dot {
+  flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 0.7em;
+  border: 1.5px solid var(--sage);
+  border-radius: 50%;
+  transform: translateY(-0.05em);
+}
+.diff__text { color: var(--espresso-soft); max-width: 48ch; }
+
+@media (min-width: 760px) {
+  .diff__row {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: baseline;
+    gap: var(--space-lg);
+    padding-block: var(--space-lg);
+  }
 }
