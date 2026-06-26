@@ -52,6 +52,21 @@
     });
   });
 
+  /* ---- Servicios: each block slides in horizontally from its image
+         side as it enters (alternating with the zig-zag) ---- */
+  gsap.utils.toArray('.service').forEach((service, i) => {
+    const dir = i % 2 === 0 ? -1 : 1;
+    const cols = service.querySelectorAll('.service__media, .service__body');
+    gsap.from(cols, {
+      x: 90 * dir,
+      opacity: 0,
+      duration: 1.1,
+      ease: 'power3.out',
+      stagger: 0.12,
+      scrollTrigger: { trigger: service, start: 'top 78%' }
+    });
+  });
+
   /* ---- Metodología: draw the sage connector, and reveal each row as it
          scrolls into view so the titles appear one after another ---- */
   const progress = document.querySelector('.method__progress');
