@@ -555,7 +555,7 @@ body.menu-open { overflow: hidden; }
    PHASE 3 — Servicios (blocks A–D)
    ============================================================ */
 .servicios__head {
-  max-width: 22ch;
+  max-width: 60rem;
   margin-bottom: clamp(3rem, 8vh, 6rem);
 }
 .servicios__head .section-title { margin-top: var(--space-sm); }
@@ -676,7 +676,7 @@ body.menu-open { overflow: hidden; }
 
 /* Shared section header */
 .section-head {
-  max-width: 28ch;
+  max-width: 32rem;
   margin-bottom: clamp(2.5rem, 7vh, 5rem);
 }
 .section-head .section-title { margin-top: var(--space-sm); }
@@ -709,29 +709,6 @@ body.menu-open { overflow: hidden; }
 .project:focus-within .project__img { transform: scale(1.08); }
 
 .project .placeholder-note { position: relative; z-index: 1; }
-
-.project__arrow {
-  position: absolute;
-  z-index: 2;
-  right: 14%;
-  bottom: 14%;
-  display: grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  background-color: var(--sage);
-  color: var(--ivory);
-  font-size: 1rem;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
-}
-.project:hover .project__arrow,
-.project:focus-within .project__arrow {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .project__cat {
   margin-top: var(--space-md);
