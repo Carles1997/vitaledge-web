@@ -1,0 +1,9 @@
+# Netlify config — static site, no build step.
+[build]
+  publish = "."
+
+# Cache fonts and assets aggressively; HTML stays fresh.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
