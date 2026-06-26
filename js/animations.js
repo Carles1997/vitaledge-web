@@ -52,15 +52,15 @@
     });
   });
 
-  /* ---- Metodología: draw the sage connector as you scroll ---- */
-  const progress = document.querySelector('.method__progress');
-  if (progress) {
-    gsap.to(progress, {
-      scaleY: 1,
-      ease: 'none',
-      scrollTrigger: { trigger: '.method', start: 'top 70%', end: 'bottom 85%', scrub: true }
-    });
-  }
+  /* ---- Metodología: each row's big serif title rises out of a clip
+         mask as it enters, with the number + description fading in ---- */
+  gsap.utils.toArray('.method__step').forEach((step) => {
+    const inner = step.querySelector('.method__title-inner');
+    const meta = step.querySelectorAll('.method__num, .method__desc');
+    gsap.timeline({ scrollTrigger: { trigger: step, start: 'top 85%' } })
+      .from(inner, { yPercent: 120, duration: 1, ease: 'power4.out' })
+      .from(meta, { opacity: 0, y: 14, duration: 0.7, stagger: 0.08, ease: 'power3.out' }, '-=0.75');
+  });
 
   /* ---- Signature parallax — the lab-lens rings drift on scroll ---- */
   gsap.utils.toArray('.hero__signature').forEach((sig) => {
