@@ -549,3 +549,122 @@ body.menu-open { overflow: hidden; }
     padding-block: var(--space-lg);
   }
 }
+
+/* ============================================================
+   PHASE 3 — Servicios (blocks A–D)
+   ============================================================ */
+.servicios__head {
+  max-width: 22ch;
+  margin-bottom: clamp(3rem, 8vh, 6rem);
+}
+.servicios__head .section-title { margin-top: var(--space-sm); }
+
+.services__list {
+  display: grid;
+  gap: clamp(3.5rem, 9vh, 7rem);
+}
+
+/* Placeholder note shared by all lens images */
+.placeholder-note {
+  font-family: var(--font-util);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--clay);
+}
+
+/* Single service block — zig-zag editorial */
+.service {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.service__media { margin: 0; }
+
+/* Circular "lab lens" frame with a faint concentric echo ring */
+.service__lens {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  width: min(100%, 460px);
+  margin-inline: auto;
+  border: 1px solid var(--hairline);
+}
+.service__lens::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.service__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+.service__letter {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: 2.4rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: var(--sage);
+}
+.service__title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.service__lead {
+  color: var(--espresso-soft);
+  max-width: 52ch;
+  margin-bottom: var(--space-md);
+}
+
+.service__list {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: var(--space-lg);
+}
+.service__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.98rem;
+  color: var(--espresso);
+}
+.service__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.7rem;
+  height: 1px;
+  background-color: var(--sage);
+}
+
+/* Closing thesis — treated as a brand asset */
+.service__thesis {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--hairline);
+  max-width: 40ch;
+}
+
+/* Zig-zag: image left on desktop, alternating each block */
+@media (min-width: 860px) {
+  .service {
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+  .service:nth-child(even) .service__media { order: 2; }
+}
