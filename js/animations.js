@@ -52,14 +52,27 @@
     });
   });
 
-  /* ---- Metodología: each row's big serif title rises out of a clip
-         mask as it enters, with the number + description fading in ---- */
+  /* ---- Metodología: draw the sage connector, and reveal each row as it
+         scrolls into view so the titles appear one after another ---- */
+  const progress = document.querySelector('.method__progress');
+  if (progress) {
+    gsap.to(progress, {
+      scaleY: 1,
+      ease: 'none',
+      scrollTrigger: { trigger: '.method', start: 'top 70%', end: 'bottom 85%', scrub: true }
+    });
+  }
+
   gsap.utils.toArray('.method__step').forEach((step) => {
-    const inner = step.querySelector('.method__title-inner');
-    const meta = step.querySelectorAll('.method__num, .method__desc');
-    gsap.timeline({ scrollTrigger: { trigger: step, start: 'top 85%' } })
-      .from(inner, { yPercent: 120, duration: 1, ease: 'power4.out' })
-      .from(meta, { opacity: 0, y: 14, duration: 0.7, stagger: 0.08, ease: 'power3.out' }, '-=0.75');
+    const els = step.querySelectorAll('.method__num, .method__title, .method__desc');
+    gsap.from(els, {
+      y: 26,
+      opacity: 0,
+      duration: 0.85,
+      ease: 'power3.out',
+      stagger: 0.07,
+      scrollTrigger: { trigger: step, start: 'top 82%' }
+    });
   });
 
   /* ---- Signature parallax — the lab-lens rings drift on scroll ---- */
