@@ -407,9 +407,9 @@ body.menu-open { overflow: hidden; }
   overflow: hidden;
   background-color: var(--bone);
   /* faint dot field — the "Petri" texture */
-  background-image: linear-gradient(rgba(244, 240, 232, 0.75), rgba(244, 240, 232, 0.75)), url('../assets/VitalEdge_Hero.png');
+  background-image: linear-gradient(rgba(244, 240, 232, 0.35), rgba(244, 240, 232, 0.35)), url('../assets/VitalEdge_Hero.png');
   background-size: cover;
-  background-position: cover;
+  background-position: center;
 }
 
 .hero__inner {
