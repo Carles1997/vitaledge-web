@@ -6,8 +6,35 @@
 
   <title>VitalEdge Lab — Comunicación visual para healthcare</title>
   <meta name="description" content="Agencia de comunicación visual y diseño estratégico especializada en healthcare: clínicas, pharma y startups de salud. Convertimos lo complejo en claro.">
+  <meta name="theme-color" content="#F4F0E8">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="VitalEdge Lab">
+  <meta property="og:title" content="VitalEdge Lab — Comunicación visual para healthcare">
+  <meta property="og:description" content="Diseño estratégico para clínicas, pharma y startups de salud. Convertimos información compleja en sistemas visuales claros.">
+  <meta property="og:image" content="assets/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VitalEdge Lab — Comunicación visual para healthcare">
+  <meta name="twitter:description" content="Diseño estratégico para clínicas, pharma y startups de salud.">
+  <meta name="twitter:image" content="assets/og-image.svg">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VitalEdge Lab",
+    "description": "Comunicación visual y diseño estratégico especializado en healthcare.",
+    "logo": "assets/favicon.svg",
+    "image": "assets/og-image.svg",
+    "areaServed": ["San Francisco", "París", "Barcelona"],
+    "knowsAbout": ["Comunicación visual", "Branding healthcare", "Diseño estratégico"]
+  }
+  </script>
 
   <!-- Fonts: Fraunces (display) · Hanken Grotesk (body) · Jost (utility) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,20 +72,22 @@
       </button>
     </div>
 
-    <!-- Full-screen mobile overlay -->
-    <div class="mobile-menu" id="mobile-menu" hidden>
-      <nav aria-label="Navegación móvil">
-        <ul>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#metodologia">Metodología</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <a class="btn btn--primary mobile-menu__cta" href="#contacto">Solicita una propuesta</a>
-      </nav>
-    </div>
   </header>
+
+  <!-- Full-screen mobile overlay (sibling of header so its fixed
+       positioning is relative to the viewport, not the blurred nav) -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Navegación móvil">
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#metodologia">Metodología</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a class="btn btn--primary mobile-menu__cta" href="#contacto">Solicita una propuesta</a>
+    </nav>
+  </div>
 
   <main id="main">
 

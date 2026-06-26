@@ -6,8 +6,21 @@
 
   <title>VitalEdge Lab — Sobre nosotros</title>
   <meta name="description" content="Sobre VitalEdge Lab: nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores en comunicación visual para healthcare.">
+  <meta name="theme-color" content="#F4F0E8">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="VitalEdge Lab">
+  <meta property="og:title" content="VitalEdge Lab — Sobre nosotros">
+  <meta property="og:description" content="Nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores.">
+  <meta property="og:image" content="assets/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VitalEdge Lab — Sobre nosotros">
+  <meta name="twitter:description" content="Nuestra historia, misión, visión y valores.">
+  <meta name="twitter:image" content="assets/og-image.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,19 +57,22 @@
       </button>
     </div>
 
-    <div class="mobile-menu" id="mobile-menu" hidden>
-      <nav aria-label="Navegación móvil">
-        <ul>
-          <li><a href="index.html#servicios">Servicios</a></li>
-          <li><a href="index.html#proyectos">Proyectos</a></li>
-          <li><a href="index.html#metodologia">Metodología</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
-        </ul>
-        <a class="btn btn--primary mobile-menu__cta" href="index.html#contacto">Solicita una propuesta</a>
-      </nav>
-    </div>
   </header>
+
+  <!-- Full-screen mobile overlay (sibling of header so its fixed
+       positioning is relative to the viewport, not the blurred nav) -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Navegación móvil">
+      <ul>
+        <li><a href="index.html#servicios">Servicios</a></li>
+        <li><a href="index.html#proyectos">Proyectos</a></li>
+        <li><a href="index.html#metodologia">Metodología</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+      <a class="btn btn--primary mobile-menu__cta" href="index.html#contacto">Solicita una propuesta</a>
+    </nav>
+  </div>
 
   <main id="main">
 
