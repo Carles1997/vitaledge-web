@@ -529,12 +529,16 @@ body.menu-open { overflow: hidden; }
   margin-top: clamp(1.5rem, 4vh, 2.5rem);
   border-bottom: 1px solid var(--hairline);
 }
-/* In the intro, let the rows spread to fill the remaining screen height */
+/* In the intro, give every row an equal share of the remaining height so
+   the spacing is identical for all (including the last) */
 .intro .diff {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+.intro .diff__row {
+  flex: 1 1 0;
+  align-content: center;
 }
 .diff__row {
   display: grid;
