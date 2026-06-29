@@ -490,6 +490,14 @@ body.menu-open { overflow: hidden; }
    PHASE 2 — Intro / Quiénes somos + Diferencial
    ============================================================ */
 
+/* Fit the whole section within one screen, vertically centred */
+.intro {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding-block: clamp(2.5rem, 5vh, 4rem);
+}
+
 /* Editorial asymmetric lead: H2 left, copy offset right */
 .intro__lead {
   display: grid;
@@ -515,13 +523,13 @@ body.menu-open { overflow: hidden; }
 /* Differentiator — hairline-separated editorial list (no numbering;
    these are distinct points, not a sequence) */
 .diff {
-  margin-top: clamp(3rem, 7vh, 6rem);
+  margin-top: clamp(1.5rem, 4vh, 2.5rem);
   border-bottom: 1px solid var(--hairline);
 }
 .diff__row {
   display: grid;
   gap: var(--space-2xs);
-  padding-block: var(--space-md);
+  padding-block: var(--space-sm);
   border-top: 1px solid var(--hairline);
 }
 .diff__label {
@@ -542,14 +550,14 @@ body.menu-open { overflow: hidden; }
   border-radius: 50%;
   transform: translateY(-0.05em);
 }
-.diff__text { color: var(--espresso-soft); max-width: 48ch; }
+.diff__text { color: var(--espresso-soft); max-width: 56ch; }
 
 @media (min-width: 760px) {
   .diff__row {
     grid-template-columns: 0.85fr 1.15fr;
     align-items: baseline;
     gap: var(--space-lg);
-    padding-block: var(--space-lg);
+    padding-block: var(--space-sm);
   }
 }
 
