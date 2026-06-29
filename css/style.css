@@ -579,6 +579,8 @@ body.menu-open { overflow: hidden; }
    PHASE 3 — Servicios (blocks A–D)
    ============================================================ */
 .servicios__head {
+  position: relative;
+  z-index: 2;
   max-width: 60rem;
   margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
 }
@@ -678,7 +680,10 @@ body.menu-open { overflow: hidden; }
 /* Desktop + motion: pinned horizontal-scroll track of full-screen panels,
    photo on the left and text on the right for every one. */
 @media (min-width: 860px) and (prefers-reduced-motion: no-preference) {
-  .services-viewport { height: 100vh; overflow: hidden; }
+  /* Slide the panel viewport up under the headline. The first panel's top
+     is empty (content is centred), so this only closes the gap between the
+     headline and the first slide — the centred margins stay intact. */
+  .services-viewport { height: 100vh; overflow: hidden; margin-top: -5.5rem; }
   .services__list {
     display: flex;
     flex-wrap: nowrap;
