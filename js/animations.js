@@ -121,7 +121,7 @@
   });
 
   /* ---- Signature parallax — the lab-lens rings drift on scroll ---- */
-  gsap.utils.toArray('.hero__signature').forEach((sig) => {
+  gsap.utils.toArray('.signature-rings').forEach((sig) => {
     gsap.to(sig, {
       yPercent: 16,
       ease: 'none',

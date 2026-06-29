@@ -401,22 +401,21 @@ body.menu-open { overflow: hidden; }
    ---------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 108svh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
   background-color: var(--bone);
-  /* faint dot field — the "Petri" texture */
-  background-image: linear-gradient(to right, rgba(244, 240, 232, 0.85) 30%, rgba(244, 240, 232, 0.2) 80%), url('../assets/VitalEdge_Hero.png');
+  /* photo anchored to the bottom so the marble table sits low, below the text */
+  background-image: linear-gradient(to right, rgba(244, 240, 232, 0.9) 30%, rgba(244, 240, 232, 0.25) 80%), url('../assets/VitalEdge_Hero.png');
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;
 }
 
 .hero__inner {
   position: relative;
   z-index: 2;
-  padding-block: clamp(7rem, 16vh, 11rem) var(--space-2xl);
-  max-width: calc(var(--container) + 2 * var(--gutter));
+  padding-block: clamp(6rem, 13vh, 9rem) var(--space-2xl);
 }
 
 .hero__eyebrow { margin-bottom: var(--space-md); }
@@ -424,15 +423,14 @@ body.menu-open { overflow: hidden; }
 .hero__title {
   font-size: var(--fs-hero);
   font-weight: 300;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.015em;
   margin-bottom: var(--space-md);
-  max-width: 16ch;
 }
 .hero__title .accent { font-weight: 400; }
 
 .hero__sub {
-  max-width: 56ch;
+  max-width: 46rem;
   color: var(--espresso);
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);
   line-height: 1.6;
@@ -447,13 +445,13 @@ body.menu-open { overflow: hidden; }
 }
 
 /* Signature — concentric "lab lens" rings, off to the right */
-.hero__signature {
+.signature-rings {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   top: 50%;
   right: -8vw;
   transform: translateY(-50%);
-  width: min(60vw, 720px);
+  width: min(52vw, 640px);
   aspect-ratio: 1;
   pointer-events: none;
 }
@@ -473,6 +471,10 @@ body.menu-open { overflow: hidden; }
   opacity: 0.5;
 }
 
+/* Host the signature rings on the right of Metodología, behind content */
+.metodologia { position: relative; overflow: hidden; }
+.metodologia .container { position: relative; z-index: 1; }
+
 /* ----------------------------------------------------------
    Navbar / hero responsive
    ---------------------------------------------------------- */
@@ -480,7 +482,7 @@ body.menu-open { overflow: hidden; }
   .nav__primary,
   .nav__cta { display: none; }
   .nav__toggle { display: flex; }
-  .hero__signature { right: -28vw; width: min(90vw, 560px); }
+  .signature-rings { right: -30vw; width: min(80vw, 460px); }
   .hero__actions .btn { flex: 1 1 auto; }
 }
 
