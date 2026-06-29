@@ -401,7 +401,7 @@ body.menu-open { overflow: hidden; }
    ---------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 108svh;
+  min-height: 116svh;
   display: flex;
   align-items: flex-start;
   overflow: hidden;
