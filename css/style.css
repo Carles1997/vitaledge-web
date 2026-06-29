@@ -580,12 +580,11 @@ body.menu-open { overflow: hidden; }
    ============================================================ */
 .servicios__head {
   max-width: 60rem;
-  margin-bottom: clamp(3rem, 8vh, 6rem);
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
 }
 .servicios__head .section-title { margin-top: var(--space-sm); }
 
-/* Track lives outside .container so panels can span the full width.
-   Mobile / reduced-motion: a normal vertical stack. */
+/* Full-width tonal bands; content is centred to the container width */
 .services-viewport { width: 100%; }
 .services__list { display: grid; }
 
@@ -606,7 +605,7 @@ body.menu-open { overflow: hidden; }
   gap: var(--space-lg);
   align-items: center;
   padding-block: clamp(3rem, 7vh, 5rem);
-  padding-inline: var(--gutter);
+  padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2));
 }
 .service:nth-child(1) { background-color: var(--ivory); }
 .service:nth-child(2) { background-color: #F2EDE3; }
@@ -676,35 +675,12 @@ body.menu-open { overflow: hidden; }
   max-width: 40ch;
 }
 
-/* Desktop with motion allowed: horizontal-scroll track of full-screen
-   panels. GSAP pins the viewport and translates the track on scroll. */
-@media (min-width: 860px) and (prefers-reduced-motion: no-preference) {
-  .services-viewport { height: 100vh; overflow: hidden; }
-  .services__list {
-    display: flex;
-    flex-wrap: nowrap;
-    width: max-content;
-    height: 100%;
-  }
-  .service {
-    flex: 0 0 100vw;
-    height: 100%;
-    grid-template-columns: 1fr 1.1fr;
-    gap: clamp(3rem, 6vw, 6rem);
-    align-items: center;
-    /* centre content to container width within the full-width panel */
-    padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2));
-  }
-  .service:nth-child(even) .service__media { order: 2; }
-}
-
-/* Desktop, reduced motion: keep the zig-zag but as a normal vertical stack */
-@media (min-width: 860px) and (prefers-reduced-motion: reduce) {
+/* Desktop: photo on the left, text on the right — same for every service */
+@media (min-width: 860px) {
   .service {
     grid-template-columns: 1fr 1.1fr;
     gap: clamp(3rem, 6vw, 6rem);
   }
-  .service:nth-child(even) .service__media { order: 2; }
 }
 
 /* ============================================================

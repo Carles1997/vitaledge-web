@@ -52,48 +52,17 @@
     });
   });
 
-  /* ---- Servicios: on desktop the viewport pins and the service panels
-         scroll horizontally driven by vertical scroll (Bressi-style).
-         Each panel's content still slides in from its side as it appears,
-         tied to the horizontal scroll via containerAnimation. Mobile and
-         reduced-motion keep the normal vertical stack. ---- */
-  const mm = gsap.matchMedia();
-  mm.add('(min-width: 860px)', () => {
-    const track = document.querySelector('.services__list');
-    const panels = gsap.utils.toArray('.service');
-    if (!track || !panels.length) return;
-
-    const distance = () => track.scrollWidth - window.innerWidth;
-
-    const horizontal = gsap.to(track, {
-      x: () => -distance(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.services-viewport',
-        start: 'top top',
-        end: () => '+=' + distance(),
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true
-      }
-    });
-
-    panels.forEach((panel, i) => {
-      const cols = panel.querySelectorAll('.service__media, .service__body');
-      gsap.from(cols, {
-        x: 90 * (i % 2 === 0 ? -1 : 1),
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: panel,
-          containerAnimation: horizontal,
-          start: 'left 80%'
-        }
-      });
-    });
+  /* ---- Servicios: each block reveals as it scrolls into view — the image
+         settles with a gentle scale + fade while the text rises in a
+         staggered sequence. Reveals progressively on the way down. ---- */
+  gsap.utils.toArray('.service').forEach((service) => {
+    const media = service.querySelector('.service__media');
+    const lens = service.querySelector('.service__lens');
+    const bodyKids = service.querySelectorAll('.service__body > *');
+    const tl = gsap.timeline({ scrollTrigger: { trigger: service, start: 'top 78%' } });
+    tl.from(media, { autoAlpha: 0, duration: 1, ease: 'power2.out' }, 0);
+    if (lens) tl.from(lens, { scale: 1.06, duration: 1.3, ease: 'power3.out' }, 0);
+    tl.from(bodyKids, { autoAlpha: 0, y: 24, duration: 0.85, ease: 'power3.out', stagger: 0.09 }, 0.15);
   });
 
   /* ---- Metodología: draw the sage connector, and reveal each row as it
