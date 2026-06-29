@@ -490,12 +490,15 @@ body.menu-open { overflow: hidden; }
    PHASE 2 — Intro / Quiénes somos + Diferencial
    ============================================================ */
 
-/* Fit the whole section within one screen, vertically centred */
+/* Fill one screen: lead on top, differentiator rows spread to fill the rest */
 .intro {
   min-height: 100svh;
-  display: grid;
-  align-content: center;
+  display: flex;
   padding-block: clamp(2.5rem, 5vh, 4rem);
+}
+.intro > .container {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Editorial asymmetric lead: H2 left, copy offset right */
@@ -525,6 +528,13 @@ body.menu-open { overflow: hidden; }
 .diff {
   margin-top: clamp(1.5rem, 4vh, 2.5rem);
   border-bottom: 1px solid var(--hairline);
+}
+/* In the intro, let the rows spread to fill the remaining screen height */
+.intro .diff {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .diff__row {
   display: grid;
