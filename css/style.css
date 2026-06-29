@@ -690,6 +690,9 @@ body.menu-open { overflow: hidden; }
     height: 100%;
     grid-template-columns: 1fr 1.1fr;
     gap: clamp(3rem, 6vw, 6rem);
+    /* anchor content near the top so the first slide is close to the headline */
+    align-content: start;
+    padding-block: clamp(4rem, 11vh, 7rem);
   }
 }
 
