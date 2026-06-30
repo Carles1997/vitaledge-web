@@ -60,21 +60,52 @@
       status.textContent = 'Enviando…';
 
       try {
-        const body = new URLSearchParams(new FormData(form)).toString();
-        const res = await fetch(form.getAttribute('action') || '/', {
+        const data = Object.fromEntries(new FormData(form).entries());
+        const res = await fetch(form.getAttribute('action'), {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
         });
         if (!res.ok) throw new Error('Bad response');
         form.reset();
         status.textContent = 'Gracias. Te responderemos en breve.';
       } catch (err) {
         status.classList.add('is-error');
-        status.textContent = 'No hemos podido enviar el formulario. Escríbenos a hola@vitaledgelab.com.';
+        status.textContent = 'No hemos podido enviar el formulario. Escríbenos a info@vitaledge-lab.com.';
       } finally {
         submitBtn.disabled = false;
       }
     });
+  }
+
+  /* ---- Proyectos: mobile carousel scroll-position dots ---- */
+  const projects = document.querySelector('.projects');
+  const dotsWrap = document.querySelector('.projects__dots');
+
+  if (projects && dotsWrap) {
+    const cards = [...projects.querySelectorAll('.project')];
+
+    cards.forEach((card, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'projects__dot';
+      dot.setAttribute('aria-label', `Ir al proyecto ${i + 1} de ${cards.length}`);
+      dot.addEventListener('click', () => {
+        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = [...dotsWrap.children];
+    const setActive = (idx) => dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    setActive(0);
+
+    // Highlight the dot of whichever card is centred in the scroller.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) setActive(cards.indexOf(e.target));
+      });
+    }, { root: projects, threshold: 0.6 });
+    cards.forEach((c) => io.observe(c));
   }
 })();
