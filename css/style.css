@@ -848,12 +848,13 @@ body.menu-open { overflow: hidden; }
    ============================================================ */
 
 /* ---- Contacto ---- */
-.contacto__head { max-width: 36ch; }
+/* Title + subtitle span the full section width */
+.contacto__head { max-width: none; }
 .contacto__sub {
   margin-top: var(--space-md);
   color: var(--espresso-soft);
   font-size: clamp(1.05rem, 1.2vw, 1.2rem);
-  max-width: 48ch;
+  max-width: none;
 }
 
 .contact {
