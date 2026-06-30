@@ -60,11 +60,11 @@
       status.textContent = 'Enviando…';
 
       try {
-        const body = new URLSearchParams(new FormData(form)).toString();
-        const res = await fetch(form.getAttribute('action') || '/', {
+        const data = Object.fromEntries(new FormData(form).entries());
+        const res = await fetch(form.getAttribute('action'), {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
         });
         if (!res.ok) throw new Error('Bad response');
         form.reset();
