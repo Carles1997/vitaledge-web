@@ -77,4 +77,35 @@
       }
     });
   }
+
+  /* ---- Proyectos: mobile carousel scroll-position dots ---- */
+  const projects = document.querySelector('.projects');
+  const dotsWrap = document.querySelector('.projects__dots');
+
+  if (projects && dotsWrap) {
+    const cards = [...projects.querySelectorAll('.project')];
+
+    cards.forEach((card, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'projects__dot';
+      dot.setAttribute('aria-label', `Ir al proyecto ${i + 1} de ${cards.length}`);
+      dot.addEventListener('click', () => {
+        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = [...dotsWrap.children];
+    const setActive = (idx) => dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    setActive(0);
+
+    // Highlight the dot of whichever card is centred in the scroller.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) setActive(cards.indexOf(e.target));
+      });
+    }, { root: projects, threshold: 0.6 });
+    cards.forEach((c) => io.observe(c));
+  }
 })();

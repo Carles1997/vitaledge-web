@@ -770,6 +770,50 @@ body.menu-open { overflow: hidden; }
   .projects { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* Scroll-position dots — only shown on the mobile carousel */
+.projects__dots {
+  display: none;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: var(--space-lg);
+}
+.projects__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--clay);
+  opacity: 0.4;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease),
+              background-color 0.35s var(--ease);
+}
+.projects__dot.is-active {
+  opacity: 1;
+  background-color: var(--sage);
+  transform: scale(1.35);
+}
+
+/* Mobile: lay the cards out as a horizontal, snap-scrolling carousel */
+@media (max-width: 619px) {
+  .projects {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--space-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .projects::-webkit-scrollbar { display: none; }
+  .project {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+  }
+  .projects__dots { display: flex; }
+}
+
 /* ---- Metodología: numbered vertical timeline ---- */
 .method {
   --rail: 64px;
