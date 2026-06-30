@@ -71,7 +71,7 @@
         status.textContent = 'Gracias. Te responderemos en breve.';
       } catch (err) {
         status.classList.add('is-error');
-        status.textContent = 'No hemos podido enviar el formulario. Escríbenos a hola@vitaledgelab.com.';
+        status.textContent = 'No hemos podido enviar el formulario. Escríbenos a info@vitaledge-lab.com.';
       } finally {
         submitBtn.disabled = false;
       }

@@ -447,12 +447,9 @@
         </header>
 
         <div class="contact">
-          <!-- Form delivered by FormSubmit (static-friendly, works on Vercel) -->
+          <!-- Posts to our Vercel function (/api/contact), delivered via Resend -->
           <form class="contact-form" name="contacto" method="POST"
-                action="https://formsubmit.co/ajax/info@vitaledge-lab.com" data-reveal>
-            <input type="hidden" name="_subject" value="Nueva solicitud de propuesta — VitalEdge Lab">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
+                action="/api/contact" data-reveal>
             <!-- honeypot: bots fill this, humans don't -->
             <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" hidden>
 
