@@ -52,19 +52,29 @@
     });
   });
 
-  /* ---- Servicios: on desktop the viewport pins and the service panels
-         scroll horizontally driven by vertical scroll (Bressi-style).
-         Each panel's content still slides in from its side as it appears,
-         tied to the horizontal scroll via containerAnimation. Mobile and
-         reduced-motion keep the normal vertical stack. ---- */
-  const mm = gsap.matchMedia();
-  mm.add('(min-width: 860px)', () => {
+  /* ---- Servicios: pinned horizontal-scroll track on desktop (photo left,
+         text right). The first panel reveals together with the section
+         headline, before the pin engages; the rest reveal as they scroll
+         into view. Mobile keeps a vertical reveal. Each reveal: image fades
+         with a gentle lens scale while the text rises in a stagger. ---- */
+  function revealService(panel, st) {
+    const media = panel.querySelector('.service__media');
+    const lens = panel.querySelector('.service__lens');
+    const bodyKids = panel.querySelectorAll('.service__body > *');
+    const tl = gsap.timeline({ scrollTrigger: st });
+    tl.from(media, { autoAlpha: 0, duration: 1, ease: 'power2.out' }, 0);
+    if (lens) tl.from(lens, { scale: 1.06, duration: 1.3, ease: 'power3.out' }, 0);
+    tl.from(bodyKids, { autoAlpha: 0, y: 24, duration: 0.85, ease: 'power3.out', stagger: 0.09 }, 0.15);
+  }
+
+  const servicesMM = gsap.matchMedia();
+
+  servicesMM.add('(min-width: 860px)', () => {
     const track = document.querySelector('.services__list');
     const panels = gsap.utils.toArray('.service');
     if (!track || !panels.length) return;
 
     const distance = () => track.scrollWidth - window.innerWidth;
-
     const horizontal = gsap.to(track, {
       x: () => -distance(),
       ease: 'none',
@@ -79,20 +89,17 @@
       }
     });
 
-    panels.forEach((panel, i) => {
-      const cols = panel.querySelectorAll('.service__media, .service__body');
-      gsap.from(cols, {
-        x: 90 * (i % 2 === 0 ? -1 : 1),
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: panel,
-          containerAnimation: horizontal,
-          start: 'left 80%'
-        }
-      });
+    // First panel appears elegantly with the headline, before the pin.
+    revealService(panels[0], { trigger: '.servicios', start: 'top 70%' });
+    // The remaining panels reveal as they slide into view horizontally.
+    panels.slice(1).forEach((panel) => {
+      revealService(panel, { trigger: panel, containerAnimation: horizontal, start: 'left 78%' });
+    });
+  });
+
+  servicesMM.add('(max-width: 859px)', () => {
+    gsap.utils.toArray('.service').forEach((panel) => {
+      revealService(panel, { trigger: panel, start: 'top 82%' });
     });
   });
 
@@ -121,7 +128,7 @@
   });
 
   /* ---- Signature parallax — the lab-lens rings drift on scroll ---- */
-  gsap.utils.toArray('.hero__signature').forEach((sig) => {
+  gsap.utils.toArray('.signature-rings').forEach((sig) => {
     gsap.to(sig, {
       yPercent: 16,
       ease: 'none',

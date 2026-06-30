@@ -36,10 +36,10 @@
   }
   </script>
 
-  <!-- Fonts: Fraunces (display) · Hanken Grotesk (body) · Jost (utility) -->
+  <!-- Fonts: Palatino (display, system) · Hanken Grotesk (body) · Jost (utility) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -93,17 +93,10 @@
 
     <!-- ===================== HERO ===================== -->
     <section id="hero" class="hero" aria-labelledby="hero-title">
-      <!-- Signature: subtle "lab lens" concentric circles + dot field -->
-      <div class="hero__signature" aria-hidden="true">
-        <span class="lens-ring lens-ring--1"></span>
-        <span class="lens-ring lens-ring--2"></span>
-        <span class="lens-ring lens-ring--3"></span>
-      </div>
-
       <div class="hero__inner container">
-        <p class="eyebrow hero__eyebrow">Comunicación visual · Healthcare</p>
+        <p class="eyebrow hero__eyebrow">Healthcare · Comunicación visual</p>
         <h1 id="hero-title" class="hero__title display">
-          Transformamos materiales<br>
+          No diseñamos piezas.<br>
           Diseñamos <em class="accent">soluciones</em>.
         </h1>
         <p class="hero__sub">
@@ -126,7 +119,7 @@
           <div class="intro__head" data-reveal>
             <p class="eyebrow">Quiénes somos</p>
             <h2 id="intro-title" class="section-title">
-              Elevamos la comunicación <em class="accent">en healthcare</em>.
+              Elevamos la comunicación <em class="accent">en healthcare</em>
             </h2>
           </div>
           <div class="intro__copy" data-reveal>
@@ -374,6 +367,11 @@
 
     <!-- ===================== METODOLOGÍA ===================== -->
     <section id="metodologia" class="metodologia section section--ivory" aria-labelledby="metodologia-title">
+      <div class="signature-rings" aria-hidden="true">
+        <span class="lens-ring lens-ring--1"></span>
+        <span class="lens-ring lens-ring--2"></span>
+        <span class="lens-ring lens-ring--3"></span>
+      </div>
       <div class="container">
         <header class="section-head" data-reveal>
           <p class="eyebrow">Cómo trabajamos</p>
@@ -464,18 +462,24 @@
               </p>
             </div>
 
-            <p class="field">
-              <label class="field__label" for="email">Email</label>
-              <input class="field__control" type="email" id="email" name="email"
-                     autocomplete="email" required>
-            </p>
+            <div class="field-row">
+              <p class="field">
+                <label class="field__label" for="email">Email</label>
+                <input class="field__control" type="email" id="email" name="email"
+                       autocomplete="email" required>
+              </p>
+              <p class="field">
+                <label class="field__label" for="telefono">Teléfono</label>
+                <input class="field__control" type="tel" id="telefono" name="telefono"
+                       autocomplete="tel">
+              </p>
+            </div>
 
             <p class="field">
               <label class="field__label" for="tipo">Tipo de proyecto</label>
               <select class="field__control" id="tipo" name="tipo" required>
                 <option value="" disabled selected>Selecciona una opción</option>
                 <option>Comunicación visual</option>
-                <option>Materiales corporativos</option>
                 <option>Espacios y stands</option>
                 <option>Branding</option>
                 <option>Otro</option>
@@ -519,6 +523,7 @@
               <p class="contact-info__label">Síguenos</p>
               <a class="contact-info__line" href="#" rel="noopener">LinkedIn</a>
               <a class="contact-info__line" href="#" rel="noopener">Instagram</a>
+              <a class="contact-info__line" href="#" rel="noopener">Facebook</a>
             </div>
           </aside>
         </div>
@@ -560,13 +565,14 @@
         <ul>
           <li><a href="#" rel="noopener">LinkedIn</a></li>
           <li><a href="#" rel="noopener">Instagram</a></li>
+          <li><a href="#" rel="noopener">Facebook</a></li>
         </ul>
       </div>
     </div>
 
     <div class="container site-footer__legal">
       <p>© 2026 VitalEdge Lab</p>
-      <p>Comunicación visual para el sector salud.</p>
+      <p>Comunicación visual para healthcare</p>
     </div>
   </footer>
 
