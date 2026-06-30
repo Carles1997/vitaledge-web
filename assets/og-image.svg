@@ -6,11 +6,11 @@
     <circle cx="980" cy="315" r="300"/>
     <circle cx="980" cy="315" r="200"/>
   </g>
-  <circle cx="980" cy="315" r="100" fill="none" stroke="#7C8A78" stroke-width="2" opacity="0.8"/>
+  <circle cx="980" cy="315" r="100" fill="none" stroke="#a3c6d1" stroke-width="2" opacity="0.8"/>
 
   <!-- Wordmark -->
   <text x="90" y="300" font-family="Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif" font-size="92" fill="#2B2722">
-    VitalEdge <tspan font-style="italic" fill="#7C8A78">Lab</tspan>
+    VitalEdge <tspan font-style="italic" fill="#a3c6d1">Lab</tspan>
   </text>
 
   <!-- Tagline -->
@@ -19,7 +19,7 @@
   </text>
 
   <!-- Eyebrow -->
-  <text x="94" y="210" font-family="Arial, sans-serif" font-size="22" letter-spacing="6" fill="#5C6A58">
+  <text x="94" y="210" font-family="Arial, sans-serif" font-size="22" letter-spacing="6" fill="#38697a">
     COMUNICACIÓN VISUAL · HEALTHCARE
   </text>
 </svg>

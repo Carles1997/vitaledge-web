@@ -14,8 +14,8 @@
   --ivory:      #FBF8F2;   /* elevated sections / cards */
   --linen:      #E7E3D8;   /* cards, dividers, secondary fill */
   --clay:       #BBAE9C;   /* captions, inactive, hairlines */
-  --sage:       #7C8A78;   /* accent — CTAs, hover, signature */
-  --sage-deep:  #5C6A58;   /* accent hover */
+  --sage:       #a3c6d1;   /* accent — CTAs, hover, signature (blue) */
+  --sage-deep:  #38697a;   /* deep accent — hovers + small-text labels (AA on bone) */
   --espresso:   #2B2722;   /* primary text + headings */
   --espresso-soft: #6B6358;/* muted body text — passes AA on bone */
 
@@ -254,9 +254,9 @@ h1, h2, h3, h4 {
 
 .btn--primary {
   background-color: var(--sage);
-  color: var(--ivory);
+  color: var(--espresso);
 }
-.btn--primary:hover { background-color: var(--sage-deep); }
+.btn--primary:hover { background-color: #8db4c1; }
 
 .btn--ghost {
   background-color: transparent;
@@ -664,7 +664,7 @@ body.menu-open { overflow: hidden; }
   top: 0.3em;
   width: 0.95rem;
   height: 0.95rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.6l3.1 3.1L13 4.6' fill='none' stroke='%235C6A58' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.6l3.1 3.1L13 4.6' fill='none' stroke='%2338697A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -733,21 +733,17 @@ body.menu-open { overflow: hidden; }
   border: 1px solid var(--hairline);
   border-radius: var(--radius);
 }
-/* Concentric-ring "Petri" texture so the hover zoom reads */
+/* Project photo fills the frame; gentle zoom on hover */
 .project__img {
   position: absolute;
   inset: 0;
-  background:
-    repeating-radial-gradient(circle at 50% 50%,
-      transparent 0 17px,
-      rgba(187, 174, 156, 0.22) 17px 18px);
-  background-color: var(--linen);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.7s var(--ease);
 }
 .project:hover .project__img,
-.project:focus-within .project__img { transform: scale(1.08); }
-
-.project .placeholder-note { position: relative; z-index: 1; }
+.project:focus-within .project__img { transform: scale(1.06); }
 
 .project__cat {
   margin-top: var(--space-md);
@@ -905,7 +901,7 @@ select.field__control {
   appearance: none;
   -webkit-appearance: none;
   padding-right: 1.6rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%237C8A78' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2338697A' stroke-width='1.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.1rem center;
 }
