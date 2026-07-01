@@ -9,12 +9,12 @@
   <circle cx="980" cy="315" r="100" fill="none" stroke="#a3c6d1" stroke-width="2" opacity="0.8"/>
 
   <!-- Wordmark -->
-  <text x="90" y="300" font-family="Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif" font-size="92" fill="#2B2722">
+  <text x="90" y="300" font-family="'Hanken Grotesk', Arial, sans-serif" font-size="92" fill="#2B2722">
     VitalEdge <tspan font-style="italic" fill="#a3c6d1">Lab</tspan>
   </text>
 
   <!-- Tagline -->
-  <text x="94" y="360" font-family="Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif" font-size="34" fill="#6B6358">
+  <text x="94" y="360" font-family="'Hanken Grotesk', Arial, sans-serif" font-size="34" fill="#6B6358">
     Comunicación visual para healthcare.
   </text>
 
