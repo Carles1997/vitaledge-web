@@ -817,29 +817,47 @@ body.menu-open { overflow: hidden; }
 /* ============================================================
    Cifras — trust stats (big editorial numbers, count-up on scroll)
    ============================================================ */
+/* Redistribute the vertical space: less at the top, more breathing room
+   at the bottom, and a soft blue glow so the glass cards read. */
+.stats {
+  padding-block: clamp(3.5rem, 7vh, 5.5rem) clamp(6rem, 13vh, 9.5rem);
+  background:
+    radial-gradient(85% 65% at 50% 6%,
+      color-mix(in srgb, var(--sage) 24%, var(--ivory)) 0%,
+      var(--ivory) 60%);
+}
+
 .stats__title {
   max-width: 22ch;
   margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
 }
 .stats__grid {
   display: grid;
-  gap: var(--space-lg);
+  gap: clamp(var(--space-md), 2.5vw, var(--space-lg));
 }
 @media (min-width: 760px) {
   .stats__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Translucent light-blue card, flat and editorial */
+/* Liquid-glass card — translucent, blurred backdrop, light edge + sheen */
 .stat {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  padding: clamp(1.75rem, 3vw, 2.75rem);
-  border-radius: var(--radius);
-  background-color: color-mix(in srgb, var(--sage) 16%, transparent);
-  border: 1px solid color-mix(in srgb, var(--sage) 32%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  padding: clamp(2rem, 3.2vw, 3rem);
+  border-radius: 20px;
+  background-image: linear-gradient(135deg,
+    color-mix(in srgb, #ffffff 22%, transparent) 0%, transparent 45%);
+  background-color: color-mix(in srgb, var(--sage) 20%, transparent);
+  border: 1px solid color-mix(in srgb, #ffffff 45%, transparent);
+  backdrop-filter: blur(20px) saturate(155%);
+  -webkit-backdrop-filter: blur(20px) saturate(155%);
+  box-shadow:
+    0 18px 40px -20px color-mix(in srgb, var(--sage-deep) 45%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #ffffff 65%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--sage-deep) 12%, transparent);
+  will-change: transform, filter, opacity;
 }
 
 .stat__num {

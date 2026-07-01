@@ -127,23 +127,38 @@
     });
   });
 
-  /* ---- Cifras: each number counts up from 0 when the section enters,
-         with a small stagger between cards. Plays once. The +/% affixes
-         are separate elements, so only the digits animate. ---- */
+  /* ---- Cifras: each glass card eases in (rise + fade + scale + de-blur),
+         then its number counts up from 0. Cards stagger for a sequence,
+         plays once when the grid reaches the viewport. The +/% affixes are
+         separate elements, so only the digits animate. ---- */
   gsap.utils.toArray('.stat').forEach((stat, i) => {
     const value = stat.querySelector('.stat__value');
-    if (!value) return;
-    const end = parseInt(value.dataset.count, 10) || 0;
+    const end = value ? (parseInt(value.dataset.count, 10) || 0) : 0;
     const counter = { n: 0 };
-    value.textContent = '0';
-    gsap.to(counter, {
-      n: end,
-      duration: 1.8,
-      ease: 'power2.out',
+    if (value) value.textContent = '0';
+
+    const tl = gsap.timeline({
       delay: i * 0.15,
-      scrollTrigger: { trigger: '.stats__grid', start: 'top 78%', once: true },
-      onUpdate: () => { value.textContent = Math.round(counter.n); }
+      scrollTrigger: { trigger: '.stats__grid', start: 'top 80%', once: true }
     });
+
+    tl.from(stat, {
+      y: 48,
+      autoAlpha: 0,
+      scale: 0.92,
+      filter: 'blur(14px)',
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+
+    if (value) {
+      tl.to(counter, {
+        n: end,
+        duration: 1.6,
+        ease: 'power2.out',
+        onUpdate: () => { value.textContent = Math.round(counter.n); }
+      }, '-=0.8');
+    }
   });
 
   /* ---- Signature parallax — the lab-lens rings drift on scroll ---- */
