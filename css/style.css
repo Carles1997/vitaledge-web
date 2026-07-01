@@ -408,8 +408,8 @@ body.menu-open { overflow: hidden; }
   background-color: var(--bone);
   /* photo anchored to the bottom so the marble table sits low, below the text */
   background-image: linear-gradient(to right, rgba(244, 240, 232, 0.9) 30%, rgba(244, 240, 232, 0.25) 80%), url('../assets/IMG_1505.PNG');
-  background-size: cover, auto 125%;
-  background-position: center bottom, center top;
+  background-size: cover, auto 92%;
+  background-position: center bottom, right center;
 }
 
 .hero__inner {
