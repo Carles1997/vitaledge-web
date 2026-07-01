@@ -408,8 +408,8 @@ body.menu-open { overflow: hidden; }
   background-color: var(--bone);
   /* photo anchored to the bottom so the marble table sits low, below the text */
   background-image: linear-gradient(to right, rgba(244, 240, 232, 0.9) 30%, rgba(244, 240, 232, 0.25) 80%), url('../assets/IMG_1505.PNG');
-  background-size: cover;
-  background-position: center bottom;
+  background-size: cover, auto 125%;
+  background-position: center bottom, center top;
 }
 
 .hero__inner {
@@ -578,6 +578,10 @@ body.menu-open { overflow: hidden; }
 /* ============================================================
    PHASE 3 — Servicios (blocks A–D)
    ============================================================ */
+/* No bottom padding: the pinned panels flow straight into Cifras,
+   with no near-white (ivory) gap showing between the two sections. */
+.servicios { padding-bottom: 0; }
+
 .servicios__head {
   position: relative;
   z-index: 2;
@@ -823,8 +827,8 @@ body.menu-open { overflow: hidden; }
   padding-block: clamp(3.5rem, 7vh, 5.5rem) clamp(6rem, 13vh, 9.5rem);
   background:
     radial-gradient(85% 65% at 50% 6%,
-      color-mix(in srgb, var(--sage) 24%, var(--ivory)) 0%,
-      var(--ivory) 60%);
+      color-mix(in srgb, var(--sage) 22%, var(--bone)) 0%,
+      var(--bone) 58%);
 }
 
 .stats__title {
