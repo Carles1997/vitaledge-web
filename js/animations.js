@@ -148,7 +148,8 @@
       scale: 0.92,
       filter: 'blur(14px)',
       duration: 1.2,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      clearProps: 'transform,filter'
     });
 
     if (value) {
