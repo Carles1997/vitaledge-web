@@ -23,6 +23,9 @@
     gsap.ticker.lagSmoothing(0);
   }
 
+  /* ---- Navbar eases in on load ---- */
+  gsap.from('[data-nav]', { y: -18, autoAlpha: 0, duration: 0.9, ease: 'power3.out' });
+
   /* ---- Hero load sequence — eyebrow, masked headline lines, sub, CTA ---- */
   const heroTitle = document.querySelector('.hero__title');
   if (heroTitle) {
@@ -38,17 +41,18 @@
       .from('.hero__actions', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5');
   }
 
-  /* ---- Generic scroll reveals (rise + fade, staggered for groups) ---- */
+  /* ---- Generic scroll reveals — a refined rise + fade, staggered for
+         groups. Drives section headers, copy, cards and footer site-wide. ---- */
   gsap.utils.toArray('[data-reveal]').forEach((el) => {
     const isGroup = el.getAttribute('data-reveal') === 'group';
     const targets = isGroup ? el.children : el;
     gsap.from(targets, {
-      y: 28,
-      opacity: 0,
-      duration: 0.9,
+      y: 36,
+      autoAlpha: 0,
+      duration: 1.05,
       ease: 'power3.out',
-      stagger: isGroup ? 0.08 : 0,
-      scrollTrigger: { trigger: el, start: 'top 80%' }
+      stagger: isGroup ? 0.1 : 0,
+      scrollTrigger: { trigger: el, start: 'top 82%' }
     });
   });
 

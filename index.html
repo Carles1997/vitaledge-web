@@ -116,13 +116,13 @@
     <section id="intro" class="intro section" aria-labelledby="intro-title">
       <div class="container">
         <div class="intro__lead">
-          <div class="intro__head" data-reveal>
+          <div class="intro__head" data-reveal="group">
             <p class="eyebrow">Quiénes somos</p>
             <h2 id="intro-title" class="section-title">
               Elevamos la comunicación <em class="accent">en healthcare</em>
             </h2>
           </div>
-          <div class="intro__copy" data-reveal>
+          <div class="intro__copy" data-reveal="group">
             <p>
               VitalEdge Lab nace para elevar la comunicación en el sector healthcare.
               Transformamos información compleja en sistemas visuales claros,
@@ -174,7 +174,7 @@
     <!-- ===================== SERVICIOS ===================== -->
     <section id="servicios" class="servicios section section--ivory" aria-labelledby="servicios-title">
       <div class="container">
-        <header class="servicios__head" data-reveal>
+        <header class="servicios__head" data-reveal="group">
           <p class="eyebrow">Servicios</p>
           <h2 id="servicios-title" class="section-title">
             No ofrecemos servicios aislados. Ofrecemos
@@ -343,7 +343,7 @@
     <!-- ===================== PROYECTOS ===================== -->
     <section id="proyectos" class="proyectos section" aria-labelledby="proyectos-title">
       <div class="container">
-        <header class="section-head" data-reveal>
+        <header class="section-head" data-reveal="group">
           <p class="eyebrow">Proyectos</p>
           <h2 id="proyectos-title" class="section-title">Experiencias y espacios</h2>
         </header>
@@ -412,7 +412,7 @@
         <span class="lens-ring lens-ring--3"></span>
       </div>
       <div class="container">
-        <header class="section-head" data-reveal>
+        <header class="section-head" data-reveal="group">
           <p class="eyebrow">Cómo trabajamos</p>
           <h2 id="metodologia-title" class="section-title">Un proceso claro, de principio a fin</h2>
         </header>
@@ -470,7 +470,7 @@
     <!-- ===================== CONTACTO ===================== -->
     <section id="contacto" class="contacto section" aria-labelledby="contacto-title">
       <div class="container">
-        <header class="section-head contacto__head" data-reveal>
+        <header class="section-head contacto__head" data-reveal="group">
           <p class="eyebrow">Contacto</p>
           <h2 id="contacto-title" class="section-title">¿Hablamos de tu proyecto?</h2>
           <p class="contacto__sub">
@@ -482,7 +482,7 @@
         <div class="contact">
           <!-- Posts to our Vercel function (/api/contact), delivered via Resend -->
           <form class="contact-form" name="contacto" method="POST"
-                action="/api/contact" data-reveal>
+                action="/api/contact" data-reveal="group">
             <!-- honeypot: bots fill this, humans don't -->
             <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" hidden>
 
@@ -544,7 +544,7 @@
           </form>
 
           <!-- Direct contact -->
-          <aside class="contact-info" data-reveal>
+          <aside class="contact-info" data-reveal="group">
             <div class="contact-info__block">
               <p class="contact-info__label">Escríbenos</p>
               <a class="contact-info__line" href="mailto:info@vitaledge-lab.com">info@vitaledge-lab.com</a>
@@ -571,7 +571,7 @@
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer" aria-labelledby="footer-title">
-    <div class="container site-footer__inner">
+    <div class="container site-footer__inner" data-reveal="group">
       <div class="site-footer__brand">
         <a class="site-footer__logo" href="#hero">VitalEdge<em>Lab</em></a>
         <p id="footer-title" class="site-footer__tagline">Comunicación visual para healthcare.</p>
