@@ -127,6 +127,41 @@
     });
   });
 
+  /* ---- Cifras: each glass card eases in (rise + fade + scale + de-blur),
+         then its number counts up from 0. Cards stagger for a sequence,
+         plays once when the grid reaches the viewport. The +/% affixes are
+         separate elements, so only the digits animate. ---- */
+  gsap.utils.toArray('.stat').forEach((stat, i) => {
+    const value = stat.querySelector('.stat__value');
+    const end = value ? (parseInt(value.dataset.count, 10) || 0) : 0;
+    const counter = { n: 0 };
+    if (value) value.textContent = '0';
+
+    const tl = gsap.timeline({
+      delay: i * 0.15,
+      scrollTrigger: { trigger: '.stats__grid', start: 'top 80%', once: true }
+    });
+
+    tl.from(stat, {
+      y: 48,
+      autoAlpha: 0,
+      scale: 0.92,
+      filter: 'blur(14px)',
+      duration: 1.2,
+      ease: 'power3.out',
+      clearProps: 'transform,filter'
+    });
+
+    if (value) {
+      tl.to(counter, {
+        n: end,
+        duration: 1.6,
+        ease: 'power2.out',
+        onUpdate: () => { value.textContent = Math.round(counter.n); }
+      }, '-=0.8');
+    }
+  });
+
   /* ---- Signature parallax — the lab-lens rings drift on scroll ---- */
   gsap.utils.toArray('.signature-rings').forEach((sig) => {
     gsap.to(sig, {

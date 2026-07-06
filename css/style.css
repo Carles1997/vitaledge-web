@@ -14,8 +14,8 @@
   --ivory:      #FBF8F2;   /* elevated sections / cards */
   --linen:      #E7E3D8;   /* cards, dividers, secondary fill */
   --clay:       #BBAE9C;   /* captions, inactive, hairlines */
-  --sage:       #a3c6d1;   /* accent — CTAs, hover, signature (blue) */
-  --sage-deep:  #38697a;   /* deep accent — hovers + small-text labels (AA on bone) */
+  --sage:       #52797f;   /* accent — CTAs, hover, signature (teal) */
+  --sage-deep:  #3c5c61;   /* deep accent — hovers + small-text labels (AA on bone) */
   --espresso:   #2B2722;   /* primary text + headings */
   --espresso-soft: #6B6358;/* muted body text — passes AA on bone */
 
@@ -24,7 +24,7 @@
   --ivory-glass: rgba(251, 248, 242, 0.82);  /* nav scrolled bg */
 
   /* Typography */
-  --font-display: 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'URW Palladio L', Georgia, serif;
+  --font-display: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
   --font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
   --font-util:    'Jost', system-ui, sans-serif;
 
@@ -254,9 +254,9 @@ h1, h2, h3, h4 {
 
 .btn--primary {
   background-color: var(--sage);
-  color: var(--espresso);
+  color: var(--ivory);
 }
-.btn--primary:hover { background-color: #8db4c1; }
+.btn--primary:hover { background-color: var(--sage-deep); }
 
 .btn--ghost {
   background-color: transparent;
@@ -401,15 +401,15 @@ body.menu-open { overflow: hidden; }
    ---------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 116svh;
+  min-height: 100svh;
   display: flex;
   align-items: flex-start;
   overflow: hidden;
   background-color: var(--bone);
   /* photo anchored to the bottom so the marble table sits low, below the text */
-  background-image: linear-gradient(to right, rgba(244, 240, 232, 0.9) 30%, rgba(244, 240, 232, 0.25) 80%), url('../assets/VitalEdge_Hero.png');
-  background-size: cover;
-  background-position: center bottom;
+  background-image: linear-gradient(to right, rgba(244, 240, 232, 0.9) 30%, rgba(244, 240, 232, 0.25) 80%), url('../assets/IMG_1505.PNG');
+  background-size: cover, auto 92%;
+  background-position: center bottom, right center;
 }
 
 .hero__inner {
@@ -578,6 +578,10 @@ body.menu-open { overflow: hidden; }
 /* ============================================================
    PHASE 3 — Servicios (blocks A–D)
    ============================================================ */
+/* No bottom padding: the pinned panels flow straight into Cifras,
+   with no near-white (ivory) gap showing between the two sections. */
+.servicios { padding-bottom: 0; }
+
 .servicios__head {
   position: relative;
   z-index: 2;
@@ -615,6 +619,9 @@ body.menu-open { overflow: hidden; }
 .service:nth-child(4) { background-color: var(--linen); }
 
 .service__media { margin: 0; }
+
+/* Service photo fills the rounded frame */
+.service__img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Circular "lab lens" frame with a faint concentric echo ring */
 .service__lens {
@@ -664,7 +671,7 @@ body.menu-open { overflow: hidden; }
   top: 0.3em;
   width: 0.95rem;
   height: 0.95rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.6l3.1 3.1L13 4.6' fill='none' stroke='%2338697A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.6l3.1 3.1L13 4.6' fill='none' stroke='%233C5C61' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -814,6 +821,96 @@ body.menu-open { overflow: hidden; }
   .projects__dots { display: flex; }
 }
 
+/* ============================================================
+   Cifras — trust stats (big editorial numbers, count-up on scroll)
+   ============================================================ */
+/* Redistribute the vertical space: less at the top, more breathing room
+   at the bottom, and a soft blue glow so the glass cards read. */
+.stats {
+  padding-block: clamp(3.5rem, 7vh, 5.5rem) clamp(6rem, 13vh, 9.5rem);
+  background:
+    radial-gradient(85% 65% at 50% 6%,
+      color-mix(in srgb, var(--sage) 22%, var(--bone)) 0%,
+      var(--bone) 58%);
+}
+
+.stats__title {
+  max-width: 22ch;
+  margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
+}
+.stats__grid {
+  display: grid;
+  gap: clamp(var(--space-md), 2.5vw, var(--space-lg));
+}
+@media (min-width: 760px) {
+  .stats__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Liquid-glass card — translucent, blurred backdrop, light edge + sheen */
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: clamp(2rem, 3.2vw, 3rem);
+  border-radius: 20px;
+  background-image: linear-gradient(135deg,
+    color-mix(in srgb, #ffffff 22%, transparent) 0%, transparent 45%);
+  background-color: color-mix(in srgb, var(--sage) 20%, transparent);
+  border: 1px solid color-mix(in srgb, #ffffff 45%, transparent);
+  backdrop-filter: blur(20px) saturate(155%);
+  -webkit-backdrop-filter: blur(20px) saturate(155%);
+  box-shadow:
+    0 18px 40px -20px color-mix(in srgb, var(--sage-deep) 45%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #ffffff 65%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--sage-deep) 12%, transparent);
+  will-change: transform, filter, opacity;
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease),
+    background-color 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+}
+
+/* Elegant hover: the glass card floats up and brightens a touch */
+.stat:hover {
+  transform: translateY(-8px);
+  background-color: color-mix(in srgb, var(--sage) 26%, transparent);
+  border-color: color-mix(in srgb, #ffffff 62%, transparent);
+  box-shadow:
+    0 30px 60px -24px color-mix(in srgb, var(--sage-deep) 55%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #ffffff 78%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--sage-deep) 14%, transparent);
+}
+
+.stat__num {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--espresso);
+}
+/* "+" and "%" stay fixed; a subtle accent tint */
+.stat__affix {
+  font-weight: 400;
+  color: var(--sage-deep);
+}
+
+.stat__label {
+  font-family: var(--font-util);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+  max-width: 22ch;
+}
+
 /* ---- Metodología: numbered vertical timeline ---- */
 .method {
   --rail: 64px;
@@ -945,7 +1042,7 @@ select.field__control {
   appearance: none;
   -webkit-appearance: none;
   padding-right: 1.6rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2338697A' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%233C5C61' stroke-width='1.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.1rem center;
 }
@@ -1009,7 +1106,7 @@ a.contact-info__line:hover { color: var(--sage-deep); }
   letter-spacing: -0.01em;
   color: var(--bone);
 }
-.site-footer__logo em { font-style: italic; color: var(--sage); margin-left: 0.28em; }
+.site-footer__logo em { font-style: italic; color: color-mix(in srgb, var(--sage) 45%, var(--ivory)); margin-left: 0.28em; }
 
 .site-footer__tagline {
   margin-top: var(--space-sm);
@@ -1023,7 +1120,7 @@ a.contact-info__line:hover { color: var(--sage-deep); }
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--sage);
+  color: color-mix(in srgb, var(--sage) 45%, var(--ivory));
   margin-bottom: var(--space-md);
 }
 .site-footer__nav ul,
