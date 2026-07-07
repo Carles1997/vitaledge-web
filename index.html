@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VitalEdge Lab — Comunicación visual para healthcare</title>
-  <meta name="description" content="Agencia de comunicación visual y diseño estratégico especializada en healthcare: clínicas, pharma y startups de salud. Convertimos lo complejo en claro.">
+  <title data-i18n="meta.index.title">VitalEdge Lab — Comunicación visual para healthcare</title>
+  <meta name="description" data-i18n-attr="content:meta.index.description" content="Agencia de comunicación visual y diseño estratégico especializada en healthcare: clínicas, pharma y startups de salud. Convertimos lo complejo en claro.">
   <meta name="theme-color" content="#F4F0E8">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="VitalEdge Lab">
-  <meta property="og:title" content="VitalEdge Lab — Comunicación visual para healthcare">
-  <meta property="og:description" content="Diseño estratégico para clínicas, pharma y startups de salud. Convertimos información compleja en sistemas visuales claros.">
+  <meta property="og:title" data-i18n-attr="content:meta.index.title" content="VitalEdge Lab — Comunicación visual para healthcare">
+  <meta property="og:description" data-i18n-attr="content:meta.index.ogDescription" content="Diseño estratégico para clínicas, pharma y startups de salud. Convertimos información compleja en sistemas visuales claros.">
   <meta property="og:image" content="assets/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VitalEdge Lab — Comunicación visual para healthcare">
-  <meta name="twitter:description" content="Diseño estratégico para clínicas, pharma y startups de salud.">
+  <meta name="twitter:title" data-i18n-attr="content:meta.index.title" content="VitalEdge Lab — Comunicación visual para healthcare">
+  <meta name="twitter:description" data-i18n-attr="content:meta.index.twDescription" content="Diseño estratégico para clínicas, pharma y startups de salud.">
   <meta name="twitter:image" content="assets/og-image.svg">
 
   <!-- Structured data -->
@@ -55,15 +55,35 @@
 
       <nav class="nav__primary" aria-label="Navegación principal">
         <ul>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#metodologia">Metodología</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
+          <li><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+          <li><a href="#metodologia" data-i18n="nav.metodologia">Metodología</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </nav>
 
-      <a class="btn btn--primary nav__cta" href="#contacto">Solicita una propuesta</a>
+      <!-- Language switcher -->
+      <div class="lang-switch" data-lang-switch>
+        <button class="lang-switch__btn" type="button" data-lang-btn
+                aria-haspopup="listbox" aria-expanded="false"
+                data-i18n-attr="aria-label:lang.aria" aria-label="Cambiar idioma">
+          <svg class="lang-switch__globe" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"></path>
+          </svg>
+          <span class="lang-switch__current" data-lang-current>ES</span>
+          <svg class="lang-switch__chev" viewBox="0 0 12 8" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l5 5 5-5"></path></svg>
+        </button>
+        <ul class="lang-switch__menu" data-lang-menu role="listbox" hidden>
+          <li><button type="button" role="option" data-lang="es">Castellano</button></li>
+          <li><button type="button" role="option" data-lang="en">English</button></li>
+          <li><button type="button" role="option" data-lang="ca">Català</button></li>
+          <li><button type="button" role="option" data-lang="fr">Français</button></li>
+        </ul>
+      </div>
+
+      <a class="btn btn--primary nav__cta" href="#contacto" data-i18n="nav.cta">Solicita una propuesta</a>
 
       <button class="nav__toggle" type="button" aria-label="Abrir menú"
               aria-expanded="false" aria-controls="mobile-menu">
@@ -79,13 +99,13 @@
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav aria-label="Navegación móvil">
       <ul>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#metodologia">Metodología</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
+        <li><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+        <li><a href="#metodologia" data-i18n="nav.metodologia">Metodología</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
       </ul>
-      <a class="btn btn--primary mobile-menu__cta" href="#contacto">Solicita una propuesta</a>
+      <a class="btn btn--primary mobile-menu__cta" href="#contacto" data-i18n="nav.cta">Solicita una propuesta</a>
     </nav>
   </div>
 
@@ -94,19 +114,19 @@
     <!-- ===================== HERO ===================== -->
     <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="hero__inner container">
-        <p class="eyebrow hero__eyebrow">Healthcare · Comunicación visual</p>
-        <h1 id="hero-title" class="hero__title display">
+        <p class="eyebrow hero__eyebrow" data-i18n="hero.eyebrow">Healthcare · Comunicación visual</p>
+        <h1 id="hero-title" class="hero__title display" data-i18n="hero.title" data-i18n-html>
           Transformamos materiales<br>
           Diseñamos <em class="accent">soluciones</em>
         </h1>
-        <p class="hero__sub">
+        <p class="hero__sub" data-i18n="hero.sub">
           Ayudamos a las marcas del sector salud a comunicar mejor, combinando
           estrategia, diseño y producción para generar impacto real en las personas.
         </p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#contacto">Solicita una propuesta</a>
+          <a class="btn btn--primary" href="#contacto" data-i18n="hero.cta">Solicita una propuesta</a>
           <a class="btn btn--ghost" href="#servicios">
-            Ver servicios <span class="btn__arrow" aria-hidden="true">→</span>
+            <span data-i18n="hero.cta2">Ver servicios</span> <span class="btn__arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
@@ -117,18 +137,18 @@
       <div class="container">
         <div class="intro__lead">
           <div class="intro__head" data-reveal="group">
-            <p class="eyebrow">Quiénes somos</p>
-            <h2 id="intro-title" class="section-title">
+            <p class="eyebrow" data-i18n="intro.eyebrow">Quiénes somos</p>
+            <h2 id="intro-title" class="section-title" data-i18n="intro.title" data-i18n-html>
               Elevamos la comunicación <em class="accent">en healthcare</em>
             </h2>
           </div>
           <div class="intro__copy" data-reveal="group">
-            <p>
+            <p data-i18n="intro.p1">
               VitalEdge Lab nace para elevar la comunicación en el sector healthcare.
               Transformamos información compleja en sistemas visuales claros,
               comprensibles y efectivos.
             </p>
-            <p>
+            <p data-i18n="intro.p2">
               Trabajamos exclusivamente en salud: clínicas, pharma, startups y entornos
               hospitalarios. Escuchamos, analizamos y diseñamos a medida.
               Sin plantillas. Sin fórmulas genéricas.
@@ -139,33 +159,33 @@
         <ul class="diff" data-reveal="group">
           <li class="diff__row">
             <h3 class="diff__label">
-              <span class="diff__dot" aria-hidden="true"></span>Especialización real
+              <span class="diff__dot" aria-hidden="true"></span><span data-i18n="diff.1.label">Especialización real</span>
             </h3>
-            <p class="diff__text">Solo healthcare. No trabajamos otros sectores.</p>
+            <p class="diff__text" data-i18n="diff.1.text">Solo healthcare. No trabajamos otros sectores.</p>
           </li>
           <li class="diff__row">
             <h3 class="diff__label">
-              <span class="diff__dot" aria-hidden="true"></span>Pensamiento estratégico
+              <span class="diff__dot" aria-hidden="true"></span><span data-i18n="diff.2.label">Pensamiento estratégico</span>
             </h3>
-            <p class="diff__text">Partimos del problema, el contexto y el objetivo.</p>
+            <p class="diff__text" data-i18n="diff.2.text">Partimos del problema, el contexto y el objetivo.</p>
           </li>
           <li class="diff__row">
             <h3 class="diff__label">
-              <span class="diff__dot" aria-hidden="true"></span>Tailor-made
+              <span class="diff__dot" aria-hidden="true"></span><span data-i18n="diff.3.label">Tailor-made</span>
             </h3>
-            <p class="diff__text">Cada proyecto se diseña desde cero.</p>
+            <p class="diff__text" data-i18n="diff.3.text">Cada proyecto se diseña desde cero.</p>
           </li>
           <li class="diff__row">
             <h3 class="diff__label">
-              <span class="diff__dot" aria-hidden="true"></span>Enfoque humano
+              <span class="diff__dot" aria-hidden="true"></span><span data-i18n="diff.4.label">Enfoque humano</span>
             </h3>
-            <p class="diff__text">Diseñamos para personas que deciden, no para diagnósticos.</p>
+            <p class="diff__text" data-i18n="diff.4.text">Diseñamos para personas que deciden, no para diagnósticos.</p>
           </li>
           <li class="diff__row">
             <h3 class="diff__label">
-              <span class="diff__dot" aria-hidden="true"></span>Diseño con función
+              <span class="diff__dot" aria-hidden="true"></span><span data-i18n="diff.5.label">Diseño con función</span>
             </h3>
-            <p class="diff__text">El diseño no decora: mejora la comprensión y la confianza.</p>
+            <p class="diff__text" data-i18n="diff.5.text">El diseño no decora: mejora la comprensión y la confianza.</p>
           </li>
         </ul>
       </div>
@@ -175,8 +195,8 @@
     <section id="servicios" class="servicios section section--ivory" aria-labelledby="servicios-title">
       <div class="container">
         <header class="servicios__head" data-reveal="group">
-          <p class="eyebrow">Servicios</p>
-          <h2 id="servicios-title" class="section-title">
+          <p class="eyebrow" data-i18n="servicios.eyebrow">Servicios</p>
+          <h2 id="servicios-title" class="section-title" data-i18n="servicios.title" data-i18n-html>
             No ofrecemos servicios aislados. Ofrecemos
             <em class="accent">sistemas completos</em> de comunicación.
           </h2>
@@ -196,21 +216,21 @@
             </figure>
             <div class="service__body">
               <div class="service__head">
-                <h3 class="service__title">Comunicación visual y diseño estratégico</h3>
+                <h3 class="service__title" data-i18n="svc.a.title">Comunicación visual y diseño estratégico</h3>
               </div>
-              <p class="service__lead">
+              <p class="service__lead" data-i18n="svc.a.lead">
                 Transformamos información compleja en herramientas claras, útiles y
                 coherentes con la marca.
               </p>
               <ul class="service__list">
-                <li>Arquitectura de información y narrativa visual</li>
-                <li>Materiales médicos explicativos (tratamientos, procesos, formación)</li>
-                <li>Presentaciones estratégicas para equipos médicos y comerciales</li>
-                <li>Publicaciones científicas y pósters académicos</li>
-                <li>Folletos, catálogos y dossiers corporativos</li>
-                <li>Adaptación de contenido científico a lenguaje visual accesible</li>
+                <li data-i18n="svc.a.li1">Arquitectura de información y narrativa visual</li>
+                <li data-i18n="svc.a.li2">Materiales médicos explicativos (tratamientos, procesos, formación)</li>
+                <li data-i18n="svc.a.li3">Presentaciones estratégicas para equipos médicos y comerciales</li>
+                <li data-i18n="svc.a.li4">Publicaciones científicas y pósters académicos</li>
+                <li data-i18n="svc.a.li5">Folletos, catálogos y dossiers corporativos</li>
+                <li data-i18n="svc.a.li6">Adaptación de contenido científico a lenguaje visual accesible</li>
               </ul>
-              <p class="thesis service__thesis">
+              <p class="thesis service__thesis" data-i18n="svc.a.thesis" data-i18n-html>
                 No diseñamos contenidos.<br>
                 Hacemos que la información se entienda.
               </p>
@@ -227,20 +247,20 @@
             </figure>
             <div class="service__body">
               <div class="service__head">
-                <h3 class="service__title">Materiales y sistemas corporativos healthcare</h3>
+                <h3 class="service__title" data-i18n="svc.b.title">Materiales y sistemas corporativos healthcare</h3>
               </div>
-              <p class="service__lead">
+              <p class="service__lead" data-i18n="svc.b.lead">
                 Extendemos la identidad de marca a todos los puntos de contacto del
                 entorno clínico y farmacéutico.
               </p>
               <ul class="service__list">
-                <li>Packaging médico y farmacéutico</li>
-                <li>Kits promocionales y materiales de soporte clínico</li>
-                <li>Branding aplicado a elementos hospitalarios (textiles, cajas, fungibles…)</li>
-                <li>Uniformes y vestuario corporativo</li>
-                <li>Señalética y elementos ambientales en clínicas y hospitales</li>
+                <li data-i18n="svc.b.li1">Packaging médico y farmacéutico</li>
+                <li data-i18n="svc.b.li2">Kits promocionales y materiales de soporte clínico</li>
+                <li data-i18n="svc.b.li3">Branding aplicado a elementos hospitalarios (textiles, cajas, fungibles…)</li>
+                <li data-i18n="svc.b.li4">Uniformes y vestuario corporativo</li>
+                <li data-i18n="svc.b.li5">Señalética y elementos ambientales en clínicas y hospitales</li>
               </ul>
-              <p class="thesis service__thesis">
+              <p class="thesis service__thesis" data-i18n="svc.b.thesis" data-i18n-html>
                 Convertimos el entorno sanitario en una experiencia coherente de marca.
               </p>
             </div>
@@ -256,21 +276,21 @@
             </figure>
             <div class="service__body">
               <div class="service__head">
-                <h3 class="service__title">Espacios y experiencias</h3>
+                <h3 class="service__title" data-i18n="svc.c.title">Espacios y experiencias</h3>
               </div>
-              <p class="service__lead">
+              <p class="service__lead" data-i18n="svc.c.lead">
                 Diseñamos espacios que comunican, posicionan y generan impacto en
                 entornos competitivos.
               </p>
               <ul class="service__list">
-                <li>Conceptualización estratégica de espacios y stands</li>
-                <li>Diseño 3D y visualización de experiencia</li>
-                <li>Producción y montaje completo</li>
-                <li>Adaptación a congresos médicos y ferias internacionales</li>
-                <li>Activaciones en clínicas, farmacias y retail health</li>
-                <li>Gestión y supervisión on-site</li>
+                <li data-i18n="svc.c.li1">Conceptualización estratégica de espacios y stands</li>
+                <li data-i18n="svc.c.li2">Diseño 3D y visualización de experiencia</li>
+                <li data-i18n="svc.c.li3">Producción y montaje completo</li>
+                <li data-i18n="svc.c.li4">Adaptación a congresos médicos y ferias internacionales</li>
+                <li data-i18n="svc.c.li5">Activaciones en clínicas, farmacias y retail health</li>
+                <li data-i18n="svc.c.li6">Gestión y supervisión on-site</li>
               </ul>
-              <p class="thesis service__thesis">
+              <p class="thesis service__thesis" data-i18n="svc.c.thesis" data-i18n-html>
                 No diseñamos stands.<br>
                 Diseñamos presencia de marca.
               </p>
@@ -287,20 +307,20 @@
             </figure>
             <div class="service__body">
               <div class="service__head">
-                <h3 class="service__title">Branding e identidad</h3>
+                <h3 class="service__title" data-i18n="svc.d.title">Branding e identidad</h3>
               </div>
-              <p class="service__lead">
+              <p class="service__lead" data-i18n="svc.d.lead">
                 Construimos marcas preparadas para comunicar donde la confianza lo
                 es todo.
               </p>
               <ul class="service__list">
-                <li>Creación de marca desde cero</li>
-                <li>Identidad visual completa</li>
-                <li>Sistemas gráficos coherentes</li>
-                <li>Manuales de marca y guías de uso</li>
-                <li>Rebranding estratégico</li>
+                <li data-i18n="svc.d.li1">Creación de marca desde cero</li>
+                <li data-i18n="svc.d.li2">Identidad visual completa</li>
+                <li data-i18n="svc.d.li3">Sistemas gráficos coherentes</li>
+                <li data-i18n="svc.d.li4">Manuales de marca y guías de uso</li>
+                <li data-i18n="svc.d.li5">Rebranding estratégico</li>
               </ul>
-              <p class="thesis service__thesis">
+              <p class="thesis service__thesis" data-i18n="svc.d.thesis" data-i18n-html>
                 Una identidad clara no solo se reconoce.<br>
                 Se confía.
               </p>
@@ -314,7 +334,7 @@
     <!-- ===================== CIFRAS ===================== -->
     <section id="cifras" class="stats section" aria-labelledby="stats-title">
       <div class="container">
-        <h2 id="stats-title" class="section-title stats__title" data-reveal>
+        <h2 id="stats-title" class="section-title stats__title" data-reveal data-i18n="cifras.title" data-i18n-html>
           La <em class="accent">confianza</em>, en cifras
         </h2>
         <ul class="stats__grid">
@@ -322,19 +342,19 @@
             <p class="stat__num">
               <span class="stat__value" data-count="8">8</span>
             </p>
-            <p class="stat__label">Años de experiencia</p>
+            <p class="stat__label" data-i18n="cifras.l1">Años de experiencia</p>
           </li>
           <li class="stat">
             <p class="stat__num">
               <span class="stat__affix">+</span><span class="stat__value" data-count="50">50</span>
             </p>
-            <p class="stat__label">Profesionales confían en nosotros</p>
+            <p class="stat__label" data-i18n="cifras.l2">Profesionales confían en nosotros</p>
           </li>
           <li class="stat">
             <p class="stat__num">
               <span class="stat__value" data-count="100">100</span><span class="stat__affix">%</span>
             </p>
-            <p class="stat__label">Servicio personalizado</p>
+            <p class="stat__label" data-i18n="cifras.l3">Servicio personalizado</p>
           </li>
         </ul>
       </div>
@@ -344,8 +364,8 @@
     <section id="proyectos" class="proyectos section" aria-labelledby="proyectos-title">
       <div class="container">
         <header class="section-head" data-reveal="group">
-          <p class="eyebrow">Proyectos</p>
-          <h2 id="proyectos-title" class="section-title">Experiencias y espacios</h2>
+          <p class="eyebrow" data-i18n="proyectos.eyebrow">Proyectos</p>
+          <h2 id="proyectos-title" class="section-title" data-i18n="proyectos.title">Experiencias y espacios</h2>
         </header>
 
         <ul class="projects" data-reveal="group">
@@ -354,48 +374,48 @@
               <img class="project__img" src="assets/VitalEdge_Merch.webp"
                    alt="Merchandising de marca para healthcare" loading="lazy">
             </div>
-            <p class="project__cat">Branding</p>
-            <h3 class="project__title">Identidad visual estratégica para marcas healthcare</h3>
+            <p class="project__cat" data-i18n="proj.1.cat">Branding</p>
+            <h3 class="project__title" data-i18n="proj.1.title">Identidad visual estratégica para marcas healthcare</h3>
           </li>
           <li class="project">
             <div class="project__thumb">
               <img class="project__img" src="assets/VitalEdge_Panfletos.webp"
                    alt="Panfletos y materiales de comunicación visual" loading="lazy">
             </div>
-            <p class="project__cat">Comunicación visual</p>
-            <h3 class="project__title">Diseño de comunicación científica, publicaciones y pósteres de ensayos clínicos</h3>
+            <p class="project__cat" data-i18n="proj.2.cat">Comunicación visual</p>
+            <h3 class="project__title" data-i18n="proj.2.title">Diseño de comunicación científica, publicaciones y pósteres de ensayos clínicos</h3>
           </li>
           <li class="project">
             <div class="project__thumb">
               <img class="project__img" src="assets/VitalEdge_Packaging_2.webp"
                    alt="Packaging farmacéutico" loading="lazy">
             </div>
-            <p class="project__cat">Packaging</p>
-            <h3 class="project__title">Productos farmacéuticos y dermocosméticos</h3>
+            <p class="project__cat" data-i18n="proj.3.cat">Packaging</p>
+            <h3 class="project__title" data-i18n="proj.3.title">Productos farmacéuticos y dermocosméticos</h3>
           </li>
           <li class="project">
             <div class="project__thumb">
               <img class="project__img" src="assets/VitalEdge_Stand.webp"
                    alt="Stand para congreso médico" loading="lazy">
             </div>
-            <p class="project__cat">Stands</p>
-            <h3 class="project__title">Diseño, producción y montaje de espacios para congresos y eventos</h3>
+            <p class="project__cat" data-i18n="proj.4.cat">Stands</p>
+            <h3 class="project__title" data-i18n="proj.4.title">Diseño, producción y montaje de espacios para congresos y eventos</h3>
           </li>
           <li class="project">
             <div class="project__thumb">
               <img class="project__img" src="assets/VitalEdge_Espai.webp"
                    alt="Espacio diseñado para entorno healthcare" loading="lazy">
             </div>
-            <p class="project__cat">Espacios</p>
-            <h3 class="project__title">Diseño de espacios para clínicas, hospitales y retail healthcare</h3>
+            <p class="project__cat" data-i18n="proj.5.cat">Espacios</p>
+            <h3 class="project__title" data-i18n="proj.5.title">Diseño de espacios para clínicas, hospitales y retail healthcare</h3>
           </li>
           <li class="project">
             <div class="project__thumb">
               <img class="project__img" src="assets/VitalEdge_360.webp"
                    alt="Señalética para hospital" loading="lazy">
             </div>
-            <p class="project__cat">Servicio 360º</p>
-            <h3 class="project__title">Gestión integral de la presencia de tu marca en congresos, desde el concepto creativo hasta la ejecución final</h3>
+            <p class="project__cat" data-i18n="proj.6.cat">Servicio 360º</p>
+            <h3 class="project__title" data-i18n="proj.6.title">Gestión integral de la presencia de tu marca en congresos, desde el concepto creativo hasta la ejecución final</h3>
           </li>
         </ul>
 
@@ -413,8 +433,8 @@
       </div>
       <div class="container">
         <header class="section-head" data-reveal="group">
-          <p class="eyebrow">Cómo trabajamos</p>
-          <h2 id="metodologia-title" class="section-title">Un proceso claro, de principio a fin</h2>
+          <p class="eyebrow" data-i18n="metodologia.eyebrow">Cómo trabajamos</p>
+          <h2 id="metodologia-title" class="section-title" data-i18n="metodologia.title">Un proceso claro, de principio a fin</h2>
         </header>
 
         <div class="method">
@@ -423,43 +443,43 @@
             <li class="method__step">
               <span class="method__num">01</span>
               <div class="method__content">
-                <h3 class="method__title">Briefing y análisis</h3>
-                <p class="method__desc">Escuchamos el reto, el contexto y los objetivos.</p>
+                <h3 class="method__title" data-i18n="method.1.title">Briefing y análisis</h3>
+                <p class="method__desc" data-i18n="method.1.desc">Escuchamos el reto, el contexto y los objetivos.</p>
               </div>
             </li>
             <li class="method__step">
               <span class="method__num">02</span>
               <div class="method__content">
-                <h3 class="method__title">Conceptualización</h3>
-                <p class="method__desc">Definimos la idea y la estrategia visual.</p>
+                <h3 class="method__title" data-i18n="method.2.title">Conceptualización</h3>
+                <p class="method__desc" data-i18n="method.2.desc">Definimos la idea y la estrategia visual.</p>
               </div>
             </li>
             <li class="method__step">
               <span class="method__num">03</span>
               <div class="method__content">
-                <h3 class="method__title">Diseño</h3>
-                <p class="method__desc">Damos forma al sistema, con precisión y detalle.</p>
+                <h3 class="method__title" data-i18n="method.3.title">Diseño</h3>
+                <p class="method__desc" data-i18n="method.3.desc">Damos forma al sistema, con precisión y detalle.</p>
               </div>
             </li>
             <li class="method__step">
               <span class="method__num">04</span>
               <div class="method__content">
-                <h3 class="method__title">Producción</h3>
-                <p class="method__desc">Llevamos el diseño a materiales y formatos reales.</p>
+                <h3 class="method__title" data-i18n="method.4.title">Producción</h3>
+                <p class="method__desc" data-i18n="method.4.desc">Llevamos el diseño a materiales y formatos reales.</p>
               </div>
             </li>
             <li class="method__step">
               <span class="method__num">05</span>
               <div class="method__content">
-                <h3 class="method__title">Implementación</h3>
-                <p class="method__desc">Desplegamos la solución en cada punto de contacto.</p>
+                <h3 class="method__title" data-i18n="method.5.title">Implementación</h3>
+                <p class="method__desc" data-i18n="method.5.desc">Desplegamos la solución en cada punto de contacto.</p>
               </div>
             </li>
             <li class="method__step">
               <span class="method__num">06</span>
               <div class="method__content">
-                <h3 class="method__title">Seguimiento</h3>
-                <p class="method__desc">Medimos, ajustamos y acompañamos el resultado.</p>
+                <h3 class="method__title" data-i18n="method.6.title">Seguimiento</h3>
+                <p class="method__desc" data-i18n="method.6.desc">Medimos, ajustamos y acompañamos el resultado.</p>
               </div>
             </li>
           </ol>
@@ -471,9 +491,9 @@
     <section id="contacto" class="contacto section" aria-labelledby="contacto-title">
       <div class="container">
         <header class="section-head contacto__head" data-reveal="group">
-          <p class="eyebrow">Contacto</p>
-          <h2 id="contacto-title" class="section-title">¿Hablamos de tu proyecto?</h2>
-          <p class="contacto__sub">
+          <p class="eyebrow" data-i18n="contacto.eyebrow">Contacto</p>
+          <h2 id="contacto-title" class="section-title" data-i18n="contacto.title">¿Hablamos de tu proyecto?</h2>
+          <p class="contacto__sub" data-i18n="contacto.sub">
             Si necesitas comunicar mejor, te ayudamos a convertir tu idea en una
             solución real.
           </p>
@@ -488,12 +508,12 @@
 
             <div class="field-row">
               <p class="field">
-                <label class="field__label" for="nombre">Nombre</label>
+                <label class="field__label" for="nombre" data-i18n="form.nombre">Nombre</label>
                 <input class="field__control" type="text" id="nombre" name="nombre"
                        autocomplete="name" required>
               </p>
               <p class="field">
-                <label class="field__label" for="empresa">Empresa</label>
+                <label class="field__label" for="empresa" data-i18n="form.empresa">Empresa</label>
                 <input class="field__control" type="text" id="empresa" name="empresa"
                        autocomplete="organization">
               </p>
@@ -501,43 +521,44 @@
 
             <div class="field-row">
               <p class="field">
-                <label class="field__label" for="email">Email</label>
+                <label class="field__label" for="email" data-i18n="form.email">Email</label>
                 <input class="field__control" type="email" id="email" name="email"
                        autocomplete="email" required>
               </p>
               <p class="field">
-                <label class="field__label" for="telefono">Teléfono</label>
+                <label class="field__label" for="telefono" data-i18n="form.telefono">Teléfono</label>
                 <input class="field__control" type="tel" id="telefono" name="telefono"
                        autocomplete="tel">
               </p>
             </div>
 
             <p class="field">
-              <label class="field__label" for="tipo">Tipo de proyecto</label>
+              <label class="field__label" for="tipo" data-i18n="form.tipo">Tipo de proyecto</label>
               <select class="field__control" id="tipo" name="tipo" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option>Comunicación visual</option>
-                <option>Espacios y stands</option>
-                <option>Branding</option>
-                <option>Otro</option>
+                <option value="" disabled selected data-i18n="form.tipoPlaceholder">Selecciona una opción</option>
+                <option data-i18n="form.opt1">Comunicación visual</option>
+                <option data-i18n="form.opt2">Espacios y stands</option>
+                <option data-i18n="form.opt3">Branding</option>
+                <option data-i18n="form.opt4">Otro</option>
               </select>
             </p>
 
             <p class="field">
-              <label class="field__label" for="descripcion">Descripción del proyecto</label>
+              <label class="field__label" for="descripcion" data-i18n="form.descripcion">Descripción del proyecto</label>
               <textarea class="field__control" id="descripcion" name="descripcion"
                         rows="5" required></textarea>
             </p>
 
             <p class="field">
-              <label class="field__label" for="timing">
+              <label class="field__label" for="timing" data-i18n="form.timing" data-i18n-html>
                 Timing aproximado <span class="field__opt">(opcional)</span>
               </label>
               <input class="field__control" type="text" id="timing" name="timing"
+                     data-i18n-attr="placeholder:form.timingPlaceholder"
                      placeholder="Ej. próximo trimestre">
             </p>
 
-            <button class="btn btn--primary contact-form__submit" type="submit">
+            <button class="btn btn--primary contact-form__submit" type="submit" data-i18n="form.submit">
               Solicitar propuesta
             </button>
             <p class="form-status" role="status" aria-live="polite"></p>
@@ -546,18 +567,18 @@
           <!-- Direct contact -->
           <aside class="contact-info" data-reveal="group">
             <div class="contact-info__block">
-              <p class="contact-info__label">Escríbenos</p>
+              <p class="contact-info__label" data-i18n="contactinfo.write">Escríbenos</p>
               <a class="contact-info__line" href="mailto:info@vitaledge-lab.com">info@vitaledge-lab.com</a>
               <a class="contact-info__line" href="tel:+34600000000">+34 600 000 000</a>
             </div>
             <div class="contact-info__block">
-              <p class="contact-info__label">Dónde estamos</p>
+              <p class="contact-info__label" data-i18n="contactinfo.where">Dónde estamos</p>
               <p class="contact-info__line">San Francisco</p>
               <p class="contact-info__line">París</p>
               <p class="contact-info__line">Barcelona</p>
             </div>
             <div class="contact-info__block">
-              <p class="contact-info__label">Síguenos</p>
+              <p class="contact-info__label" data-i18n="contactinfo.follow">Síguenos</p>
               <a class="contact-info__line" href="#" rel="noopener">LinkedIn</a>
               <a class="contact-info__line" href="#" rel="noopener">Instagram</a>
               <a class="contact-info__line" href="#" rel="noopener">Facebook</a>
@@ -574,22 +595,22 @@
     <div class="container site-footer__inner" data-reveal="group">
       <div class="site-footer__brand">
         <a class="site-footer__logo" href="#hero">VitalEdge<em>Lab</em></a>
-        <p id="footer-title" class="site-footer__tagline">Comunicación visual para healthcare.</p>
+        <p id="footer-title" class="site-footer__tagline" data-i18n="footer.tagline">Comunicación visual para healthcare.</p>
       </div>
 
       <nav class="site-footer__nav" aria-label="Navegación del pie">
-        <p class="site-footer__heading">Explora</p>
+        <p class="site-footer__heading" data-i18n="footer.explora">Explora</p>
         <ul>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#metodologia">Metodología</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
+          <li><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+          <li><a href="#metodologia" data-i18n="nav.metodologia">Metodología</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </nav>
 
       <div class="site-footer__col">
-        <p class="site-footer__heading">Estudios</p>
+        <p class="site-footer__heading" data-i18n="footer.estudios">Estudios</p>
         <ul>
           <li>San Francisco</li>
           <li>París</li>
@@ -598,7 +619,7 @@
       </div>
 
       <div class="site-footer__col">
-        <p class="site-footer__heading">Social</p>
+        <p class="site-footer__heading" data-i18n="footer.social">Social</p>
         <ul>
           <li><a href="#" rel="noopener">LinkedIn</a></li>
           <li><a href="#" rel="noopener">Instagram</a></li>
@@ -609,7 +630,7 @@
 
     <div class="container site-footer__legal">
       <p>© 2026 VitalEdge Lab</p>
-      <p>Comunicación visual para healthcare</p>
+      <p data-i18n="footer.legal">Comunicación visual para healthcare</p>
     </div>
   </footer>
 
@@ -618,7 +639,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
 
-  <!-- Site behaviour + animations -->
+  <!-- i18n runs first so text is translated before the hero reveal splits it -->
+  <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/animations.js" defer></script>
 </body>

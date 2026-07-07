@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VitalEdge Lab — Sobre nosotros</title>
-  <meta name="description" content="Sobre VitalEdge Lab: nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores en comunicación visual para healthcare.">
+  <title data-i18n="meta.about.title">VitalEdge Lab — Sobre nosotros</title>
+  <meta name="description" data-i18n-attr="content:meta.about.description" content="Sobre VitalEdge Lab: nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores en comunicación visual para healthcare.">
   <meta name="theme-color" content="#F4F0E8">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="VitalEdge Lab">
-  <meta property="og:title" content="VitalEdge Lab — Sobre nosotros">
-  <meta property="og:description" content="Nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores.">
+  <meta property="og:title" data-i18n-attr="content:meta.about.title" content="VitalEdge Lab — Sobre nosotros">
+  <meta property="og:description" data-i18n-attr="content:meta.about.ogDescription" content="Nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores.">
   <meta property="og:image" content="assets/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VitalEdge Lab — Sobre nosotros">
-  <meta name="twitter:description" content="Nuestra historia, misión, visión y valores.">
+  <meta name="twitter:title" data-i18n-attr="content:meta.about.title" content="VitalEdge Lab — Sobre nosotros">
+  <meta name="twitter:description" data-i18n-attr="content:meta.about.twDescription" content="Nuestra historia, misión, visión y valores.">
   <meta name="twitter:image" content="assets/og-image.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,15 +40,35 @@
 
       <nav class="nav__primary" aria-label="Navegación principal">
         <ul>
-          <li><a href="index.html#servicios">Servicios</a></li>
-          <li><a href="index.html#proyectos">Proyectos</a></li>
-          <li><a href="index.html#metodologia">Metodología</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
+          <li><a href="index.html#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+          <li><a href="index.html#metodologia" data-i18n="nav.metodologia">Metodología</a></li>
+          <li><a href="about.html" aria-current="page" data-i18n="nav.about">About</a></li>
+          <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </nav>
 
-      <a class="btn btn--primary nav__cta" href="index.html#contacto">Solicita una propuesta</a>
+      <!-- Language switcher -->
+      <div class="lang-switch" data-lang-switch>
+        <button class="lang-switch__btn" type="button" data-lang-btn
+                aria-haspopup="listbox" aria-expanded="false"
+                data-i18n-attr="aria-label:lang.aria" aria-label="Cambiar idioma">
+          <svg class="lang-switch__globe" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"></path>
+          </svg>
+          <span class="lang-switch__current" data-lang-current>ES</span>
+          <svg class="lang-switch__chev" viewBox="0 0 12 8" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l5 5 5-5"></path></svg>
+        </button>
+        <ul class="lang-switch__menu" data-lang-menu role="listbox" hidden>
+          <li><button type="button" role="option" data-lang="es">Castellano</button></li>
+          <li><button type="button" role="option" data-lang="en">English</button></li>
+          <li><button type="button" role="option" data-lang="ca">Català</button></li>
+          <li><button type="button" role="option" data-lang="fr">Français</button></li>
+        </ul>
+      </div>
+
+      <a class="btn btn--primary nav__cta" href="index.html#contacto" data-i18n="nav.cta">Solicita una propuesta</a>
 
       <button class="nav__toggle" type="button" aria-label="Abrir menú"
               aria-expanded="false" aria-controls="mobile-menu">
@@ -64,13 +84,13 @@
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav aria-label="Navegación móvil">
       <ul>
-        <li><a href="index.html#servicios">Servicios</a></li>
-        <li><a href="index.html#proyectos">Proyectos</a></li>
-        <li><a href="index.html#metodologia">Metodología</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a href="index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
+        <li><a href="index.html#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+        <li><a href="index.html#metodologia" data-i18n="nav.metodologia">Metodología</a></li>
+        <li><a href="about.html" aria-current="page" data-i18n="nav.about">About</a></li>
+        <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
       </ul>
-      <a class="btn btn--primary mobile-menu__cta" href="index.html#contacto">Solicita una propuesta</a>
+      <a class="btn btn--primary mobile-menu__cta" href="index.html#contacto" data-i18n="nav.cta">Solicita una propuesta</a>
     </nav>
   </div>
 
@@ -84,9 +104,9 @@
         <span class="lens-ring lens-ring--3"></span>
       </div>
       <div class="container about-hero__inner" data-reveal="group">
-        <p class="eyebrow">Sobre nosotros</p>
-        <h1 id="about-title" class="about-hero__title display">Nuestra historia</h1>
-        <p class="about-hero__lead">
+        <p class="eyebrow" data-i18n="about.eyebrow">Sobre nosotros</p>
+        <h1 id="about-title" class="about-hero__title display" data-i18n="about.title">Nuestra historia</h1>
+        <p class="about-hero__lead" data-i18n="about.lead">
           VitalEdge Lab nace al detectar una carencia clara: el sector salud necesita
           comunicar mejor. La comunicación médica suele ser compleja, fría o poco
           diferenciada. Trabajamos para cambiar eso: marcas healthcare más claras,
@@ -99,15 +119,15 @@
     <section class="mv section section--ivory" aria-label="Misión y visión">
       <div class="container mv__grid">
         <div class="mv__item" data-reveal="group">
-          <p class="eyebrow">Misión</p>
-          <p class="mv__statement">
+          <p class="eyebrow" data-i18n="about.mision.label">Misión</p>
+          <p class="mv__statement" data-i18n="about.mision.text">
             Resolver retos de comunicación en healthcare mediante soluciones visuales
             estratégicas, claras y centradas en las personas.
           </p>
         </div>
         <div class="mv__item" data-reveal="group">
-          <p class="eyebrow">Visión</p>
-          <p class="mv__statement">
+          <p class="eyebrow" data-i18n="about.vision.label">Visión</p>
+          <p class="mv__statement" data-i18n="about.vision.text">
             Convertirnos en el partner de referencia en comunicación visual para
             healthcare, elevando el estándar del sector a través de diseño con propósito.
           </p>
@@ -119,34 +139,34 @@
     <section class="valores section" aria-labelledby="valores-title">
       <div class="container">
         <header class="section-head" data-reveal="group">
-          <p class="eyebrow">Valores</p>
-          <h2 id="valores-title" class="section-title">En qué creemos</h2>
+          <p class="eyebrow" data-i18n="about.valores.eyebrow">Valores</p>
+          <h2 id="valores-title" class="section-title" data-i18n="about.valores.title">En qué creemos</h2>
         </header>
 
         <ul class="diff" data-reveal="group">
           <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span>Especialización</h3>
-            <p class="diff__text">Solo healthcare.</p>
+            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.1.label">Especialización</span></h3>
+            <p class="diff__text" data-i18n="about.val.1.text">Solo healthcare.</p>
           </li>
           <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span>Escucha activa</h3>
-            <p class="diff__text">Cada proyecto empieza por entender a las personas.</p>
+            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.2.label">Escucha activa</span></h3>
+            <p class="diff__text" data-i18n="about.val.2.text">Cada proyecto empieza por entender a las personas.</p>
           </li>
           <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span>Tailor-made</h3>
-            <p class="diff__text">No creemos en soluciones genéricas.</p>
+            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.3.label">Tailor-made</span></h3>
+            <p class="diff__text" data-i18n="about.val.3.text">No creemos en soluciones genéricas.</p>
           </li>
           <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span>Rigor y claridad</h3>
-            <p class="diff__text">Simplificamos lo complejo sin perder precisión.</p>
+            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.4.label">Rigor y claridad</span></h3>
+            <p class="diff__text" data-i18n="about.val.4.text">Simplificamos lo complejo sin perder precisión.</p>
           </li>
           <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span>Humanización</h3>
-            <p class="diff__text">Diseñamos para personas, no para patologías.</p>
+            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.5.label">Humanización</span></h3>
+            <p class="diff__text" data-i18n="about.val.5.text">Diseñamos para personas, no para patologías.</p>
           </li>
           <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span>Impacto real</h3>
-            <p class="diff__text">El éxito se mide en comprensión, confianza y resultado.</p>
+            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.6.label">Impacto real</span></h3>
+            <p class="diff__text" data-i18n="about.val.6.text">El éxito se mide en comprensión, confianza y resultado.</p>
           </li>
         </ul>
       </div>
@@ -155,9 +175,9 @@
     <!-- ===================== CTA ===================== -->
     <section class="cta-band section section--ivory" aria-labelledby="cta-title">
       <div class="container cta-band__inner" data-reveal="group">
-        <h2 id="cta-title" class="section-title">¿Hablamos de tu proyecto?</h2>
-        <p class="cta-band__sub">Convertimos tu idea en una solución real.</p>
-        <a class="btn btn--primary" href="index.html#contacto">Solicita una propuesta</a>
+        <h2 id="cta-title" class="section-title" data-i18n="about.cta.title">¿Hablamos de tu proyecto?</h2>
+        <p class="cta-band__sub" data-i18n="about.cta.sub">Convertimos tu idea en una solución real.</p>
+        <a class="btn btn--primary" href="index.html#contacto" data-i18n="about.cta.btn">Solicita una propuesta</a>
       </div>
     </section>
 
@@ -168,22 +188,22 @@
     <div class="container site-footer__inner" data-reveal="group">
       <div class="site-footer__brand">
         <a class="site-footer__logo" href="index.html">VitalEdge<em>Lab</em></a>
-        <p id="footer-title" class="site-footer__tagline">Comunicación visual para healthcare.</p>
+        <p id="footer-title" class="site-footer__tagline" data-i18n="footer.tagline">Comunicación visual para healthcare.</p>
       </div>
 
       <nav class="site-footer__nav" aria-label="Navegación del pie">
-        <p class="site-footer__heading">Explora</p>
+        <p class="site-footer__heading" data-i18n="footer.explora">Explora</p>
         <ul>
-          <li><a href="index.html#servicios">Servicios</a></li>
-          <li><a href="index.html#proyectos">Proyectos</a></li>
-          <li><a href="index.html#metodologia">Metodología</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
+          <li><a href="index.html#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
+          <li><a href="index.html#metodologia" data-i18n="nav.metodologia">Metodología</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
       </nav>
 
       <div class="site-footer__col">
-        <p class="site-footer__heading">Estudios</p>
+        <p class="site-footer__heading" data-i18n="footer.estudios">Estudios</p>
         <ul>
           <li>San Francisco</li>
           <li>París</li>
@@ -192,7 +212,7 @@
       </div>
 
       <div class="site-footer__col">
-        <p class="site-footer__heading">Social</p>
+        <p class="site-footer__heading" data-i18n="footer.social">Social</p>
         <ul>
           <li><a href="#" rel="noopener">LinkedIn</a></li>
           <li><a href="#" rel="noopener">Instagram</a></li>
@@ -203,7 +223,7 @@
 
     <div class="container site-footer__legal">
       <p>© 2026 VitalEdge Lab</p>
-      <p>Comunicación visual para healthcare</p>
+      <p data-i18n="footer.legal">Comunicación visual para healthcare</p>
     </div>
   </footer>
 
@@ -212,6 +232,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
 
+  <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/animations.js" defer></script>
 </body>

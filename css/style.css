@@ -397,6 +397,88 @@ body.menu-open .nav__toggle-bar:nth-child(2) { transform: translateY(-3px) rotat
 body.menu-open { overflow: hidden; }
 
 /* ----------------------------------------------------------
+   Language switcher — compact globe + code pill with dropdown
+   ---------------------------------------------------------- */
+.lang-switch {
+  position: relative;
+  flex-shrink: 0;
+}
+.lang-switch__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--espresso);
+  font-family: var(--font-util);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+.lang-switch__btn:hover,
+.lang-switch__btn[aria-expanded="true"] {
+  border-color: var(--sage);
+  color: var(--sage-deep);
+}
+.lang-switch__globe {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.lang-switch__current { font-weight: 500; }
+.lang-switch__chev {
+  width: 9px;
+  height: 6px;
+  transition: transform var(--dur) var(--ease);
+}
+.lang-switch__btn[aria-expanded="true"] .lang-switch__chev { transform: rotate(180deg); }
+
+.lang-switch__menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 9.5rem;
+  padding: 0.35rem;
+  background-color: var(--ivory);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 14px 34px -18px rgba(43, 39, 34, 0.4);
+  z-index: 20;
+}
+.lang-switch__menu[hidden] { display: none; }
+.lang-switch__menu li { list-style: none; }
+.lang-switch__menu button {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--espresso);
+  font-family: var(--font-util);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+.lang-switch__menu button:hover,
+.lang-switch__menu button:focus-visible {
+  background-color: color-mix(in srgb, var(--sage) 12%, transparent);
+  color: var(--sage-deep);
+  outline: none;
+}
+.lang-switch__menu button[aria-selected="true"] {
+  color: var(--sage-deep);
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------
    Hero
    ---------------------------------------------------------- */
 .hero {
@@ -481,7 +563,9 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 860px) {
   .nav__primary,
   .nav__cta { display: none; }
-  .nav__toggle { display: flex; }
+  .nav { gap: var(--space-sm); }
+  .lang-switch { margin-left: auto; }
+  .nav__toggle { display: flex; margin-left: 0; }
   .signature-rings { right: -30vw; width: min(80vw, 460px); }
   .hero__actions .btn { flex: 1 1 auto; }
 }
