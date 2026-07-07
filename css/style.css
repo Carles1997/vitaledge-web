@@ -526,34 +526,27 @@ body.menu-open { overflow: hidden; }
   gap: var(--space-md);
 }
 
-/* Signature — concentric "lab lens" rings, off to the right */
-.signature-rings {
+/* Signature — hand-painted "lab lens" logo mark, off to the right.
+   The brushstroke sits in the right half of the artwork; the empty
+   left half is transparent and simply overlaps the copy invisibly. */
+.signature-img {
   position: absolute;
   z-index: 0;
-  top: 50%;
-  right: -8vw;
-  transform: translateY(-50%);
-  width: min(52vw, 640px);
-  aspect-ratio: 1;
   pointer-events: none;
+  user-select: none;
+  height: auto;
+  /* Artwork has a white backdrop — multiply drops it against the
+     light section, leaving only the painted ring as a soft wash. */
+  mix-blend-mode: multiply;
 }
-.lens-ring {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  border-radius: 50%;
-  border: 1px solid var(--clay);
-  opacity: 0.35;
-}
-.lens-ring--1 { width: 100%;  height: 100%; opacity: 0.18; }
-.lens-ring--2 { width: 66%;   height: 66%;  opacity: 0.26; }
-.lens-ring--3 {
-  width: 34%;   height: 34%;
-  border-color: var(--sage);
-  opacity: 0.5;
+.signature-img--method {
+  top: 50%;
+  right: -6vw;
+  transform: translateY(-50%);
+  width: min(54vw, 620px);
 }
 
-/* Host the signature rings on the right of Metodología, behind content */
+/* Host the signature on the right of Metodología, behind content */
 .metodologia { position: relative; overflow: hidden; }
 .metodologia .container { position: relative; z-index: 1; }
 
@@ -566,7 +559,6 @@ body.menu-open { overflow: hidden; }
   .nav { gap: var(--space-sm); }
   .lang-switch { margin-left: auto; }
   .nav__toggle { display: flex; margin-left: 0; }
-  .signature-rings { right: -30vw; width: min(80vw, 460px); }
   .hero__actions .btn { flex: 1 1 auto; }
 }
 
@@ -1238,11 +1230,27 @@ a.contact-info__line:hover { color: var(--sage-deep); }
   overflow: hidden;
   padding-block: clamp(8rem, 18vh, 12rem) clamp(4rem, 9vh, 7rem);
 }
-.about-hero__signature {
-  top: 0;
-  right: -14vw;
-  transform: none;
-  width: min(48vw, 540px);
+.signature-img--about {
+  top: 8%;
+  right: -10vw;
+  width: min(50vw, 560px);
+}
+
+/* Mobile: centre the signature behind the copy and soften it so the
+   overlaid text stays perfectly legible. Placed after the desktop
+   rules above so source order wins at ≤860px. */
+@media (max-width: 860px) {
+  .signature-img--method,
+  .signature-img--about {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    /* the painted ring sits ~66% across the artwork, so pull left to
+       centre the ring itself (not the transparent bounding box) */
+    transform: translate(-62%, -50%);
+    width: min(150vw, 560px);
+    opacity: 0.5;
+  }
 }
 .about-hero__inner { position: relative; z-index: 1; }
 .about-hero__title {
