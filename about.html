@@ -98,36 +98,46 @@
 
     <!-- ===================== HISTORIA / HERO ===================== -->
     <section class="about-hero section" aria-labelledby="about-title">
-      <img class="signature-img signature-img--about" src="assets/IMG_1505.PNG" alt="" aria-hidden="true">
-      <div class="container about-hero__inner" data-reveal="group">
-        <p class="eyebrow" data-i18n="about.eyebrow">Sobre nosotros</p>
-        <h1 id="about-title" class="about-hero__title display" data-i18n="about.title">Nuestra historia</h1>
-        <p class="about-hero__lead" data-i18n="about.lead">
-          VitalEdge Lab nace al detectar una carencia clara: el sector salud necesita
-          comunicar mejor. La comunicación médica suele ser compleja, fría o poco
-          diferenciada. Trabajamos para cambiar eso: marcas healthcare más claras,
-          más humanas y más relevantes.
-        </p>
+      <span class="about-hero__orbit" aria-hidden="true"></span>
+      <div class="container about-hero__layout">
+        <div class="about-hero__copy" data-reveal="group">
+          <p class="eyebrow" data-i18n="about.eyebrow">Sobre nosotros</p>
+          <h1 id="about-title" class="about-hero__title display" data-i18n="about.title">Nuestra historia</h1>
+          <p class="about-hero__lead" data-i18n="about.lead">
+            VitalEdge Lab nace al detectar una carencia clara: el sector salud necesita
+            comunicar mejor. La comunicación médica suele ser compleja, fría o poco
+            diferenciada. Trabajamos para cambiar eso: marcas healthcare más claras,
+            más humanas y más relevantes.
+          </p>
+        </div>
+
+        <div class="about-hero__visual" data-reveal aria-hidden="true">
+          <img class="signature-img signature-img--about" src="assets/IMG_1505.PNG" alt=""
+               width="1600" height="900" decoding="async" fetchpriority="high">
+          <span class="about-hero__lens"></span>
+          <span class="about-hero__panel about-hero__panel--top"></span>
+          <span class="about-hero__panel about-hero__panel--bottom"></span>
+        </div>
       </div>
     </section>
 
     <!-- ===================== MISIÓN + VISIÓN ===================== -->
     <section class="mv section section--ivory" aria-label="Misión y visión">
       <div class="container mv__grid">
-        <div class="mv__item" data-reveal="group">
-          <p class="eyebrow" data-i18n="about.mision.label">Misión</p>
+        <article class="mv__item mv__item--mission" data-reveal="group">
+          <h2 class="mv__title" data-i18n="about.mision.label">Misión</h2>
           <p class="mv__statement" data-i18n="about.mision.text">
             Resolver retos de comunicación en healthcare mediante soluciones visuales
             estratégicas, claras y centradas en las personas.
           </p>
-        </div>
-        <div class="mv__item" data-reveal="group">
-          <p class="eyebrow" data-i18n="about.vision.label">Visión</p>
+        </article>
+        <article class="mv__item mv__item--vision" data-reveal="group">
+          <h2 class="mv__title" data-i18n="about.vision.label">Visión</h2>
           <p class="mv__statement" data-i18n="about.vision.text">
             Convertirnos en el partner de referencia en comunicación visual para
             healthcare, elevando el estándar del sector a través de diseño con propósito.
           </p>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -139,30 +149,30 @@
           <h2 id="valores-title" class="section-title" data-i18n="about.valores.title">En qué creemos</h2>
         </header>
 
-        <ul class="diff" data-reveal="group">
-          <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.1.label">Especialización</span></h3>
-            <p class="diff__text" data-i18n="about.val.1.text">Solo healthcare.</p>
+        <ul class="values-grid" data-reveal="group">
+          <li class="value-card">
+            <h3 class="value-card__title"><span class="value-card__marker" aria-hidden="true"></span><span data-i18n="about.val.1.label">Especialización</span></h3>
+            <p class="value-card__text" data-i18n="about.val.1.text">Solo healthcare.</p>
           </li>
-          <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.2.label">Escucha activa</span></h3>
-            <p class="diff__text" data-i18n="about.val.2.text">Cada proyecto empieza por entender a las personas.</p>
+          <li class="value-card">
+            <h3 class="value-card__title"><span class="value-card__marker" aria-hidden="true"></span><span data-i18n="about.val.2.label">Escucha activa</span></h3>
+            <p class="value-card__text" data-i18n="about.val.2.text">Cada proyecto empieza por entender a las personas.</p>
           </li>
-          <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.3.label">Tailor-made</span></h3>
-            <p class="diff__text" data-i18n="about.val.3.text">No creemos en soluciones genéricas.</p>
+          <li class="value-card">
+            <h3 class="value-card__title"><span class="value-card__marker" aria-hidden="true"></span><span data-i18n="about.val.3.label">Tailor-made</span></h3>
+            <p class="value-card__text" data-i18n="about.val.3.text">No creemos en soluciones genéricas.</p>
           </li>
-          <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.4.label">Rigor y claridad</span></h3>
-            <p class="diff__text" data-i18n="about.val.4.text">Simplificamos lo complejo sin perder precisión.</p>
+          <li class="value-card">
+            <h3 class="value-card__title"><span class="value-card__marker" aria-hidden="true"></span><span data-i18n="about.val.4.label">Rigor y claridad</span></h3>
+            <p class="value-card__text" data-i18n="about.val.4.text">Simplificamos lo complejo sin perder precisión.</p>
           </li>
-          <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.5.label">Humanización</span></h3>
-            <p class="diff__text" data-i18n="about.val.5.text">Diseñamos para personas, no para patologías.</p>
+          <li class="value-card">
+            <h3 class="value-card__title"><span class="value-card__marker" aria-hidden="true"></span><span data-i18n="about.val.5.label">Humanización</span></h3>
+            <p class="value-card__text" data-i18n="about.val.5.text">Diseñamos para personas, no para patologías.</p>
           </li>
-          <li class="diff__row">
-            <h3 class="diff__label"><span class="diff__dot" aria-hidden="true"></span><span data-i18n="about.val.6.label">Impacto real</span></h3>
-            <p class="diff__text" data-i18n="about.val.6.text">El éxito se mide en comprensión, confianza y resultado.</p>
+          <li class="value-card">
+            <h3 class="value-card__title"><span class="value-card__marker" aria-hidden="true"></span><span data-i18n="about.val.6.label">Impacto real</span></h3>
+            <p class="value-card__text" data-i18n="about.val.6.text">El éxito se mide en comprensión, confianza y resultado.</p>
           </li>
         </ul>
       </div>
@@ -170,9 +180,12 @@
 
     <!-- ===================== CTA ===================== -->
     <section class="cta-band section section--ivory" aria-labelledby="cta-title">
+      <span class="cta-band__orbit" aria-hidden="true"></span>
       <div class="container cta-band__inner" data-reveal="group">
-        <h2 id="cta-title" class="section-title" data-i18n="about.cta.title">¿Hablamos de tu proyecto?</h2>
-        <p class="cta-band__sub" data-i18n="about.cta.sub">Convertimos tu idea en una solución real.</p>
+        <div class="cta-band__copy">
+          <h2 id="cta-title" class="section-title" data-i18n="about.cta.title">¿Hablamos de tu proyecto?</h2>
+          <p class="cta-band__sub" data-i18n="about.cta.sub">Convertimos tu idea en una solución real.</p>
+        </div>
         <a class="btn btn--primary" href="index.html#contacto" data-i18n="about.cta.btn">Solicita una propuesta</a>
       </div>
     </section>
