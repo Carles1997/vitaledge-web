@@ -11,6 +11,8 @@
   // stays fully visible either way (progressive enhancement).
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !window.gsap || !window.ScrollTrigger) return;
+  if (document.documentElement.dataset.animationsReady === 'true') return;
+  document.documentElement.dataset.animationsReady = 'true';
 
   const gsap = window.gsap;
   gsap.registerPlugin(window.ScrollTrigger);
@@ -18,6 +20,7 @@
   /* ---- Lenis smooth scroll, synced to the GSAP ticker ---- */
   if (window.Lenis) {
     const lenis = new window.Lenis({ duration: 1.1, smoothWheel: true });
+    window.VELLenis = lenis;
     lenis.on('scroll', window.ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
@@ -47,12 +50,12 @@
     const isGroup = el.getAttribute('data-reveal') === 'group';
     const targets = isGroup ? el.children : el;
     gsap.from(targets, {
-      y: 36,
+      y: 28,
       autoAlpha: 0,
-      duration: 1.05,
+      duration: 0.9,
       ease: 'power3.out',
-      stagger: isGroup ? 0.1 : 0,
-      scrollTrigger: { trigger: el, start: 'top 82%' }
+      stagger: isGroup ? 0.08 : 0,
+      scrollTrigger: { trigger: el, start: 'top 80%', once: true }
     });
   });
 
@@ -191,7 +194,7 @@
       y: 48,
       autoAlpha: 0,
       scale: 0.92,
-      filter: 'blur(14px)',
+      filter: 'blur(6px)',
       duration: 1.2,
       ease: 'power3.out',
       clearProps: 'transform,filter'
@@ -207,20 +210,8 @@
     }
   });
 
-  /* ---- Signature parallax — the lab-lens rings drift on scroll ---- */
-  gsap.utils.toArray('.signature-rings').forEach((sig) => {
-    gsap.to(sig, {
-      yPercent: 16,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: sig.closest('section'),
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-  });
-
-  /* Recalculate positions once fonts/images settle */
-  window.addEventListener('load', () => window.ScrollTrigger.refresh());
+  /* Recalculate positions after critical assets and web fonts settle. */
+  const refresh = () => window.ScrollTrigger.refresh();
+  window.addEventListener('load', refresh, { once: true });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
 })();

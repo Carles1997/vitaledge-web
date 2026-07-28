@@ -1,79 +1,215 @@
 /* ============================================================
    VitalEdge Lab — main.js
-   Initialisation, nav behaviour, mobile menu, contact form.
-   (Lenis smooth scroll added in Phase 7.)
+   Navigation, accessible mobile menu, contact form and project dots.
    ============================================================ */
 (function () {
   'use strict';
 
-  /* ---- Navbar: transparent over hero → ivory glass on scroll ---- */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tr = (key, fallback) => {
+    if (window.VELi18n && typeof window.VELi18n.get === 'function') {
+      return window.VELi18n.get(key) || fallback;
+    }
+    return fallback;
+  };
+
+  /* ---- Navbar: update its compact state at most once per frame ---- */
   const header = document.querySelector('[data-nav]');
   const SCROLL_THRESHOLD = 40;
+  let headerFrame = 0;
 
   function syncHeader() {
-    if (!header) return;
-    header.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD);
+    headerFrame = 0;
+    if (header) header.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD);
   }
-  syncHeader();
-  window.addEventListener('scroll', syncHeader, { passive: true });
 
-  /* ---- Mobile menu: hamburger toggles a full-screen overlay ---- */
+  function requestHeaderSync() {
+    if (!headerFrame) headerFrame = window.requestAnimationFrame(syncHeader);
+  }
+
+  syncHeader();
+  window.addEventListener('scroll', requestHeaderSync, { passive: true });
+
+  /* ---- Same-page anchors: keep Lenis and the URL hash in sync ---- */
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    const anchor = event.target.closest('a[href*="#"]');
+    if (!anchor) return;
+
+    const url = new URL(anchor.href, window.location.href);
+    if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || !url.hash) return;
+
+    const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+    if (!target) return;
+
+    event.preventDefault();
+    if (window.location.hash !== url.hash) window.history.pushState(null, '', url.hash);
+
+    const headerOffset = header ? Math.ceil(header.getBoundingClientRect().bottom + 16) : 0;
+    if (!reduceMotion && window.VELLenis && typeof window.VELLenis.scrollTo === 'function') {
+      window.VELLenis.scrollTo(target, { offset: -headerOffset, duration: 1.1 });
+    } else {
+      target.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+  });
+
+  /* ---- Mobile menu: animated dialog, inert background and focus loop ---- */
   const toggle = document.querySelector('.nav__toggle');
   const menu = document.getElementById('mobile-menu');
+  const inertTargets = [
+    document.querySelector('.skip-link'),
+    document.querySelector('main'),
+    document.querySelector('.site-footer')
+  ].filter(Boolean);
+  let closeTimer = 0;
 
-  function setMenu(open) {
+  function setBackgroundInert(inert) {
+    inertTargets.forEach((el) => {
+      if (inert) el.setAttribute('inert', '');
+      else el.removeAttribute('inert');
+    });
+  }
+
+  function menuIsOpen() {
+    return Boolean(toggle && toggle.getAttribute('aria-expanded') === 'true');
+  }
+
+  function syncToggleLabel() {
+    if (!toggle) return;
+    toggle.setAttribute(
+      'aria-label',
+      menuIsOpen() ? tr('a11y.closeMenu', 'Cerrar menú') : tr('a11y.openMenu', 'Abrir menú')
+    );
+  }
+
+  function getMenuFocusables() {
+    return [...document.querySelectorAll(
+      '.site-header a, .site-header button, #mobile-menu a, #mobile-menu button'
+    )].filter((el) => (
+      !el.disabled &&
+      el.getAttribute('tabindex') !== '-1' &&
+      !el.closest('[hidden]') &&
+      el.getClientRects().length > 0
+    ));
+  }
+
+  function setMenu(open, restoreFocus) {
     if (!toggle || !menu) return;
+    window.clearTimeout(closeTimer);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-    menu.hidden = !open;
+    syncToggleLabel();
+    setBackgroundInert(open);
     document.body.classList.toggle('menu-open', open);
+
+    if (window.VELLenis) {
+      if (open && typeof window.VELLenis.stop === 'function') window.VELLenis.stop();
+      if (!open && typeof window.VELLenis.start === 'function') window.VELLenis.start();
+    }
+
+    if (open) {
+      menu.hidden = false;
+      menu.removeAttribute('inert');
+      window.requestAnimationFrame(() => {
+        menu.classList.add('is-open');
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+      });
+      return;
+    }
+
+    menu.classList.remove('is-open');
+    menu.setAttribute('inert', '');
+    closeTimer = window.setTimeout(() => { menu.hidden = true; }, reduceMotion ? 0 : 400);
+    if (restoreFocus) toggle.focus();
   }
 
   if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    menu.setAttribute('inert', '');
+    syncToggleLabel();
+
+    toggle.addEventListener('click', () => setMenu(!menuIsOpen(), false));
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenu(false, false);
     });
-    // Close when a link is tapped, or on Escape.
-    menu.addEventListener('click', (e) => {
-      if (e.target.closest('a')) setMenu(false);
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-        setMenu(false);
-        toggle.focus();
+
+    document.addEventListener('keydown', (event) => {
+      if (!menuIsOpen()) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenu(false, true);
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+      const focusables = getMenuFocusables();
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!focusables.includes(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
       }
     });
+
+    const desktop = window.matchMedia('(min-width: 1061px)');
+    desktop.addEventListener('change', (event) => {
+      if (event.matches && menuIsOpen()) setMenu(false, true);
+    });
+
+    document.addEventListener('vel:languagechange', syncToggleLabel);
   }
 
-  /* ---- Contact form: Netlify AJAX submit + brand-voice feedback ---- */
+  /* ---- Contact form: Vercel function + Resend ---- */
   const form = document.querySelector('.contact-form');
   const status = form && form.querySelector('.form-status');
 
   if (form && status) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    function setFormStatus(key, fallback, isError) {
+      status.classList.toggle('is-error', Boolean(isError));
+      status.setAttribute('role', isError ? 'alert' : 'status');
+      status.textContent = tr(key, fallback);
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
       if (!form.reportValidity()) return;
 
       const submitBtn = form.querySelector('[type="submit"]');
       submitBtn.disabled = true;
-      status.classList.remove('is-error');
-      status.textContent = 'Enviando…';
+      form.setAttribute('aria-busy', 'true');
+      setFormStatus('form.sending', 'Enviando…', false);
 
       try {
         const data = Object.fromEntries(new FormData(form).entries());
-        const res = await fetch(form.getAttribute('action'), {
+        const response = await fetch(form.getAttribute('action'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data)
         });
-        if (!res.ok) throw new Error('Bad response');
+        if (!response.ok) throw new Error('Bad response');
         form.reset();
-        status.textContent = 'Gracias. Te responderemos en breve.';
-      } catch (err) {
-        status.classList.add('is-error');
-        status.textContent = 'No hemos podido enviar el formulario. Escríbenos a info@vitaledge-lab.com.';
+        setFormStatus('form.success', 'Gracias. Te responderemos en breve.', false);
+        status.focus({ preventScroll: true });
+      } catch (error) {
+        setFormStatus(
+          'form.error',
+          'No hemos podido enviar el formulario. Escríbenos a info@vitaledge-lab.com.',
+          true
+        );
+        status.focus({ preventScroll: true });
       } finally {
         submitBtn.disabled = false;
+        form.removeAttribute('aria-busy');
       }
     });
   }
@@ -82,30 +218,46 @@
   const projects = document.querySelector('.projects');
   const dotsWrap = document.querySelector('.projects__dots');
 
-  if (projects && dotsWrap) {
+  if (projects && dotsWrap && !dotsWrap.dataset.ready) {
+    dotsWrap.dataset.ready = 'true';
     const cards = [...projects.querySelectorAll('.project')];
 
-    cards.forEach((card, i) => {
+    cards.forEach((card, index) => {
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.className = 'projects__dot';
-      dot.setAttribute('aria-label', `Ir al proyecto ${i + 1} de ${cards.length}`);
+      dot.setAttribute(
+        'aria-label',
+        tr('a11y.projectDot', 'Ir al proyecto {current} de {total}')
+          .replace('{current}', String(index + 1))
+          .replace('{total}', String(cards.length))
+      );
       dot.addEventListener('click', () => {
-        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        card.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          inline: 'center',
+          block: 'nearest'
+        });
       });
       dotsWrap.appendChild(dot);
     });
 
     const dots = [...dotsWrap.children];
-    const setActive = (idx) => dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    const setActive = (activeIndex) => dots.forEach((dot, index) => {
+      const active = index === activeIndex;
+      dot.classList.toggle('is-active', active);
+      if (active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
     setActive(0);
 
-    // Highlight the dot of whichever card is centred in the scroller.
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) setActive(cards.indexOf(e.target));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(cards.indexOf(entry.target));
       });
     }, { root: projects, threshold: 0.6 });
-    cards.forEach((c) => io.observe(c));
+
+    cards.forEach((card) => observer.observe(card));
+    window.addEventListener('pagehide', () => observer.disconnect(), { once: true });
   }
 })();

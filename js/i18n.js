@@ -31,6 +31,7 @@
       'meta.about.description': 'Sobre VitalEdge Lab: nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores en comunicación visual para healthcare.',
       'meta.about.ogDescription': 'Nacimos para que el sector salud comunique mejor. Nuestra historia, misión, visión y valores.',
       'meta.about.twDescription': 'Nuestra historia, misión, visión y valores.',
+      'meta.locale': 'es_ES',
 
       /* nav + shared */
       'nav.servicios': 'Servicios',
@@ -40,6 +41,14 @@
       'nav.contacto': 'Contacto',
       'nav.cta': 'Solicita una propuesta',
       'lang.aria': 'Cambiar idioma',
+      'a11y.skip': 'Saltar al contenido',
+      'a11y.primaryNav': 'Navegación principal',
+      'a11y.mobileNav': 'Navegación móvil',
+      'a11y.mobileMenu': 'Menú principal',
+      'a11y.footerNav': 'Navegación del pie',
+      'a11y.openMenu': 'Abrir menú',
+      'a11y.closeMenu': 'Cerrar menú',
+      'a11y.projectDot': 'Ir al proyecto {current} de {total}',
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Comunicación visual',
@@ -158,6 +167,9 @@
       'form.timing': 'Timing aproximado <span class="field__opt">(opcional)</span>',
       'form.timingPlaceholder': 'Ej. próximo trimestre',
       'form.submit': 'Solicitar propuesta',
+      'form.sending': 'Enviando…',
+      'form.success': 'Gracias. Te responderemos en breve.',
+      'form.error': 'No hemos podido enviar el formulario. Escríbenos a info@vitaledge-lab.com.',
       'contactinfo.write': 'Escríbenos',
       'contactinfo.where': 'Dónde estamos',
       'contactinfo.follow': 'Síguenos',
@@ -205,6 +217,7 @@
       'meta.about.description': 'About VitalEdge Lab: we were born to help healthcare communicate better. Our story, mission, vision and values in visual communication for healthcare.',
       'meta.about.ogDescription': 'We were born to help healthcare communicate better. Our story, mission, vision and values.',
       'meta.about.twDescription': 'Our story, mission, vision and values.',
+      'meta.locale': 'en_US',
 
       /* nav + shared */
       'nav.servicios': 'Services',
@@ -214,6 +227,14 @@
       'nav.contacto': 'Contact',
       'nav.cta': 'Request a proposal',
       'lang.aria': 'Change language',
+      'a11y.skip': 'Skip to content',
+      'a11y.primaryNav': 'Primary navigation',
+      'a11y.mobileNav': 'Mobile navigation',
+      'a11y.mobileMenu': 'Main menu',
+      'a11y.footerNav': 'Footer navigation',
+      'a11y.openMenu': 'Open menu',
+      'a11y.closeMenu': 'Close menu',
+      'a11y.projectDot': 'Go to project {current} of {total}',
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Visual communication',
@@ -332,6 +353,9 @@
       'form.timing': 'Approximate timing <span class="field__opt">(optional)</span>',
       'form.timingPlaceholder': 'e.g. next quarter',
       'form.submit': 'Request proposal',
+      'form.sending': 'Sending…',
+      'form.success': 'Thank you. We will get back to you shortly.',
+      'form.error': 'We could not send the form. Email us at info@vitaledge-lab.com.',
       'contactinfo.write': 'Write to us',
       'contactinfo.where': 'Where we are',
       'contactinfo.follow': 'Follow us',
@@ -379,6 +403,7 @@
       'meta.about.description': 'Sobre VitalEdge Lab: naixem perquè el sector salut comuniqui millor. La nostra història, missió, visió i valors en comunicació visual per a healthcare.',
       'meta.about.ogDescription': 'Naixem perquè el sector salut comuniqui millor. La nostra història, missió, visió i valors.',
       'meta.about.twDescription': 'La nostra història, missió, visió i valors.',
+      'meta.locale': 'ca_ES',
 
       /* nav + shared */
       'nav.servicios': 'Serveis',
@@ -388,6 +413,14 @@
       'nav.contacto': 'Contacte',
       'nav.cta': 'Demana una proposta',
       'lang.aria': 'Canviar d’idioma',
+      'a11y.skip': 'Ves al contingut',
+      'a11y.primaryNav': 'Navegació principal',
+      'a11y.mobileNav': 'Navegació mòbil',
+      'a11y.mobileMenu': 'Menú principal',
+      'a11y.footerNav': 'Navegació del peu',
+      'a11y.openMenu': 'Obre el menú',
+      'a11y.closeMenu': 'Tanca el menú',
+      'a11y.projectDot': 'Ves al projecte {current} de {total}',
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Comunicació visual',
@@ -506,6 +539,9 @@
       'form.timing': 'Timing aproximat <span class="field__opt">(opcional)</span>',
       'form.timingPlaceholder': 'Ex. pròxim trimestre',
       'form.submit': 'Demanar proposta',
+      'form.sending': 'Enviant…',
+      'form.success': 'Gràcies. Et respondrem ben aviat.',
+      'form.error': 'No hem pogut enviar el formulari. Escriu-nos a info@vitaledge-lab.com.',
       'contactinfo.write': 'Escriu-nos',
       'contactinfo.where': 'On som',
       'contactinfo.follow': 'Segueix-nos',
@@ -553,6 +589,7 @@
       'meta.about.description': 'À propos de VitalEdge Lab : nous sommes nés pour que le secteur de la santé communique mieux. Notre histoire, mission, vision et valeurs en communication visuelle pour le healthcare.',
       'meta.about.ogDescription': 'Nous sommes nés pour que le secteur de la santé communique mieux. Notre histoire, mission, vision et valeurs.',
       'meta.about.twDescription': 'Notre histoire, mission, vision et valeurs.',
+      'meta.locale': 'fr_FR',
 
       /* nav + shared */
       'nav.servicios': 'Services',
@@ -562,6 +599,14 @@
       'nav.contacto': 'Contact',
       'nav.cta': 'Demander une proposition',
       'lang.aria': 'Changer de langue',
+      'a11y.skip': 'Aller au contenu',
+      'a11y.primaryNav': 'Navigation principale',
+      'a11y.mobileNav': 'Navigation mobile',
+      'a11y.mobileMenu': 'Menu principal',
+      'a11y.footerNav': 'Navigation du pied de page',
+      'a11y.openMenu': 'Ouvrir le menu',
+      'a11y.closeMenu': 'Fermer le menu',
+      'a11y.projectDot': 'Aller au projet {current} sur {total}',
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Communication visuelle',
@@ -680,6 +725,9 @@
       'form.timing': 'Timing approximatif <span class="field__opt">(optionnel)</span>',
       'form.timingPlaceholder': 'Ex. prochain trimestre',
       'form.submit': 'Demander une proposition',
+      'form.sending': 'Envoi en cours…',
+      'form.success': 'Merci. Nous vous répondrons prochainement.',
+      'form.error': 'Le formulaire n’a pas pu être envoyé. Écrivez-nous à info@vitaledge-lab.com.',
       'contactinfo.write': 'Écrivez-nous',
       'contactinfo.where': 'Où nous sommes',
       'contactinfo.follow': 'Suivez-nous',
@@ -748,6 +796,7 @@
     });
 
     updateSwitcher(lang);
+    document.dispatchEvent(new CustomEvent('vel:languagechange', { detail: { lang: lang } }));
   }
 
   function updateSwitcher(lang) {
@@ -756,7 +805,9 @@
       el.textContent = meta.short;
     });
     document.querySelectorAll('[data-lang]').forEach(function (opt) {
-      opt.setAttribute('aria-selected', String(opt.getAttribute('data-lang') === lang));
+      var selected = opt.getAttribute('data-lang') === lang;
+      opt.setAttribute('aria-selected', String(selected));
+      opt.setAttribute('tabindex', selected ? '0' : '-1');
     });
   }
 
@@ -780,6 +831,7 @@
       var btn = sw.querySelector('[data-lang-btn]');
       var menu = sw.querySelector('[data-lang-menu]');
       if (!btn || !menu) return;
+      var options = Array.prototype.slice.call(menu.querySelectorAll('[data-lang]'));
 
       function open(state) {
         menu.hidden = !state;
@@ -787,23 +839,71 @@
         sw.classList.toggle('is-open', state);
       }
 
+      function focusOption(index) {
+        if (!options.length) return;
+        var safeIndex = (index + options.length) % options.length;
+        options.forEach(function (opt, optionIndex) {
+          opt.setAttribute('tabindex', optionIndex === safeIndex ? '0' : '-1');
+        });
+        options[safeIndex].focus();
+      }
+
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
         open(menu.hidden);
       });
 
-      menu.querySelectorAll('[data-lang]').forEach(function (opt) {
+      btn.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        open(true);
+        var selectedIndex = options.findIndex(function (opt) {
+          return opt.getAttribute('aria-selected') === 'true';
+        });
+        focusOption(selectedIndex < 0 ? 0 : selectedIndex);
+      });
+
+      options.forEach(function (opt) {
         opt.addEventListener('click', function () {
           setLang(opt.getAttribute('data-lang'));
           open(false);
+          btn.focus();
         });
+      });
+
+      menu.addEventListener('keydown', function (e) {
+        var currentIndex = options.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          focusOption(currentIndex + 1);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          focusOption(currentIndex - 1);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          focusOption(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          focusOption(options.length - 1);
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          open(false);
+          btn.focus();
+        }
+      });
+
+      sw.addEventListener('focusout', function (e) {
+        if (!sw.contains(e.relatedTarget)) open(false);
       });
 
       document.addEventListener('click', function (e) {
         if (!sw.contains(e.target)) open(false);
       });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') open(false);
+        if (e.key === 'Escape' && !menu.hidden) {
+          open(false);
+          btn.focus();
+        }
       });
     });
   }
@@ -811,5 +911,10 @@
   apply(detect());
   initSwitcher();
 
-  window.VELi18n = { set: setLang, apply: apply };
+  window.VELi18n = {
+    set: setLang,
+    apply: apply,
+    get: function (key) { return t(document.documentElement.lang || DEFAULT, key); },
+    current: function () { return document.documentElement.lang || DEFAULT; }
+  };
 })();

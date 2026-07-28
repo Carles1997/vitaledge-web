@@ -7,20 +7,26 @@
   <title data-i18n="meta.index.title">VitalEdge Lab — Comunicación visual para healthcare</title>
   <meta name="description" data-i18n-attr="content:meta.index.description" content="Agencia de comunicación visual y diseño estratégico especializada en healthcare: clínicas, pharma y startups de salud. Convertimos lo complejo en claro.">
   <meta name="theme-color" content="#F4F0E8">
+  <link rel="canonical" href="https://vitaledge-lab.com/">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/IMG_1505.PNG" fetchpriority="high">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale" data-i18n-attr="content:meta.locale" content="es_ES">
   <meta property="og:site_name" content="VitalEdge Lab">
+  <meta property="og:url" content="https://vitaledge-lab.com/">
   <meta property="og:title" data-i18n-attr="content:meta.index.title" content="VitalEdge Lab — Comunicación visual para healthcare">
   <meta property="og:description" data-i18n-attr="content:meta.index.ogDescription" content="Diseño estratégico para clínicas, pharma y startups de salud. Convertimos información compleja en sistemas visuales claros.">
-  <meta property="og:image" content="assets/og-image.svg">
+  <meta property="og:image" content="https://vitaledge-lab.com/assets/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="VitalEdge Lab — Comunicación visual para healthcare">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" data-i18n-attr="content:meta.index.title" content="VitalEdge Lab — Comunicación visual para healthcare">
   <meta name="twitter:description" data-i18n-attr="content:meta.index.twDescription" content="Diseño estratégico para clínicas, pharma y startups de salud.">
-  <meta name="twitter:image" content="assets/og-image.svg">
+  <meta name="twitter:image" content="https://vitaledge-lab.com/assets/og-image.svg">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -28,9 +34,10 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "VitalEdge Lab",
+    "url": "https://vitaledge-lab.com/",
     "description": "Comunicación visual y diseño estratégico especializado en healthcare.",
-    "logo": "assets/favicon.svg",
-    "image": "assets/og-image.svg",
+    "logo": "https://vitaledge-lab.com/assets/favicon.svg",
+    "image": "https://vitaledge-lab.com/assets/og-image.svg",
     "areaServed": ["San Francisco", "París", "Barcelona"],
     "knowsAbout": ["Comunicación visual", "Branding healthcare", "Diseño estratégico"]
   }
@@ -39,12 +46,12 @@
   <!-- Fonts: Fraunces (display) · Hanken Grotesk (body) · Jost (utility) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&amp;family=Hanken+Grotesk:wght@400;500&amp;family=Jost:wght@400;500&amp;display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
 
   <!-- ===================== NAVBAR ===================== -->
   <header class="site-header" data-nav>
@@ -53,7 +60,7 @@
         VitalEdge<em class="nav__logo-lab">Lab</em>
       </a>
 
-      <nav class="nav__primary" aria-label="Navegación principal">
+      <nav class="nav__primary" aria-label="Navegación principal" data-i18n-attr="aria-label:a11y.primaryNav">
         <ul>
           <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
           <li><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
@@ -68,7 +75,7 @@
       <!-- Language switcher (to the right of the CTA) -->
       <div class="lang-switch" data-lang-switch>
         <button class="lang-switch__btn" type="button" data-lang-btn
-                aria-haspopup="listbox" aria-expanded="false"
+                aria-haspopup="listbox" aria-expanded="false" aria-controls="language-options"
                 data-i18n-attr="aria-label:lang.aria" aria-label="Cambiar idioma">
           <svg class="lang-switch__globe" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
             <circle cx="12" cy="12" r="9"></circle>
@@ -77,15 +84,15 @@
           <span class="lang-switch__current" data-lang-current>ES</span>
           <svg class="lang-switch__chev" viewBox="0 0 12 8" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l5 5 5-5"></path></svg>
         </button>
-        <ul class="lang-switch__menu" data-lang-menu role="listbox" hidden>
-          <li><button type="button" role="option" data-lang="es">Castellano</button></li>
-          <li><button type="button" role="option" data-lang="en">English</button></li>
-          <li><button type="button" role="option" data-lang="ca">Català</button></li>
-          <li><button type="button" role="option" data-lang="fr">Français</button></li>
+        <ul class="lang-switch__menu" id="language-options" data-lang-menu role="listbox" hidden>
+          <li role="none"><button type="button" role="option" data-lang="es" tabindex="0">Castellano</button></li>
+          <li role="none"><button type="button" role="option" data-lang="en" tabindex="-1">English</button></li>
+          <li role="none"><button type="button" role="option" data-lang="ca" tabindex="-1">Català</button></li>
+          <li role="none"><button type="button" role="option" data-lang="fr" tabindex="-1">Français</button></li>
         </ul>
       </div>
 
-      <button class="nav__toggle" type="button" aria-label="Abrir menú"
+      <button class="nav__toggle" type="button" aria-label="Abrir menú" data-i18n-attr="aria-label:a11y.openMenu"
               aria-expanded="false" aria-controls="mobile-menu">
         <span class="nav__toggle-bar"></span>
         <span class="nav__toggle-bar"></span>
@@ -96,8 +103,9 @@
 
   <!-- Full-screen mobile overlay (sibling of header so its fixed
        positioning is relative to the viewport, not the blurred nav) -->
-  <div class="mobile-menu" id="mobile-menu" hidden>
-    <nav aria-label="Navegación móvil">
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true"
+       aria-label="Menú principal" data-i18n-attr="aria-label:a11y.mobileMenu" hidden>
+    <nav aria-label="Navegación móvil" data-i18n-attr="aria-label:a11y.mobileNav">
       <ul>
         <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
         <li><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a></li>
@@ -236,7 +244,8 @@
             <figure class="service__media">
               <div class="lens service__lens">
                 <img class="service__img" src="assets/VitalEdge_CV.webp"
-                     alt="Comunicación visual y diseño estratégico" loading="lazy">
+                     alt="Comunicación visual y diseño estratégico" width="1254" height="1254"
+                     loading="lazy" decoding="async">
               </div>
             </figure>
             <div class="service__body">
@@ -268,7 +277,8 @@
             <figure class="service__media">
               <div class="lens service__lens">
                 <img class="service__img" src="assets/VitalEdge_Materiales.webp"
-                     alt="Materiales y sistemas corporativos healthcare" loading="lazy">
+                     alt="Materiales y sistemas corporativos healthcare" width="1254" height="1254"
+                     loading="lazy" decoding="async">
               </div>
             </figure>
             <div class="service__body">
@@ -298,7 +308,8 @@
             <figure class="service__media">
               <div class="lens service__lens">
                 <img class="service__img" src="assets/VitalEdge_Espacios.webp"
-                     alt="Espacios y experiencias de marca" loading="lazy">
+                     alt="Espacios y experiencias de marca" width="1254" height="1254"
+                     loading="lazy" decoding="async">
               </div>
             </figure>
             <div class="service__body">
@@ -330,7 +341,8 @@
             <figure class="service__media">
               <div class="lens service__lens">
                 <img class="service__img" src="assets/VitalEdge_Identidad.webp"
-                     alt="Branding e identidad de marca healthcare" loading="lazy">
+                     alt="Branding e identidad de marca healthcare" width="1254" height="1254"
+                     loading="lazy" decoding="async">
               </div>
             </figure>
             <div class="service__body">
@@ -561,7 +573,6 @@
               <div class="contact-info__block">
                 <p class="contact-info__label" data-i18n="contactinfo.write">Escríbenos</p>
                 <a class="contact-info__line" href="mailto:info@vitaledge-lab.com">info@vitaledge-lab.com</a>
-                <a class="contact-info__line" href="tel:+34600000000">+34 600 000 000</a>
               </div>
               <div class="contact-info__block">
                 <p class="contact-info__label" data-i18n="contactinfo.where">Dónde estamos</p>
@@ -571,9 +582,9 @@
               </div>
               <div class="contact-info__block">
                 <p class="contact-info__label" data-i18n="contactinfo.follow">Síguenos</p>
-                <a class="contact-info__line" href="#" rel="noopener">LinkedIn</a>
-                <a class="contact-info__line" href="#" rel="noopener">Instagram</a>
-                <a class="contact-info__line" href="#" rel="noopener">Facebook</a>
+                <span class="contact-info__line">LinkedIn</span>
+                <span class="contact-info__line">Instagram</span>
+                <span class="contact-info__line">Facebook</span>
               </div>
             </aside>
           </div>
@@ -583,7 +594,8 @@
                 action="/api/contact" aria-labelledby="contacto-title"
                 aria-describedby="contacto-support" data-reveal="group">
             <!-- honeypot: bots fill this, humans don't -->
-            <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" hidden>
+            <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off"
+                   aria-hidden="true">
 
             <div class="field-row">
               <p class="field">
@@ -640,7 +652,7 @@
             <button class="btn btn--primary contact-form__submit" type="submit" data-i18n="form.submit">
               Solicitar propuesta
             </button>
-            <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            <p class="form-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
           </form>
         </div>
       </div>
@@ -656,7 +668,7 @@
         <p id="footer-title" class="site-footer__tagline" data-i18n="footer.tagline">Comunicación visual para healthcare.</p>
       </div>
 
-      <nav class="site-footer__nav" aria-label="Navegación del pie">
+      <nav class="site-footer__nav" aria-label="Navegación del pie" data-i18n-attr="aria-label:a11y.footerNav">
         <p class="site-footer__heading" data-i18n="footer.explora">Explora</p>
         <ul>
           <li><a href="#servicios" data-i18n="nav.servicios">Servicios</a></li>
@@ -679,9 +691,9 @@
       <div class="site-footer__col">
         <p class="site-footer__heading" data-i18n="footer.social">Social</p>
         <ul>
-          <li><a href="#" rel="noopener">LinkedIn</a></li>
-          <li><a href="#" rel="noopener">Instagram</a></li>
-          <li><a href="#" rel="noopener">Facebook</a></li>
+          <li><span>LinkedIn</span></li>
+          <li><span>Instagram</span></li>
+          <li><span>Facebook</span></li>
         </ul>
       </div>
     </div>
