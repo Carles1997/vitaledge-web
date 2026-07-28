@@ -1813,90 +1813,16 @@ body.menu-open {
 }
 
 .method__intro .section-title {
-  max-width: 10ch;
+  max-width: none;
   font-size: clamp(2.6rem, 5.1vw, 5.2rem);
   line-height: 0.98;
   letter-spacing: -0.035em;
 }
 
-/* Scientific viewport containing the existing VitalEdge brush ring. */
-.method__visual {
-  position: relative;
-  isolation: isolate;
-  width: min(100%, 32rem);
-  aspect-ratio: 16 / 9;
-  margin-top: clamp(2rem, 5vw, 4rem);
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--sage) 28%, var(--linen));
-  border-radius: 50% 50% var(--radius) var(--radius);
-  background-color: color-mix(in srgb, var(--bone) 82%, var(--ivory));
-  box-shadow: var(--shadow-soft);
+.method__headline-line {
+  display: block;
+  white-space: nowrap;
 }
-
-.method__visual::before {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.metodologia .signature-img--method {
-  top: 50%;
-  left: -43%;
-  right: auto;
-  width: 154%;
-  max-width: none;
-  transform: translateY(-50%);
-  opacity: 0.78;
-}
-
-.method__visual-orbit {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 67%;
-  width: 46%;
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--sage-deep) 38%, transparent);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.method__visual-orbit::before,
-.method__visual-orbit::after,
-.method__visual-marker {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--sage-deep);
-}
-
-.method__visual-orbit::before {
-  top: 9%;
-  left: 18%;
-  width: 0.45rem;
-  aspect-ratio: 1;
-}
-
-.method__visual-orbit::after {
-  right: 4%;
-  bottom: 22%;
-  width: 0.3rem;
-  aspect-ratio: 1;
-}
-
-.method__visual-marker {
-  z-index: 3;
-  width: 0.45rem;
-  aspect-ratio: 1;
-  box-shadow: 0 0 0 0.45rem color-mix(in srgb, var(--sage) 12%, transparent);
-}
-
-.method__visual-marker--a { top: 23%; left: 12%; }
-.method__visual-marker--b { right: 12%; bottom: 18%; }
 
 .method {
   --rail: clamp(3.75rem, 7vw, 5.25rem);
@@ -1932,6 +1858,7 @@ body.menu-open {
 
 .method__steps {
   display: grid;
+  grid-auto-rows: 1fr;
   gap: clamp(1.35rem, 3vw, 2.25rem);
 }
 
@@ -1941,6 +1868,7 @@ body.menu-open {
   grid-template-columns: var(--rail) minmax(0, 1fr);
   column-gap: clamp(0.75rem, 2vw, 1.5rem);
   align-items: center;
+  height: 100%;
   min-width: 0;
 }
 
@@ -1980,6 +1908,7 @@ body.menu-open {
   position: relative;
   z-index: 1;
   width: 100%;
+  height: 100%;
   min-height: clamp(7.5rem, 14vw, 9rem);
   padding: clamp(1.35rem, 3vw, 2.15rem);
   border: 1px solid color-mix(in srgb, var(--clay) 34%, transparent);
@@ -2018,32 +1947,6 @@ body.menu-open {
   line-height: 1.55;
 }
 
-/* The final stage closes the sequence without pretending to be a dynamic
-   active state: shape and contrast both signal completion. */
-.method__step:last-child .method__content {
-  border-color: color-mix(in srgb, var(--sage) 72%, var(--linen));
-  border-radius: var(--radius) var(--radius) 50% var(--radius);
-  background-color: color-mix(in srgb, var(--sage) 16%, var(--ivory));
-  color: var(--espresso);
-}
-
-.method__step:last-child .method__desc {
-  color: var(--espresso-soft);
-}
-
-.method__step:last-child .method__content::after {
-  background-image: radial-gradient(circle, var(--sage-deep) 0 2px, transparent 2.5px);
-}
-
-@media (min-width: 700px) {
-  .method__step:nth-child(3n + 1) .method__content { width: 88%; }
-  .method__step:nth-child(3n + 2) .method__content { width: 100%; }
-  .method__step:nth-child(3n) .method__content {
-    width: 92%;
-    margin-left: auto;
-  }
-}
-
 @media (min-width: 960px) {
   .metodologia__layout {
     grid-template-columns: minmax(0, 0.82fr) minmax(31rem, 1.18fr);
@@ -2060,21 +1963,6 @@ body.menu-open {
   .metodologia::before {
     top: 5%;
     right: -15rem;
-  }
-
-  .method__visual {
-    width: 100%;
-    margin-top: 2rem;
-    border-radius: 50% 50% var(--radius-sm) var(--radius-sm);
-  }
-
-  .metodologia .signature-img--method {
-    top: 50%;
-    left: -43%;
-    right: auto;
-    width: 154%;
-    transform: translateY(-50%);
-    opacity: 0.68;
   }
 
   .method {
@@ -2095,15 +1983,11 @@ body.menu-open {
   }
 
   .method__content {
-    min-height: 0;
+    min-height: 8.25rem;
     padding: 1.25rem;
     border-radius: var(--radius-sm);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-  }
-
-  .method__step:last-child .method__content {
-    border-radius: var(--radius-sm) var(--radius-sm) 3.5rem var(--radius-sm);
   }
 
   .method__title { padding-right: 1.4rem; }

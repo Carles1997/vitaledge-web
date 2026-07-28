@@ -135,7 +135,7 @@
 
       /* metodología */
       'metodologia.eyebrow': 'Cómo trabajamos',
-      'metodologia.title': 'Un proceso claro, de principio a fin',
+      'metodologia.title': '<span class="method__headline-line">Un proceso claro,</span><span class="method__headline-line">de principio a fin</span>',
       'method.1.title': 'Briefing y análisis',
       'method.1.desc': 'Escuchamos el reto, el contexto y los objetivos.',
       'method.2.title': 'Conceptualización',
@@ -321,7 +321,7 @@
 
       /* metodología */
       'metodologia.eyebrow': 'How we work',
-      'metodologia.title': 'A clear process, from start to finish',
+      'metodologia.title': '<span class="method__headline-line">A clear process,</span><span class="method__headline-line">from start to finish</span>',
       'method.1.title': 'Briefing and analysis',
       'method.1.desc': 'We listen to the challenge, the context and the objectives.',
       'method.2.title': 'Conceptualization',
@@ -507,7 +507,7 @@
 
       /* metodología */
       'metodologia.eyebrow': 'Com treballem',
-      'metodologia.title': 'Un procés clar, de principi a fi',
+      'metodologia.title': '<span class="method__headline-line">Un procés clar,</span><span class="method__headline-line">de principi a fi</span>',
       'method.1.title': 'Briefing i anàlisi',
       'method.1.desc': 'Escoltem el repte, el context i els objectius.',
       'method.2.title': 'Conceptualització',
@@ -693,7 +693,7 @@
 
       /* metodología */
       'metodologia.eyebrow': 'Comment nous travaillons',
-      'metodologia.title': 'Un processus clair, du début à la fin',
+      'metodologia.title': '<span class="method__headline-line">Un processus clair,</span><span class="method__headline-line">du début à la fin</span>',
       'method.1.title': 'Briefing et analyse',
       'method.1.desc': 'Nous écoutons le défi, le contexte et les objectifs.',
       'method.2.title': 'Conceptualisation',
