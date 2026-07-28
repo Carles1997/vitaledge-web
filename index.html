@@ -543,20 +543,45 @@
 
     <!-- ===================== CONTACTO ===================== -->
     <section id="contacto" class="contacto section" aria-labelledby="contacto-title">
+      <span class="contacto__orbit" aria-hidden="true"></span>
       <div class="container">
-        <header class="section-head contacto__head" data-reveal="group">
-          <p class="eyebrow" data-i18n="contacto.eyebrow">Contacto</p>
-          <h2 id="contacto-title" class="section-title" data-i18n="contacto.title">¿Hablamos de tu proyecto?</h2>
-          <p class="contacto__sub" data-i18n="contacto.sub">
-            Si necesitas comunicar mejor, te ayudamos a convertir tu idea en una
-            solución real.
-          </p>
-        </header>
+        <div class="contacto__layout">
+          <div class="contacto__intro">
+            <header class="section-head contacto__head" data-reveal="group">
+              <p class="eyebrow" data-i18n="contacto.eyebrow">Contacto</p>
+              <h2 id="contacto-title" class="section-title" data-i18n="contacto.title">¿Hablamos de tu proyecto?</h2>
+              <p id="contacto-support" class="contacto__sub" data-i18n="contacto.sub">
+                Si necesitas comunicar mejor, te ayudamos a convertir tu idea en una
+                solución real.
+              </p>
+            </header>
 
-        <div class="contact">
+            <!-- Direct contact -->
+            <aside class="contact-info" data-reveal="group">
+              <div class="contact-info__block">
+                <p class="contact-info__label" data-i18n="contactinfo.write">Escríbenos</p>
+                <a class="contact-info__line" href="mailto:info@vitaledge-lab.com">info@vitaledge-lab.com</a>
+                <a class="contact-info__line" href="tel:+34600000000">+34 600 000 000</a>
+              </div>
+              <div class="contact-info__block">
+                <p class="contact-info__label" data-i18n="contactinfo.where">Dónde estamos</p>
+                <p class="contact-info__line">San Francisco</p>
+                <p class="contact-info__line">París</p>
+                <p class="contact-info__line">Barcelona</p>
+              </div>
+              <div class="contact-info__block">
+                <p class="contact-info__label" data-i18n="contactinfo.follow">Síguenos</p>
+                <a class="contact-info__line" href="#" rel="noopener">LinkedIn</a>
+                <a class="contact-info__line" href="#" rel="noopener">Instagram</a>
+                <a class="contact-info__line" href="#" rel="noopener">Facebook</a>
+              </div>
+            </aside>
+          </div>
+
           <!-- Posts to our Vercel function (/api/contact), delivered via Resend -->
           <form class="contact-form" name="contacto" method="POST"
-                action="/api/contact" data-reveal="group">
+                action="/api/contact" aria-labelledby="contacto-title"
+                aria-describedby="contacto-support" data-reveal="group">
             <!-- honeypot: bots fill this, humans don't -->
             <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" hidden>
 
@@ -615,29 +640,8 @@
             <button class="btn btn--primary contact-form__submit" type="submit" data-i18n="form.submit">
               Solicitar propuesta
             </button>
-            <p class="form-status" role="status" aria-live="polite"></p>
+            <p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
           </form>
-
-          <!-- Direct contact -->
-          <aside class="contact-info" data-reveal="group">
-            <div class="contact-info__block">
-              <p class="contact-info__label" data-i18n="contactinfo.write">Escríbenos</p>
-              <a class="contact-info__line" href="mailto:info@vitaledge-lab.com">info@vitaledge-lab.com</a>
-              <a class="contact-info__line" href="tel:+34600000000">+34 600 000 000</a>
-            </div>
-            <div class="contact-info__block">
-              <p class="contact-info__label" data-i18n="contactinfo.where">Dónde estamos</p>
-              <p class="contact-info__line">San Francisco</p>
-              <p class="contact-info__line">París</p>
-              <p class="contact-info__line">Barcelona</p>
-            </div>
-            <div class="contact-info__block">
-              <p class="contact-info__label" data-i18n="contactinfo.follow">Síguenos</p>
-              <a class="contact-info__line" href="#" rel="noopener">LinkedIn</a>
-              <a class="contact-info__line" href="#" rel="noopener">Instagram</a>
-              <a class="contact-info__line" href="#" rel="noopener">Facebook</a>
-            </div>
-          </aside>
         </div>
       </div>
     </section>
