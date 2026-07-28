@@ -661,17 +661,6 @@ body.menu-open { overflow: hidden; }
      light section, leaving only the painted ring as a soft wash. */
   mix-blend-mode: multiply;
 }
-.signature-img--method {
-  top: 50%;
-  right: -6vw;
-  transform: translateY(-50%);
-  width: min(54vw, 620px);
-}
-
-/* Host the signature on the right of Metodología, behind content */
-.metodologia { position: relative; overflow: hidden; }
-.metodologia .container { position: relative; z-index: 1; }
-
 /* ----------------------------------------------------------
    Navbar / hero responsive
    ---------------------------------------------------------- */
@@ -1750,73 +1739,360 @@ body.menu-open { overflow: hidden; }
   .stat:last-child { border-right: 0; }
 }
 
-/* ---- Metodología: numbered vertical timeline ---- */
-.method {
-  --rail: 64px;
+/* ============================================================
+   REDESIGN V2 · PHASE 5 — Metodología
+   Connected editorial sequence; the existing ScrollTrigger draws the
+   progress rail and reveals each stage without changing its timing.
+   ============================================================ */
+.metodologia {
   position: relative;
+  overflow: hidden;
+  overflow: clip;
+  background-color: var(--ivory);
+  border-top: 1px solid color-mix(in srgb, var(--clay) 32%, transparent);
 }
-/* Base connector line + sage progress overlay (drawn on scroll) */
-.method::before {
+
+/* Large laboratory-scale orbit: decorative, but tied to the progression
+   through the same visual language used by the brand mark. */
+.metodologia::before {
   content: "";
   position: absolute;
-  top: 0.2em;
-  bottom: 0.6em;
-  left: calc(var(--rail) / 2);
-  width: 1px;
-  background-color: var(--hairline);
-  transform: translateX(-0.5px);
+  top: 12%;
+  right: clamp(-15rem, -12vw, -7rem);
+  width: clamp(22rem, 38vw, 36rem);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--sage) 20%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
 }
+
+.metodologia .container {
+  position: relative;
+  z-index: 1;
+}
+
+.metodologia__layout {
+  display: grid;
+  gap: clamp(3.5rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.method__intro {
+  min-width: 0;
+}
+
+.method__intro .section-head {
+  max-width: 36rem;
+  margin-bottom: 0;
+}
+
+.method__intro .section-title {
+  max-width: 10ch;
+  font-size: clamp(2.6rem, 5.1vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+/* Scientific viewport containing the existing VitalEdge brush ring. */
+.method__visual {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 32rem);
+  aspect-ratio: 16 / 9;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--sage) 28%, var(--linen));
+  border-radius: 50% 50% var(--radius) var(--radius);
+  background-color: color-mix(in srgb, var(--bone) 82%, var(--ivory));
+  box-shadow: var(--shadow-soft);
+}
+
+.method__visual::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.metodologia .signature-img--method {
+  top: 50%;
+  left: -43%;
+  right: auto;
+  width: 154%;
+  max-width: none;
+  transform: translateY(-50%);
+  opacity: 0.78;
+}
+
+.method__visual-orbit {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 67%;
+  width: 46%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--sage-deep) 38%, transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.method__visual-orbit::before,
+.method__visual-orbit::after,
+.method__visual-marker {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--sage-deep);
+}
+
+.method__visual-orbit::before {
+  top: 9%;
+  left: 18%;
+  width: 0.45rem;
+  aspect-ratio: 1;
+}
+
+.method__visual-orbit::after {
+  right: 4%;
+  bottom: 22%;
+  width: 0.3rem;
+  aspect-ratio: 1;
+}
+
+.method__visual-marker {
+  z-index: 3;
+  width: 0.45rem;
+  aspect-ratio: 1;
+  box-shadow: 0 0 0 0.45rem color-mix(in srgb, var(--sage) 12%, transparent);
+}
+
+.method__visual-marker--a { top: 23%; left: 12%; }
+.method__visual-marker--b { right: 12%; bottom: 18%; }
+
+.method {
+  --rail: clamp(3.75rem, 7vw, 5.25rem);
+  --node: clamp(3.25rem, 6vw, 4.5rem);
+  position: relative;
+  min-width: 0;
+}
+
+/* Base connector + sage progress overlay. The progress element retains the
+   original transform contract used by js/animations.js. */
+.method::before,
 .method__progress {
   position: absolute;
-  top: 0.2em;
+  top: calc(var(--node) / 2);
+  bottom: calc(var(--node) / 2);
   left: calc(var(--rail) / 2);
   width: 1px;
-  height: calc(100% - 0.8em);
-  background-color: var(--sage);
+  transform: translateX(-0.5px);
+  pointer-events: none;
+}
+
+.method::before {
+  content: "";
+  background-color: color-mix(in srgb, var(--clay) 58%, transparent);
+}
+
+.method__progress {
+  height: calc(100% - var(--node));
+  background-color: var(--sage-deep);
   transform: translateX(-0.5px) scaleY(0);
   transform-origin: top center;
+}
+
+.method__steps {
+  display: grid;
+  gap: clamp(1.35rem, 3vw, 2.25rem);
 }
 
 .method__step {
   position: relative;
   display: grid;
-  grid-template-columns: var(--rail) 1fr;
-  column-gap: var(--space-lg);
-  align-items: start;
-  padding-bottom: clamp(2.5rem, 6vh, 4.5rem);
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  column-gap: clamp(0.75rem, 2vw, 1.5rem);
+  align-items: center;
+  min-width: 0;
 }
-.method__step:last-child { padding-bottom: 0; }
 
-/* The number doubles as the node — knocked out over the line */
+/* Fine branch line makes every card visibly part of one process. */
+.method__step::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: calc(var(--rail) / 2);
+  width: calc((var(--rail) / 2) + clamp(0.75rem, 2vw, 1.5rem));
+  border-top: 1px solid color-mix(in srgb, var(--sage) 44%, transparent);
+}
+
 .method__num {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: grid;
+  place-items: center;
   justify-self: center;
+  width: var(--node);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--sage-deep) 48%, var(--linen));
+  border-radius: 50%;
+  background-color: var(--ivory);
+  box-shadow: 0 10px 34px -25px rgba(43, 39, 34, 0.6);
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-size: 2rem;
+  font-size: clamp(1.65rem, 3.6vw, 2.7rem);
   font-weight: 300;
   line-height: 1;
-  color: var(--sage);
-  background-color: var(--ivory);
-  padding-block: 0.15em;
-}
-.method__title {
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-size: var(--fs-h3);
-  font-weight: 400;
-  line-height: 1.1;
-}
-.method__desc {
-  margin-top: 0.4rem;
-  color: var(--espresso-soft);
-  max-width: 46ch;
+  letter-spacing: -0.04em;
+  color: var(--sage-deep);
 }
 
-@media (min-width: 760px) {
-  .method { --rail: 96px; }
-  .method__num { font-size: 2.6rem; }
+.method__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: clamp(7.5rem, 14vw, 9rem);
+  padding: clamp(1.35rem, 3vw, 2.15rem);
+  border: 1px solid color-mix(in srgb, var(--clay) 34%, transparent);
+  border-radius: var(--radius);
+  background-color: color-mix(in srgb, var(--ivory) 84%, transparent);
+  box-shadow: 0 24px 62px -48px rgba(43, 39, 34, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.method__content::after {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  width: 1.9rem;
+  height: 0.35rem;
+  opacity: 0.44;
+  background: radial-gradient(circle, var(--sage-deep) 0 2px, transparent 2.5px) 0 50% / 0.65rem 100% repeat-x;
+}
+
+.method__title {
+  max-width: 18ch;
+  padding-right: 2.25rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2.3vw, 1.7rem);
+  font-weight: 570;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.method__desc {
+  max-width: 43ch;
+  margin-top: 0.65rem;
+  color: var(--espresso-soft);
+  line-height: 1.55;
+}
+
+/* The final stage closes the sequence without pretending to be a dynamic
+   active state: shape and contrast both signal completion. */
+.method__step:last-child .method__content {
+  border-color: var(--sage-deep);
+  border-radius: var(--radius) var(--radius) 50% var(--radius);
+  background-color: var(--sage-deep);
+  color: var(--ivory);
+}
+
+.method__step:last-child .method__desc {
+  color: color-mix(in srgb, var(--ivory) 78%, var(--clay));
+}
+
+.method__step:last-child .method__content::after {
+  background-image: radial-gradient(circle, var(--ivory) 0 2px, transparent 2.5px);
+}
+
+@media (min-width: 700px) {
+  .method__step:nth-child(3n + 1) .method__content { width: 88%; }
+  .method__step:nth-child(3n + 2) .method__content { width: 100%; }
+  .method__step:nth-child(3n) .method__content {
+    width: 92%;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 960px) {
+  .metodologia__layout {
+    grid-template-columns: minmax(0, 0.82fr) minmax(31rem, 1.18fr);
+  }
+
+  .method__intro {
+    position: sticky;
+    top: clamp(7.5rem, 13vh, 9rem);
+    align-self: start;
+  }
+}
+
+@media (max-width: 699px) {
+  .metodologia::before {
+    top: 5%;
+    right: -15rem;
+  }
+
+  .method__visual {
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 50% 50% var(--radius-sm) var(--radius-sm);
+  }
+
+  .metodologia .signature-img--method {
+    top: 50%;
+    left: -43%;
+    right: auto;
+    width: 154%;
+    transform: translateY(-50%);
+    opacity: 0.68;
+  }
+
+  .method {
+    --rail: 3.5rem;
+    --node: 3.25rem;
+  }
+
+  .method__steps { gap: 1.5rem; }
+
+  .method__step {
+    column-gap: 0.75rem;
+    align-items: start;
+  }
+
+  .method__step::after {
+    top: calc(var(--node) / 2);
+    width: calc((var(--rail) / 2) + 0.75rem);
+  }
+
+  .method__content {
+    min-height: 0;
+    padding: 1.25rem;
+    border-radius: var(--radius-sm);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .method__step:last-child .method__content {
+    border-radius: var(--radius-sm) var(--radius-sm) 3.5rem var(--radius-sm);
+  }
+
+  .method__title { padding-right: 1.4rem; }
+  .method__content::after { right: 0.8rem; width: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .method__progress {
+    transform: translateX(-0.5px) scaleY(1) !important;
+  }
+
+  .method__content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ============================================================
