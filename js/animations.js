@@ -72,11 +72,23 @@
   }
 
   const servicesMM = gsap.matchMedia();
+  const serviceLinks = gsap.utils.toArray('[data-service-link]');
 
-  servicesMM.add('(min-width: 860px)', () => {
+  function setActiveService(index) {
+    serviceLinks.forEach((link, linkIndex) => {
+      const active = linkIndex === index;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  servicesMM.add('(min-width: 1180px)', () => {
     const track = document.querySelector('.services__list');
+    const viewport = document.querySelector('.services-viewport');
     const panels = gsap.utils.toArray('.service');
-    if (!track || !panels.length) return;
+    if (!track || !viewport || !panels.length) return;
+    document.documentElement.classList.add('has-gsap');
 
     const distance = () => track.scrollWidth - window.innerWidth;
     const horizontal = gsap.to(track, {
@@ -89,9 +101,29 @@
         pin: true,
         scrub: 1,
         anticipatePin: 1,
-        invalidateOnRefresh: true
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const index = Math.min(panels.length - 1, Math.round(self.progress * (panels.length - 1)));
+          setActiveService(index);
+        }
       }
     });
+
+    const handleIndexClick = (event) => {
+      const index = Number(event.currentTarget.dataset.serviceLink);
+      const trigger = horizontal.scrollTrigger;
+      if (!trigger || Number.isNaN(index)) return;
+
+      event.preventDefault();
+      const progress = panels.length > 1 ? index / (panels.length - 1) : 0;
+      const target = trigger.start + ((trigger.end - trigger.start) * progress);
+      window.history.replaceState(null, '', event.currentTarget.hash);
+      setActiveService(index);
+
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    };
+
+    serviceLinks.forEach((link) => link.addEventListener('click', handleIndexClick));
 
     // First panel appears elegantly with the headline, before the pin.
     revealService(panels[0], { trigger: '.servicios', start: 'top 70%' });
@@ -99,11 +131,20 @@
     panels.slice(1).forEach((panel) => {
       revealService(panel, { trigger: panel, containerAnimation: horizontal, start: 'left 78%' });
     });
+
+    return () => serviceLinks.forEach((link) => link.removeEventListener('click', handleIndexClick));
   });
 
-  servicesMM.add('(max-width: 859px)', () => {
-    gsap.utils.toArray('.service').forEach((panel) => {
+  servicesMM.add('(max-width: 1179px)', () => {
+    gsap.utils.toArray('.service').forEach((panel, index) => {
       revealService(panel, { trigger: panel, start: 'top 82%' });
+      window.ScrollTrigger.create({
+        trigger: panel,
+        start: 'top 55%',
+        end: 'bottom 55%',
+        onEnter: () => setActiveService(index),
+        onEnterBack: () => setActiveService(index)
+      });
     });
   });
 
