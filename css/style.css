@@ -1,8 +1,8 @@
 /* ============================================================
    VitalEdge Lab — style.css
    Phase 0 · Foundations: tokens, reset, type, spacing, layout
-   Art direction: warm minimalism / quiet luxury for healthcare.
-   Serif display = Palatino (system font). Hanken Grotesk · Jost via <link>.
+   Art direction: editorial science / translucent layered systems.
+   Fraunces (display) · Hanken Grotesk (body) · Jost (utility).
    ============================================================ */
 
 /* ----------------------------------------------------------
@@ -22,14 +22,19 @@
   /* Translucent helpers derived from the palette */
   --hairline:   rgba(187, 174, 156, 0.4);   /* clay @ 40% */
   --ivory-glass: rgba(251, 248, 242, 0.82);  /* nav scrolled bg */
+  --glass-soft: rgba(251, 248, 242, 0.62);
+  --glass-strong: rgba(251, 248, 242, 0.82);
+  --glass-edge: rgba(255, 255, 255, 0.68);
+  --shadow-soft: 0 24px 70px -38px rgba(43, 39, 34, 0.42);
+  --shadow-float: 0 22px 55px -30px rgba(60, 92, 97, 0.48);
 
   /* Typography */
-  --font-display: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
   --font-util:    'Jost', system-ui, sans-serif;
 
   /* Fluid type scale (briefing §4.4) */
-  --fs-hero:    clamp(2.8rem, 6vw, 5.5rem);
+  --fs-hero:    clamp(3rem, 6vw, 5.7rem);
   --fs-h2:      clamp(2rem, 4vw, 3.25rem);
   --fs-h3:      1.5rem;
   --fs-thesis:  clamp(1.4rem, 2.2vw, 1.7rem);
@@ -50,13 +55,15 @@
   --section-pad: clamp(6rem, 12vh, 10rem);
 
   /* Layout */
-  --container:  1280px;
-  --gutter:     clamp(1.25rem, 5vw, 4rem);
+  --container:  1320px;
+  --gutter:     clamp(1.25rem, 4.5vw, 4.5rem);
   --measure:    62ch;        /* comfortable body line length */
 
   /* Form / shape */
-  --radius:     14px;
-  --radius-sm:  8px;
+  --radius:     28px;
+  --radius-sm:  14px;
+  --radius-pill: 999px;
+  --glass-blur: 24px;
 
   /* Motion */
   --ease:       cubic-bezier(0.22, 1, 0.36, 1);   /* ~ power3.out */
@@ -77,6 +84,7 @@ html {
 
 body {
   min-height: 100vh;
+  overflow-x: clip;
   background-color: var(--bone);
   color: var(--espresso);
   font-family: var(--font-body);
@@ -244,26 +252,37 @@ h1, h2, h3, h4 {
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.01em;
-  padding: 0.9rem 1.5rem;
+  padding: 0.95rem 1.6rem;
   border: 1px solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   transition: background-color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
-              color var(--dur) var(--ease);
+              color var(--dur) var(--ease),
+              transform var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
 }
 
 .btn--primary {
   background-color: var(--sage);
   color: var(--ivory);
+  box-shadow: 0 12px 28px -18px var(--sage-deep);
 }
-.btn--primary:hover { background-color: var(--sage-deep); }
+.btn--primary:hover {
+  background-color: var(--sage-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px -18px var(--sage-deep);
+}
 
 .btn--ghost {
-  background-color: transparent;
+  background-color: rgba(251, 248, 242, 0.42);
   color: var(--espresso);
-  padding-inline: 0.25rem;
+  border-color: var(--hairline);
 }
-.btn--ghost:hover { color: var(--sage-deep); }
+.btn--ghost:hover {
+  color: var(--sage-deep);
+  border-color: color-mix(in srgb, var(--sage) 55%, transparent);
+  background-color: rgba(251, 248, 242, 0.68);
+}
 
 .btn__arrow {
   display: inline-block;
@@ -276,36 +295,52 @@ h1, h2, h3, h4 {
    ---------------------------------------------------------- */
 .site-header {
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: clamp(0.65rem, 1.8vh, 1.15rem) 0 auto;
   z-index: 100;
-  background-color: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background-color 0.5s var(--ease),
-              border-color 0.5s var(--ease),
-              backdrop-filter 0.5s var(--ease);
+  padding-inline: var(--gutter);
+  pointer-events: none;
 }
 
 /* Scrolled state — ivory glass with hairline */
 .site-header.is-scrolled {
-  background-color: var(--ivory-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom-color: var(--hairline);
+  background-color: transparent;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  padding-block: 1.15rem;
+  gap: clamp(0.8rem, 1.6vw, 1.5rem);
+  width: 100%;
+  max-width: 1180px;
+  min-height: 68px;
+  padding: 0.65rem 0.75rem 0.65rem 1.2rem;
+  background: linear-gradient(120deg,
+    rgba(251, 248, 242, 0.82), rgba(251, 248, 242, 0.58));
+  border: 1px solid var(--glass-edge);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  pointer-events: auto;
+  transition: background-color 0.5s var(--ease),
+              box-shadow 0.5s var(--ease),
+              transform 0.5s var(--ease);
+}
+
+.site-header.is-scrolled .nav {
+  background-color: var(--glass-strong);
+  box-shadow: 0 18px 48px -30px rgba(43, 39, 34, 0.52),
+              inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  transform: translateY(-0.25rem);
 }
 
 .nav__logo {
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-size: 1.4rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1;
   white-space: nowrap;
 }
 .nav__logo-lab {
@@ -319,21 +354,27 @@ h1, h2, h3, h4 {
 }
 .nav__primary ul {
   display: flex;
-  gap: var(--space-md);
+  gap: 0.15rem;
 }
 .nav__primary a {
   position: relative;
-  font-size: 0.95rem;
-  padding-block: 0.25rem;
+  display: block;
+  padding: 0.55rem 0.68rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-util);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
   color: var(--espresso);
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 /* Underline drawn left → right on hover (briefing §5) */
 .nav__primary a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
-  width: 100%;
+  bottom: 0.3rem;
+  width: calc(100% - 1.36rem);
   height: 1px;
   background-color: var(--sage);
   transform: scaleX(0);
@@ -343,7 +384,20 @@ h1, h2, h3, h4 {
 .nav__primary a:hover::after,
 .nav__primary a:focus-visible::after { transform: scaleX(1); }
 
-.nav__cta { white-space: nowrap; }
+.nav__primary a:hover,
+.nav__primary a:focus-visible,
+.nav__primary a[aria-current="page"] {
+  background-color: color-mix(in srgb, var(--sage) 10%, transparent);
+  color: var(--sage-deep);
+}
+
+.nav__cta {
+  white-space: nowrap;
+  padding: 0.82rem 1.2rem;
+  font-family: var(--font-util);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
 
 /* Hamburger — hidden on desktop */
 .nav__toggle {
@@ -353,7 +407,7 @@ h1, h2, h3, h4 {
   gap: 5px;
   width: 44px;
   height: 44px;
-  margin-left: auto;
+  margin-left: 0;
   background: transparent;
   border: 0;
 }
@@ -375,7 +429,11 @@ body.menu-open .nav__toggle-bar:nth-child(2) { transform: translateY(-3px) rotat
   z-index: 90;
   display: grid;
   place-items: center;
-  background-color: var(--bone);
+  padding: 7rem var(--gutter) 2rem;
+  background:
+    radial-gradient(circle at 85% 12%, color-mix(in srgb, var(--sage) 23%, transparent), transparent 34%),
+    radial-gradient(circle at 8% 88%, color-mix(in srgb, var(--sage) 13%, transparent), transparent 30%),
+    var(--bone);
 }
 .mobile-menu[hidden] { display: none; }
 .mobile-menu ul {
@@ -392,7 +450,17 @@ body.menu-open .nav__toggle-bar:nth-child(2) { transform: translateY(-3px) rotat
   color: var(--espresso);
 }
 .mobile-menu a:not(.btn):hover { color: var(--sage); }
-.mobile-menu nav { text-align: center; }
+.mobile-menu nav {
+  width: min(100%, 30rem);
+  padding: clamp(2rem, 8vw, 3.5rem);
+  text-align: center;
+  background: var(--glass-soft);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-float);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
 
 body.menu-open { overflow: hidden; }
 
@@ -407,8 +475,8 @@ body.menu-open { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.6rem;
-  background: transparent;
+  padding: 0.62rem 0.7rem;
+  background: rgba(255, 255, 255, 0.28);
   border: 1px solid var(--hairline);
   border-radius: 999px;
   color: var(--espresso);
@@ -443,11 +511,13 @@ body.menu-open { overflow: hidden; }
   top: calc(100% + 0.5rem);
   right: 0;
   min-width: 9.5rem;
-  padding: 0.35rem;
-  background-color: var(--ivory);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 14px 34px -18px rgba(43, 39, 34, 0.4);
+  padding: 0.4rem;
+  background-color: var(--glass-strong);
+  border: 1px solid var(--glass-edge);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   z-index: 20;
 }
 .lang-switch__menu[hidden] { display: none; }
@@ -484,38 +554,90 @@ body.menu-open { overflow: hidden; }
 .hero {
   position: relative;
   min-height: 100svh;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
   overflow: hidden;
   background-color: var(--bone);
-  /* photo anchored to the bottom so the marble table sits low, below the text */
-  background-image: linear-gradient(to right, rgba(244, 240, 232, 0.9) 30%, rgba(244, 240, 232, 0.25) 80%), url('../assets/IMG_1505.PNG');
-  background-size: cover, auto 92%;
-  background-position: center bottom, right center;
+  isolation: isolate;
+}
+
+/* Sage atmosphere inspired by the layered scientific surfaces in Stitch. */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: -12%;
+  background:
+    radial-gradient(circle at 83% 26%, color-mix(in srgb, var(--sage) 34%, transparent) 0%, transparent 27%),
+    radial-gradient(circle at 65% 86%, color-mix(in srgb, var(--sage) 18%, transparent) 0%, transparent 30%),
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.82) 0%, transparent 28%);
+  filter: blur(8px);
+}
+
+/* Keep the full painted mark visible; multiply removes its white canvas. */
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 2.5rem -2vw -2rem 22vw;
+  background: url('../assets/IMG_1505.PNG') right center / contain no-repeat;
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+  pointer-events: none;
 }
 
 .hero__inner {
   position: relative;
-  z-index: 2;
-  padding-block: clamp(6rem, 13vh, 9rem) var(--space-2xl);
+  display: grid;
+  align-items: center;
+  z-index: 1;
+  padding-block: clamp(8.5rem, 16vh, 11rem) clamp(4rem, 8vh, 6rem);
 }
 
-.hero__eyebrow { margin-bottom: var(--space-md); }
+.hero__panel {
+  position: relative;
+  width: min(100%, 46rem);
+  padding: clamp(2rem, 4vw, 3.75rem);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 46%),
+    var(--glass-soft);
+  border: 1px solid var(--glass-edge);
+  border-radius: clamp(24px, 3vw, 36px);
+  box-shadow: var(--shadow-float),
+              inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(var(--glass-blur)) saturate(125%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(125%);
+}
+
+.hero__panel::before {
+  content: "";
+  display: block;
+  width: 3.6rem;
+  height: 0.3rem;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--sage-deep), color-mix(in srgb, var(--sage) 24%, transparent));
+}
+
+.hero__eyebrow { margin-bottom: var(--space-sm); }
 
 .hero__title {
   font-size: var(--fs-hero);
   font-weight: 300;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
-  margin-bottom: var(--space-md);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: var(--space-lg);
+  max-width: 12ch;
 }
-.hero__title .accent { font-weight: 400; }
+.hero__title .accent {
+  font-weight: 400;
+  font-style: italic;
+}
 
 .hero__sub {
-  max-width: 46rem;
+  max-width: 42rem;
   color: var(--espresso);
-  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.2vw, 1.16rem);
+  line-height: 1.55;
   margin-bottom: var(--space-lg);
 }
 
@@ -553,13 +675,67 @@ body.menu-open { overflow: hidden; }
 /* ----------------------------------------------------------
    Navbar / hero responsive
    ---------------------------------------------------------- */
+@media (max-width: 1060px) {
+  .nav__primary,
+  .nav__cta { display: none; }
+  .lang-switch { margin-left: auto; }
+  .nav__toggle { display: flex; }
+}
+
 @media (max-width: 860px) {
   .nav__primary,
   .nav__cta { display: none; }
-  .nav { gap: var(--space-sm); }
+  .site-header { padding-inline: clamp(0.65rem, 3vw, 1.25rem); }
+  .nav {
+    gap: var(--space-sm);
+    min-height: 62px;
+    padding: 0.5rem 0.55rem 0.5rem 1rem;
+    border-radius: 19px;
+  }
   .lang-switch { margin-left: auto; }
   .nav__toggle { display: flex; margin-left: 0; }
   .hero__actions .btn { flex: 1 1 auto; }
+
+  .hero::after {
+    inset: 9rem -22vw -3rem -12vw;
+    background-position: center bottom;
+    opacity: 0.62;
+  }
+  .hero__inner {
+    align-items: end;
+    padding-block: clamp(8rem, 14vh, 9.5rem) clamp(2rem, 6vh, 4rem);
+  }
+  .hero__panel {
+    width: 100%;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 48%),
+      rgba(251, 248, 242, 0.74);
+  }
+}
+
+@media (max-width: 540px) {
+  .nav__logo { font-size: 1.12rem; }
+  .lang-switch__globe { display: none; }
+  .lang-switch__btn { padding-inline: 0.65rem; }
+
+  .hero { min-height: 100svh; }
+  .hero::before {
+    background:
+      radial-gradient(circle at 76% 24%, color-mix(in srgb, var(--sage) 26%, transparent), transparent 34%),
+      radial-gradient(circle at 20% 84%, color-mix(in srgb, var(--sage) 13%, transparent), transparent 34%);
+  }
+  .hero::after { inset: 8rem -52vw -1rem -34vw; opacity: 0.48; }
+  .hero__inner { padding-block: 7.6rem 1.25rem; }
+  .hero__panel { padding: 1.65rem; border-radius: 24px; }
+  .hero__panel::before { margin-bottom: var(--space-md); }
+  .hero__title {
+    font-size: clamp(2.7rem, 14vw, 4rem);
+    line-height: 0.98;
+    margin-bottom: var(--space-md);
+  }
+  .hero__sub { font-size: 1rem; line-height: 1.5; }
+  .hero__actions { display: grid; gap: var(--space-sm); }
+  .hero__actions .btn { width: 100%; }
 }
 
 /* ============================================================
