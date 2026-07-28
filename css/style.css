@@ -2,34 +2,20 @@
    VitalEdge Lab — style.css
    Phase 0 · Foundations: tokens, reset, type, spacing, layout
    Art direction: editorial science / translucent layered systems.
-   Fraunces (display) · Hanken Grotesk (body) · Jost (utility).
+   Hanken Grotesk (headings and body) · Jost (utility).
    ============================================================ */
 
 /* ----------------------------------------------------------
    1. Design tokens  (briefing §4)
    ---------------------------------------------------------- */
 :root {
-  /* Color — warm neutral base + sage accent + espresso text */
-  --bone:       #F4F0E8;   /* main background */
-  --ivory:      #FBF8F2;   /* elevated sections / cards */
-  --linen:      #E7E3D8;   /* cards, dividers, secondary fill */
-  --clay:       #BBAE9C;   /* captions, inactive, hairlines */
-  --sage:       #7C8A78;   /* accent — CTAs, hover, signature */
-  --sage-deep:  #5C6A58;   /* deep accent — hovers + small-text labels */
-  --espresso:   #2B2722;   /* primary text + headings */
-  --espresso-soft: #6B6358;/* muted body text — passes AA on bone */
+  /* Core colors are declared with the refreshed system below. */
 
   /* Translucent helpers derived from the palette */
-  --hairline:   rgba(187, 174, 156, 0.4);   /* clay @ 40% */
-  --ivory-glass: rgba(251, 248, 242, 0.82);  /* nav scrolled bg */
-  --glass-soft: rgba(251, 248, 242, 0.62);
-  --glass-strong: rgba(251, 248, 242, 0.82);
   --glass-edge: rgba(255, 255, 255, 0.68);
   --shadow-soft: 0 24px 70px -38px rgba(43, 39, 34, 0.42);
-  --shadow-float: 0 22px 55px -30px rgba(92, 106, 88, 0.48);
 
   /* Typography */
-  --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
   --font-util:    'Jost', system-ui, sans-serif;
 
@@ -69,6 +55,25 @@
   /* Motion */
   --ease:       cubic-bezier(0.22, 1, 0.36, 1);   /* ~ power3.out */
   --dur:        0.6s;
+
+  /* Luminous neutrals + blue sampled from the VitalEdge brush mark. */
+  --bone: #F8F7F3;
+  --ivory: #FFFDF9;
+  --linen: #F1EEE7;
+  --clay: #CBC5BA;
+  --logo-blue: #82A3B2;
+  --sage: var(--logo-blue);
+  --sage-deep: #426775;
+  --espresso: #282B2C;
+  --espresso-soft: #64686A;
+  --hairline: rgba(166, 159, 148, 0.32);
+  --ivory-glass: rgba(255, 253, 249, 0.84);
+  --glass-soft: rgba(255, 253, 249, 0.66);
+  --glass-strong: rgba(255, 253, 249, 0.88);
+  --shadow-float: 0 22px 55px -30px rgba(66, 103, 117, 0.42);
+
+  /* One sans-serif display voice across all headings. */
+  --font-display: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
 }
 
 /* ----------------------------------------------------------
@@ -171,7 +176,7 @@ h1, h2, h3, h4 {
 
 /* Accent helpers */
 .italic { font-style: italic; }
-.accent { color: var(--sage); }
+.accent { color: var(--sage-deep); }
 
 /* ----------------------------------------------------------
    4. Layout primitives
@@ -1659,8 +1664,8 @@ body.menu-open {
   position: relative;
   overflow: hidden;
   padding-block: clamp(5rem, 10vh, 8rem);
-  background-color: var(--espresso);
-  color: var(--ivory);
+  background-color: var(--linen);
+  color: var(--espresso);
 }
 
 .stats::before {
@@ -1670,9 +1675,9 @@ body.menu-open {
   bottom: -13rem;
   width: 28rem;
   aspect-ratio: 1;
-  border: 1px solid rgba(244, 240, 232, 0.12);
+  border: 1px solid color-mix(in srgb, var(--sage) 25%, transparent);
   border-radius: 50%;
-  box-shadow: inset 0 0 0 4rem rgba(124, 138, 120, 0.04);
+  box-shadow: inset 0 0 0 4rem rgba(130, 163, 178, 0.06);
   pointer-events: none;
 }
 
@@ -1684,17 +1689,17 @@ body.menu-open {
 .stats__title {
   max-width: 13ch;
   margin-bottom: clamp(2.5rem, 6vh, 4rem);
-  color: var(--ivory);
+  color: var(--espresso);
   font-size: clamp(2.5rem, 4.6vw, 4.25rem);
   line-height: 1;
   letter-spacing: -0.03em;
 }
-.stats__title .accent { color: color-mix(in srgb, var(--sage) 68%, var(--ivory)); }
+.stats__title .accent { color: var(--sage-deep); }
 
 .stats__grid {
   display: grid;
-  border-top: 1px solid rgba(244, 240, 232, 0.16);
-  border-bottom: 1px solid rgba(244, 240, 232, 0.16);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .stat {
@@ -1703,7 +1708,8 @@ body.menu-open {
   flex-direction: column;
   gap: var(--space-lg);
   padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2.75rem);
-  border-bottom: 1px solid rgba(244, 240, 232, 0.12);
+  border-bottom: 1px solid var(--hairline);
+  background-color: color-mix(in srgb, var(--ivory) 60%, transparent);
   transition: transform 0.5s var(--ease), background-color 0.5s var(--ease);
 }
 .stat:last-child { border-bottom: 0; }
@@ -1711,7 +1717,7 @@ body.menu-open {
 @media (hover: hover) and (pointer: fine) {
   .stat:hover {
     transform: translateY(-3px);
-    background-color: rgba(124, 138, 120, 0.08);
+    background-color: color-mix(in srgb, var(--sage) 12%, var(--ivory));
   }
 }
 
@@ -1724,11 +1730,11 @@ body.menu-open {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--ivory);
+  color: var(--espresso);
 }
 .stat__affix {
   font-weight: 400;
-  color: color-mix(in srgb, var(--sage) 70%, var(--ivory));
+  color: var(--sage-deep);
 }
 
 .stat__label {
@@ -1738,7 +1744,7 @@ body.menu-open {
   letter-spacing: 0.16em;
   line-height: 1.5;
   text-transform: uppercase;
-  color: var(--clay);
+  color: var(--espresso-soft);
   max-width: 22ch;
 }
 
@@ -1753,7 +1759,7 @@ body.menu-open {
   .stats__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .stat {
     min-height: 15rem;
-    border-right: 1px solid rgba(244, 240, 232, 0.12);
+    border-right: 1px solid var(--hairline);
     border-bottom: 0;
   }
   .stat:last-child { border-right: 0; }
@@ -2015,18 +2021,18 @@ body.menu-open {
 /* The final stage closes the sequence without pretending to be a dynamic
    active state: shape and contrast both signal completion. */
 .method__step:last-child .method__content {
-  border-color: var(--sage-deep);
+  border-color: color-mix(in srgb, var(--sage) 72%, var(--linen));
   border-radius: var(--radius) var(--radius) 50% var(--radius);
-  background-color: var(--sage-deep);
-  color: var(--ivory);
+  background-color: color-mix(in srgb, var(--sage) 16%, var(--ivory));
+  color: var(--espresso);
 }
 
 .method__step:last-child .method__desc {
-  color: color-mix(in srgb, var(--ivory) 78%, var(--clay));
+  color: var(--espresso-soft);
 }
 
 .method__step:last-child .method__content::after {
-  background-image: radial-gradient(circle, var(--ivory) 0 2px, transparent 2.5px);
+  background-image: radial-gradient(circle, var(--sage-deep) 0 2px, transparent 2.5px);
 }
 
 @media (min-width: 700px) {
@@ -2377,7 +2383,7 @@ select.field__control {
   appearance: none;
   -webkit-appearance: none;
   padding-right: 3rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235C6A58' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23426775' stroke-width='1.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
 }
@@ -2387,7 +2393,7 @@ select.field__control {
   width: 100%;
   min-height: 3.65rem;
   margin-top: var(--space-2xs);
-  box-shadow: 0 16px 34px -22px rgba(92, 106, 88, 0.8);
+  box-shadow: 0 16px 34px -22px rgba(66, 103, 117, 0.72);
 }
 
 .contact-form__submit:disabled {
@@ -2471,10 +2477,10 @@ select.field__control {
 .site-footer {
   position: relative;
   overflow: hidden;
-  background-color: var(--espresso);
-  color: var(--bone);
+  background-color: var(--linen);
+  color: var(--espresso);
   padding-block: clamp(4.5rem, 10vh, 8rem) var(--space-lg);
-  border-top: 0.3rem solid var(--sage-deep);
+  border-top: 0.3rem solid var(--sage);
 }
 
 .site-footer__inner {
@@ -2496,20 +2502,20 @@ select.field__control {
   font-weight: 300;
   line-height: 0.95;
   letter-spacing: -0.04em;
-  color: var(--bone);
+  color: var(--espresso);
 }
 
 .site-footer__logo em {
   margin-left: 0.22em;
   font-style: italic;
-  color: color-mix(in srgb, var(--sage) 62%, var(--ivory));
+  color: var(--sage-deep);
 }
 
 .site-footer__tagline {
   max-width: 28ch;
   margin-top: var(--space-lg);
   font-size: clamp(1rem, 1.25vw, 1.15rem);
-  color: var(--clay);
+  color: var(--espresso-soft);
 }
 
 .site-footer__heading {
@@ -2519,7 +2525,7 @@ select.field__control {
   font-weight: 500;
   letter-spacing: 0.17em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--sage) 72%, var(--ivory));
+  color: var(--sage-deep);
 }
 
 .site-footer__nav ul,
@@ -2529,13 +2535,13 @@ select.field__control {
 }
 
 .site-footer a {
-  color: var(--linen);
+  color: var(--espresso-soft);
   transition: color var(--dur) var(--ease);
 }
 
 .site-footer a:hover,
 .site-footer a:focus-visible {
-  color: var(--bone);
+  color: var(--sage-deep);
 }
 
 .site-footer__nav a {
@@ -2563,7 +2569,7 @@ select.field__control {
 }
 
 .site-footer__col li {
-  color: var(--clay);
+  color: var(--espresso-soft);
 }
 
 .site-footer__legal {
@@ -2573,11 +2579,11 @@ select.field__control {
   gap: var(--space-sm) var(--space-lg);
   margin-top: clamp(3.5rem, 8vh, 6rem);
   padding-top: var(--space-lg);
-  border-top: 1px solid rgba(244, 240, 232, 0.14);
+  border-top: 1px solid var(--hairline);
   font-family: var(--font-util);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: var(--clay);
+  color: var(--espresso-soft);
 }
 
 @media (min-width: 640px) {
@@ -2612,7 +2618,7 @@ select.field__control {
   .site-footer__nav,
   .site-footer__col {
     padding-top: var(--space-lg);
-    border-top: 1px solid rgba(244, 240, 232, 0.12);
+    border-top: 1px solid var(--hairline);
   }
 
   .site-footer__legal {
@@ -2620,8 +2626,8 @@ select.field__control {
   }
 }
 
-/* Keyboard focus on the dark footer */
-.site-footer :focus-visible { outline-color: var(--sage); }
+/* Keyboard focus on the light footer */
+.site-footer :focus-visible { outline-color: var(--sage-deep); }
 
 /* ============================================================
    REDESIGN V2 · PHASE 6B — About Us
@@ -2910,8 +2916,9 @@ select.field__control {
 }
 
 .mv__item--vision {
-  background-color: var(--sage-deep);
-  color: var(--ivory);
+  border-color: color-mix(in srgb, var(--sage) 62%, var(--linen));
+  background-color: color-mix(in srgb, var(--sage) 17%, var(--ivory));
+  color: var(--espresso);
 }
 
 .mv__title {
@@ -2936,7 +2943,7 @@ select.field__control {
 }
 
 .mv__item--vision .mv__statement {
-  color: color-mix(in srgb, var(--ivory) 84%, var(--clay));
+  color: var(--espresso-soft);
 }
 
 @media (min-width: 760px) {
@@ -3022,9 +3029,9 @@ select.field__control {
 }
 
 .value-card:nth-child(5) {
-  border-color: var(--sage-deep);
-  background-color: var(--sage-deep);
-  color: var(--ivory);
+  border-color: color-mix(in srgb, var(--sage) 66%, var(--linen));
+  background-color: color-mix(in srgb, var(--sage) 16%, var(--ivory));
+  color: var(--espresso);
 }
 
 .value-card__title {
@@ -3057,12 +3064,12 @@ select.field__control {
 }
 
 .value-card:nth-child(5) .value-card__marker {
-  background-color: var(--ivory);
-  box-shadow: 0 0 0 0.42rem rgba(251, 248, 242, 0.12);
+  background-color: var(--sage-deep);
+  box-shadow: 0 0 0 0.42rem color-mix(in srgb, var(--sage) 12%, transparent);
 }
 
 .value-card:nth-child(5) .value-card__text {
-  color: color-mix(in srgb, var(--ivory) 84%, var(--clay));
+  color: var(--espresso-soft);
 }
 
 @media (hover: hover) and (pointer: fine) {
