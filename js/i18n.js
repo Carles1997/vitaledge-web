@@ -75,7 +75,8 @@
 
       /* servicios */
       'servicios.eyebrow': 'Servicios',
-      'servicios.title': 'No ofrecemos servicios aislados. Ofrecemos <em class="accent">sistemas completos</em> de comunicación.',
+      'servicios.title': '<span class="servicios-title__line">No ofrecemos servicios aislados.</span><span class="servicios-title__line">Ofrecemos <em class="accent">sistemas completos</em> de comunicación.</span>',
+      'servicios.tabsLabel': 'Seleccionar servicio',
       'svc.a.title': 'Comunicación visual y diseño estratégico',
       'svc.a.lead': 'Transformamos información compleja en herramientas claras, útiles y coherentes con la marca.',
       'svc.a.li1': 'Arquitectura de información y narrativa visual',
@@ -261,7 +262,8 @@
 
       /* servicios */
       'servicios.eyebrow': 'Services',
-      'servicios.title': 'We don’t offer isolated services. We offer <em class="accent">complete systems</em> of communication.',
+      'servicios.title': '<span class="servicios-title__line">We don’t offer isolated services.</span><span class="servicios-title__line">We offer <em class="accent">complete systems</em> of communication.</span>',
+      'servicios.tabsLabel': 'Select a service',
       'svc.a.title': 'Visual communication and strategic design',
       'svc.a.lead': 'We transform complex information into clear, useful tools that are consistent with the brand.',
       'svc.a.li1': 'Information architecture and visual narrative',
@@ -447,7 +449,8 @@
 
       /* servicios */
       'servicios.eyebrow': 'Serveis',
-      'servicios.title': 'No oferim serveis aïllats. Oferim <em class="accent">sistemes complets</em> de comunicació.',
+      'servicios.title': '<span class="servicios-title__line">No oferim serveis aïllats.</span><span class="servicios-title__line">Oferim <em class="accent">sistemes complets</em> de comunicació.</span>',
+      'servicios.tabsLabel': 'Seleccionar servei',
       'svc.a.title': 'Comunicació visual i disseny estratègic',
       'svc.a.lead': 'Transformem informació complexa en eines clares, útils i coherents amb la marca.',
       'svc.a.li1': 'Arquitectura de la informació i narrativa visual',
@@ -633,7 +636,8 @@
 
       /* servicios */
       'servicios.eyebrow': 'Services',
-      'servicios.title': 'Nous ne proposons pas de services isolés. Nous proposons des <em class="accent">systèmes complets</em> de communication.',
+      'servicios.title': '<span class="servicios-title__line">Nous ne proposons pas de services isolés.</span><span class="servicios-title__line">Nous proposons des <em class="accent">systèmes complets</em> de communication.</span>',
+      'servicios.tabsLabel': 'Sélectionner un service',
       'svc.a.title': 'Communication visuelle et design stratégique',
       'svc.a.lead': 'Nous transformons l’information complexe en outils clairs, utiles et cohérents avec la marque.',
       'svc.a.li1': 'Architecture de l’information et narration visuelle',

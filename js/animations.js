@@ -59,97 +59,88 @@
     });
   });
 
-  /* ---- Servicios: pinned horizontal-scroll track on desktop (photo left,
-         text right). The first panel reveals together with the section
-         headline, before the pin engages; the rest reveal as they scroll
-         into view. Mobile keeps a vertical reveal. Each reveal: image fades
-         with a gentle lens scale while the text rises in a stagger. ---- */
+  /* ---- Servicios: one visible panel at a time.
+         The section keeps the normal vertical document flow.
+         Switching panels is handled in main.js. ---- */
+
   function revealService(panel, st) {
     const media = panel.querySelector('.service__media');
     const lens = panel.querySelector('.service__lens');
-    const bodyKids = panel.querySelectorAll('.service__body > *');
-    const tl = gsap.timeline({ scrollTrigger: st });
-    tl.from(media, { autoAlpha: 0, duration: 1, ease: 'power2.out' }, 0);
-    if (lens) tl.from(lens, { scale: 1.06, duration: 1.3, ease: 'power3.out' }, 0);
-    tl.from(bodyKids, { autoAlpha: 0, y: 24, duration: 0.85, ease: 'power3.out', stagger: 0.09 }, 0.15);
-  }
 
-  const servicesMM = gsap.matchMedia();
-  const serviceLinks = gsap.utils.toArray('[data-service-link]');
+    const bodyKids = panel.querySelectorAll(
+      '.service__body > *'
+    );
 
-  function setActiveService(index) {
-    serviceLinks.forEach((link, linkIndex) => {
-      const active = linkIndex === index;
-      link.classList.toggle('is-active', active);
-      if (active) link.setAttribute('aria-current', 'true');
-      else link.removeAttribute('aria-current');
+    const tl = gsap.timeline({
+      scrollTrigger: st
     });
+
+    tl.from(
+      media,
+      {
+        autoAlpha: 0,
+        duration: 1,
+        ease: 'power2.out'
+      },
+      0
+    );
+
+    if (lens) {
+      tl.from(
+        lens,
+        {
+          scale: 1.04,
+          duration: 1.2,
+          ease: 'power3.out'
+        },
+        0
+      );
+    }
+
+    tl.from(
+      bodyKids,
+      {
+        autoAlpha: 0,
+        y: 22,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.08
+      },
+      0.12
+    );
   }
 
-  servicesMM.add('(min-width: 1180px)', () => {
-    const track = document.querySelector('.services__list');
-    const viewport = document.querySelector('.services-viewport');
-    const panels = gsap.utils.toArray('.service');
-    if (!track || !viewport || !panels.length) return;
-    document.documentElement.classList.add('has-gsap');
+  const serviceTabs = gsap.utils.toArray(
+    '[data-service-tab]'
+  );
 
-    const distance = () => track.scrollWidth - window.innerWidth;
-    const horizontal = gsap.to(track, {
-      x: () => -distance(),
-      ease: 'none',
+  if (serviceTabs.length) {
+    gsap.from(serviceTabs, {
+      y: 18,
+      autoAlpha: 0,
+      duration: 0.65,
+      ease: 'power3.out',
+      stagger: 0.06,
+
       scrollTrigger: {
-        trigger: '.services-viewport',
-        start: 'top top',
-        end: () => '+=' + distance(),
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const index = Math.min(panels.length - 1, Math.round(self.progress * (panels.length - 1)));
-          setActiveService(index);
-        }
+        trigger: '.services__index',
+        start: 'top 84%',
+        once: true
       }
     });
+  }
 
-    const handleIndexClick = (event) => {
-      const index = Number(event.currentTarget.dataset.serviceLink);
-      const trigger = horizontal.scrollTrigger;
-      if (!trigger || Number.isNaN(index)) return;
+  const firstService = document.querySelector(
+    '[data-service-panel]:not([hidden])'
+  );
 
-      event.preventDefault();
-      const progress = panels.length > 1 ? index / (panels.length - 1) : 0;
-      const target = trigger.start + ((trigger.end - trigger.start) * progress);
-      window.history.replaceState(null, '', event.currentTarget.hash);
-      setActiveService(index);
-
-      window.scrollTo({ top: target, behavior: 'smooth' });
-    };
-
-    serviceLinks.forEach((link) => link.addEventListener('click', handleIndexClick));
-
-    // First panel appears elegantly with the headline, before the pin.
-    revealService(panels[0], { trigger: '.servicios', start: 'top 70%' });
-    // The remaining panels reveal as they slide into view horizontally.
-    panels.slice(1).forEach((panel) => {
-      revealService(panel, { trigger: panel, containerAnimation: horizontal, start: 'left 78%' });
+  if (firstService) {
+    revealService(firstService, {
+      trigger: firstService,
+      start: 'top 82%',
+      once: true
     });
-
-    return () => serviceLinks.forEach((link) => link.removeEventListener('click', handleIndexClick));
-  });
-
-  servicesMM.add('(max-width: 1179px)', () => {
-    gsap.utils.toArray('.service').forEach((panel, index) => {
-      revealService(panel, { trigger: panel, start: 'top 82%' });
-      window.ScrollTrigger.create({
-        trigger: panel,
-        start: 'top 55%',
-        end: 'bottom 55%',
-        onEnter: () => setActiveService(index),
-        onEnterBack: () => setActiveService(index)
-      });
-    });
-  });
+  }
 
   /* ---- Metodología: draw the sage connector, and reveal each row as it
          scrolls into view so the titles appear one after another ---- */

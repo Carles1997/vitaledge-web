@@ -54,6 +54,138 @@
     }
   });
 
+    /* ---- Servicios: accessible tabbed panels.
+         Scroll remains vertical; the cards only switch
+         the visible service in place. ---- */
+
+  const serviceTabs = [
+    ...document.querySelectorAll('[data-service-tab]')
+  ];
+
+  const servicePanels = [
+    ...document.querySelectorAll('[data-service-panel]')
+  ];
+
+  if (serviceTabs.length && servicePanels.length) {
+    function selectService(index, options) {
+      const settings = Object.assign(
+        {
+          focus: false,
+          updateHash: true,
+          animate: true
+        },
+        options
+      );
+
+      const safeIndex = Math.max(
+        0,
+        Math.min(index, serviceTabs.length - 1)
+      );
+
+      const activePanel = servicePanels[safeIndex];
+
+      serviceTabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === safeIndex;
+
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+
+      servicePanels.forEach((panel, panelIndex) => {
+        const active = panelIndex === safeIndex;
+
+        panel.hidden = !active;
+        panel.tabIndex = active ? 0 : -1;
+      });
+
+      if (settings.updateHash && activePanel) {
+        window.history.replaceState(
+          null,
+          '',
+          `#${activePanel.id}`
+        );
+      }
+
+      if (settings.focus) {
+        serviceTabs[safeIndex].focus();
+      }
+
+      if (
+        settings.animate &&
+        activePanel &&
+        !reduceMotion &&
+        typeof activePanel.animate === 'function'
+      ) {
+        activePanel.animate(
+          [
+            {
+              opacity: 0,
+              transform: 'translateY(14px)'
+            },
+            {
+              opacity: 1,
+              transform: 'translateY(0)'
+            }
+          ],
+          {
+            duration: 420,
+            easing: 'cubic-bezier(.22,1,.36,1)'
+          }
+        );
+      }
+    }
+
+    serviceTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        selectService(index);
+      });
+
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex = index;
+
+        if (
+          event.key === 'ArrowRight' ||
+          event.key === 'ArrowDown'
+        ) {
+          nextIndex = (index + 1) % serviceTabs.length;
+        } else if (
+          event.key === 'ArrowLeft' ||
+          event.key === 'ArrowUp'
+        ) {
+          nextIndex =
+            (index - 1 + serviceTabs.length) %
+            serviceTabs.length;
+        } else if (event.key === 'Home') {
+          nextIndex = 0;
+        } else if (event.key === 'End') {
+          nextIndex = serviceTabs.length - 1;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+
+        selectService(nextIndex, {
+          focus: true
+        });
+      });
+    });
+
+    const hashIndex = servicePanels.findIndex(
+      (panel) => `#${panel.id}` === window.location.hash
+    );
+
+    selectService(
+      hashIndex >= 0 ? hashIndex : 0,
+      {
+        focus: false,
+        updateHash: false,
+        animate: false
+      }
+    );
+  }
+
   /* ---- Mobile menu: animated dialog, inert background and focus loop ---- */
   const toggle = document.querySelector('.nav__toggle');
   const menu = document.getElementById('mobile-menu');

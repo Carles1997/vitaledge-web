@@ -212,158 +212,387 @@
       <div class="container">
         <header class="servicios__head" data-reveal="group">
           <p class="eyebrow" data-i18n="servicios.eyebrow">Servicios</p>
-          <h2 id="servicios-title" class="section-title" data-i18n="servicios.title" data-i18n-html>
-            No ofrecemos servicios aislados. Ofrecemos
-            <em class="accent">sistemas completos</em> de comunicación.
+
+          <h2
+            id="servicios-title"
+            class="section-title"
+            data-i18n="servicios.title"
+            data-i18n-html
+          >
+            <span class="servicios-title__line">
+              No ofrecemos servicios aislados.
+            </span>
+
+            <span class="servicios-title__line">
+              Ofrecemos <em class="accent">sistemas completos</em> de comunicación.
+            </span>
           </h2>
         </header>
       </div>
 
       <div class="services-viewport">
-        <nav class="services__index container" aria-labelledby="servicios-title">
-          <a class="services__index-link is-active" href="#service-a" data-service-link="0" aria-current="true">
-            <span class="services__index-letter" aria-hidden="true">A</span>
-            <span data-i18n="svc.a.title">Comunicación visual y diseño estratégico</span>
-          </a>
-          <a class="services__index-link" href="#service-b" data-service-link="1">
-            <span class="services__index-letter" aria-hidden="true">B</span>
-            <span data-i18n="svc.b.title">Materiales y sistemas corporativos healthcare</span>
-          </a>
-          <a class="services__index-link" href="#service-c" data-service-link="2">
-            <span class="services__index-letter" aria-hidden="true">C</span>
-            <span data-i18n="svc.c.title">Espacios y experiencias</span>
-          </a>
-          <a class="services__index-link" href="#service-d" data-service-link="3">
-            <span class="services__index-letter" aria-hidden="true">D</span>
-            <span data-i18n="svc.d.title">Branding e identidad</span>
-          </a>
-        </nav>
+        <div
+          class="services__index container"
+          role="tablist"
+          data-i18n-attr="aria-label:servicios.tabsLabel"
+          aria-label="Seleccionar servicio"
+        >
+          <button
+            class="services__index-link is-active"
+            type="button"
+            id="service-tab-a"
+            data-service-tab="0"
+            role="tab"
+            aria-selected="true"
+            aria-controls="service-a"
+          >
+            <span data-i18n="svc.a.title">
+              Comunicación visual y diseño estratégico
+            </span>
+          </button>
+
+          <button
+            class="services__index-link"
+            type="button"
+            id="service-tab-b"
+            data-service-tab="1"
+            role="tab"
+            aria-selected="false"
+            aria-controls="service-b"
+            tabindex="-1"
+          >
+            <span data-i18n="svc.b.title">
+              Materiales y sistemas corporativos healthcare
+            </span>
+          </button>
+
+          <button
+            class="services__index-link"
+            type="button"
+            id="service-tab-c"
+            data-service-tab="2"
+            role="tab"
+            aria-selected="false"
+            aria-controls="service-c"
+            tabindex="-1"
+          >
+            <span data-i18n="svc.c.title">
+              Espacios y experiencias
+            </span>
+          </button>
+
+          <button
+            class="services__index-link"
+            type="button"
+            id="service-tab-d"
+            data-service-tab="3"
+            role="tab"
+            aria-selected="false"
+            aria-controls="service-d"
+            tabindex="-1"
+          >
+            <span data-i18n="svc.d.title">
+              Branding e identidad
+            </span>
+          </button>
+        </div>
 
         <div class="services__list">
 
-          <!-- A -->
-          <article id="service-a" class="service" data-service="0" aria-labelledby="service-a-title">
+          <!-- Servicio 1 -->
+          <article
+            id="service-a"
+            class="service"
+            data-service-panel="0"
+            role="tabpanel"
+            aria-labelledby="service-tab-a"
+            tabindex="0"
+          >
             <figure class="service__media">
               <div class="lens service__lens">
-                <img class="service__img" src="assets/VitalEdge_CV.webp"
-                     alt="Comunicación visual y diseño estratégico" width="1254" height="1254"
-                     loading="lazy" decoding="async">
+                <img
+                  class="service__img"
+                  src="assets/VitalEdge_CV.webp"
+                  alt="Comunicación visual y diseño estratégico"
+                  width="1254"
+                  height="1254"
+                  loading="lazy"
+                  decoding="async"
+                >
               </div>
             </figure>
+
             <div class="service__body">
               <div class="service__head">
-                <span class="service__letter" aria-hidden="true">A</span>
-                <h3 id="service-a-title" class="service__title" data-i18n="svc.a.title">Comunicación visual y diseño estratégico</h3>
+                <h3
+                  id="service-a-title"
+                  class="service__title"
+                  data-i18n="svc.a.title"
+                >
+                  Comunicación visual y diseño estratégico
+                </h3>
               </div>
+
               <p class="service__lead" data-i18n="svc.a.lead">
-                Transformamos información compleja en herramientas claras, útiles y
-                coherentes con la marca.
+                Transformamos información compleja en herramientas claras,
+                útiles y coherentes con la marca.
               </p>
+
               <ul class="service__list">
-                <li data-i18n="svc.a.li1">Arquitectura de información y narrativa visual</li>
-                <li data-i18n="svc.a.li2">Materiales médicos explicativos (tratamientos, procesos, formación)</li>
-                <li data-i18n="svc.a.li3">Presentaciones estratégicas para equipos médicos y comerciales</li>
-                <li data-i18n="svc.a.li4">Publicaciones científicas y pósters académicos</li>
-                <li data-i18n="svc.a.li5">Folletos, catálogos y dossiers corporativos</li>
-                <li data-i18n="svc.a.li6">Adaptación de contenido científico a lenguaje visual accesible</li>
+                <li data-i18n="svc.a.li1">
+                  Arquitectura de información y narrativa visual
+                </li>
+
+                <li data-i18n="svc.a.li2">
+                  Materiales médicos explicativos
+                  (tratamientos, procesos, formación)
+                </li>
+
+                <li data-i18n="svc.a.li3">
+                  Presentaciones estratégicas para equipos médicos y comerciales
+                </li>
+
+                <li data-i18n="svc.a.li4">
+                  Publicaciones científicas y pósters académicos
+                </li>
+
+                <li data-i18n="svc.a.li5">
+                  Folletos, catálogos y dossiers corporativos
+                </li>
+
+                <li data-i18n="svc.a.li6">
+                  Adaptación de contenido científico a lenguaje visual accesible
+                </li>
               </ul>
-              <p class="thesis service__thesis" data-i18n="svc.a.thesis" data-i18n-html>
+
+              <p
+                class="thesis service__thesis"
+                data-i18n="svc.a.thesis"
+                data-i18n-html
+              >
                 No diseñamos contenidos.<br>
                 Hacemos que la información se entienda.
               </p>
             </div>
           </article>
 
-          <!-- B -->
-          <article id="service-b" class="service" data-service="1" aria-labelledby="service-b-title">
+          <!-- Servicio 2 -->
+          <article
+            id="service-b"
+            class="service"
+            data-service-panel="1"
+            role="tabpanel"
+            aria-labelledby="service-tab-b"
+            tabindex="-1"
+            hidden
+          >
             <figure class="service__media">
               <div class="lens service__lens">
-                <img class="service__img" src="assets/VitalEdge_Materiales.webp"
-                     alt="Materiales y sistemas corporativos healthcare" width="1254" height="1254"
-                     loading="lazy" decoding="async">
+                <img
+                  class="service__img"
+                  src="assets/VitalEdge_Materiales.webp"
+                  alt="Materiales y sistemas corporativos healthcare"
+                  width="1254"
+                  height="1254"
+                  loading="lazy"
+                  decoding="async"
+                >
               </div>
             </figure>
+
             <div class="service__body">
               <div class="service__head">
-                <span class="service__letter" aria-hidden="true">B</span>
-                <h3 id="service-b-title" class="service__title" data-i18n="svc.b.title">Materiales y sistemas corporativos healthcare</h3>
+                <h3
+                  id="service-b-title"
+                  class="service__title"
+                  data-i18n="svc.b.title"
+                >
+                  Materiales y sistemas corporativos healthcare
+                </h3>
               </div>
+
               <p class="service__lead" data-i18n="svc.b.lead">
-                Extendemos la identidad de marca a todos los puntos de contacto del
-                entorno clínico y farmacéutico.
+                Extendemos la identidad de marca a todos los puntos de
+                contacto del entorno clínico y farmacéutico.
               </p>
+
               <ul class="service__list">
-                <li data-i18n="svc.b.li1">Packaging médico y farmacéutico</li>
-                <li data-i18n="svc.b.li2">Kits promocionales y materiales de soporte clínico</li>
-                <li data-i18n="svc.b.li3">Branding aplicado a elementos hospitalarios (textiles, cajas, fungibles…)</li>
-                <li data-i18n="svc.b.li4">Uniformes y vestuario corporativo</li>
-                <li data-i18n="svc.b.li5">Señalética y elementos ambientales en clínicas y hospitales</li>
+                <li data-i18n="svc.b.li1">
+                  Packaging médico y farmacéutico
+                </li>
+
+                <li data-i18n="svc.b.li2">
+                  Kits promocionales y materiales de soporte clínico
+                </li>
+
+                <li data-i18n="svc.b.li3">
+                  Branding aplicado a elementos hospitalarios
+                  (textiles, cajas, fungibles…)
+                </li>
+
+                <li data-i18n="svc.b.li4">
+                  Uniformes y vestuario corporativo
+                </li>
+
+                <li data-i18n="svc.b.li5">
+                  Señalética y elementos ambientales en clínicas y hospitales
+                </li>
               </ul>
-              <p class="thesis service__thesis" data-i18n="svc.b.thesis" data-i18n-html>
+
+              <p
+                class="thesis service__thesis"
+                data-i18n="svc.b.thesis"
+                data-i18n-html
+              >
                 Convertimos el entorno sanitario en una experiencia coherente de marca.
               </p>
             </div>
           </article>
 
-          <!-- C -->
-          <article id="service-c" class="service" data-service="2" aria-labelledby="service-c-title">
+          <!-- Servicio 3 -->
+          <article
+            id="service-c"
+            class="service"
+            data-service-panel="2"
+            role="tabpanel"
+            aria-labelledby="service-tab-c"
+            tabindex="-1"
+            hidden
+          >
             <figure class="service__media">
               <div class="lens service__lens">
-                <img class="service__img" src="assets/VitalEdge_Espacios.webp"
-                     alt="Espacios y experiencias de marca" width="1254" height="1254"
-                     loading="lazy" decoding="async">
+                <img
+                  class="service__img"
+                  src="assets/VitalEdge_Espacios.webp"
+                  alt="Espacios y experiencias de marca"
+                  width="1254"
+                  height="1254"
+                  loading="lazy"
+                  decoding="async"
+                >
               </div>
             </figure>
+
             <div class="service__body">
               <div class="service__head">
-                <span class="service__letter" aria-hidden="true">C</span>
-                <h3 id="service-c-title" class="service__title" data-i18n="svc.c.title">Espacios y experiencias</h3>
+                <h3
+                  id="service-c-title"
+                  class="service__title"
+                  data-i18n="svc.c.title"
+                >
+                  Espacios y experiencias
+                </h3>
               </div>
+
               <p class="service__lead" data-i18n="svc.c.lead">
-                Diseñamos espacios que comunican, posicionan y generan impacto en
-                entornos competitivos.
+                Diseñamos espacios que comunican, posicionan y generan
+                impacto en entornos competitivos.
               </p>
+
               <ul class="service__list">
-                <li data-i18n="svc.c.li1">Conceptualización estratégica de espacios y stands</li>
-                <li data-i18n="svc.c.li2">Diseño 3D y visualización de experiencia</li>
-                <li data-i18n="svc.c.li3">Producción y montaje completo</li>
-                <li data-i18n="svc.c.li4">Adaptación a congresos médicos y ferias internacionales</li>
-                <li data-i18n="svc.c.li5">Activaciones en clínicas, farmacias y retail health</li>
-                <li data-i18n="svc.c.li6">Gestión y supervisión on-site</li>
+                <li data-i18n="svc.c.li1">
+                  Conceptualización estratégica de espacios y stands
+                </li>
+
+                <li data-i18n="svc.c.li2">
+                  Diseño 3D y visualización de experiencia
+                </li>
+
+                <li data-i18n="svc.c.li3">
+                  Producción y montaje completo
+                </li>
+
+                <li data-i18n="svc.c.li4">
+                  Adaptación a congresos médicos y ferias internacionales
+                </li>
+
+                <li data-i18n="svc.c.li5">
+                  Activaciones en clínicas, farmacias y retail health
+                </li>
+
+                <li data-i18n="svc.c.li6">
+                  Gestión y supervisión on-site
+                </li>
               </ul>
-              <p class="thesis service__thesis" data-i18n="svc.c.thesis" data-i18n-html>
+
+              <p
+                class="thesis service__thesis"
+                data-i18n="svc.c.thesis"
+                data-i18n-html
+              >
                 No diseñamos stands.<br>
                 Diseñamos presencia de marca.
               </p>
             </div>
           </article>
 
-          <!-- D -->
-          <article id="service-d" class="service" data-service="3" aria-labelledby="service-d-title">
+          <!-- Servicio 4 -->
+          <article
+            id="service-d"
+            class="service"
+            data-service-panel="3"
+            role="tabpanel"
+            aria-labelledby="service-tab-d"
+            tabindex="-1"
+            hidden
+          >
             <figure class="service__media">
               <div class="lens service__lens">
-                <img class="service__img" src="assets/VitalEdge_Identidad.webp"
-                     alt="Branding e identidad de marca healthcare" width="1254" height="1254"
-                     loading="lazy" decoding="async">
+                <img
+                  class="service__img"
+                  src="assets/VitalEdge_Identidad.webp"
+                  alt="Branding e identidad de marca healthcare"
+                  width="1254"
+                  height="1254"
+                  loading="lazy"
+                  decoding="async"
+                >
               </div>
             </figure>
+
             <div class="service__body">
               <div class="service__head">
-                <span class="service__letter" aria-hidden="true">D</span>
-                <h3 id="service-d-title" class="service__title" data-i18n="svc.d.title">Branding e identidad</h3>
+                <h3
+                  id="service-d-title"
+                  class="service__title"
+                  data-i18n="svc.d.title"
+                >
+                  Branding e identidad
+                </h3>
               </div>
+
               <p class="service__lead" data-i18n="svc.d.lead">
-                Construimos marcas preparadas para comunicar donde la confianza lo
-                es todo.
+                Construimos marcas preparadas para comunicar donde la
+                confianza lo es todo.
               </p>
+
               <ul class="service__list">
-                <li data-i18n="svc.d.li1">Creación de marca desde cero</li>
-                <li data-i18n="svc.d.li2">Identidad visual completa</li>
-                <li data-i18n="svc.d.li3">Sistemas gráficos coherentes</li>
-                <li data-i18n="svc.d.li4">Manuales de marca y guías de uso</li>
-                <li data-i18n="svc.d.li5">Rebranding estratégico</li>
+                <li data-i18n="svc.d.li1">
+                  Creación de marca desde cero
+                </li>
+
+                <li data-i18n="svc.d.li2">
+                  Identidad visual completa
+                </li>
+
+                <li data-i18n="svc.d.li3">
+                  Sistemas gráficos coherentes
+                </li>
+
+                <li data-i18n="svc.d.li4">
+                  Manuales de marca y guías de uso
+                </li>
+
+                <li data-i18n="svc.d.li5">
+                  Rebranding estratégico
+                </li>
               </ul>
-              <p class="thesis service__thesis" data-i18n="svc.d.thesis" data-i18n-html>
+
+              <p
+                class="thesis service__thesis"
+                data-i18n="svc.d.thesis"
+                data-i18n-html
+              >
                 Una identidad clara no solo se reconoce.<br>
                 Se confía.
               </p>
