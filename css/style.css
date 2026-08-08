@@ -1452,7 +1452,7 @@ body.menu-open {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: auto;
   align-items: stretch;
   gap: clamp(1.25rem, 2vw, 2rem);
 }
@@ -1461,6 +1461,7 @@ body.menu-open {
   position: relative;
   display: flex;
   flex-direction: column;
+  aspect-ratio: 0.82 / 1;
   min-width: 0;
   padding: 0.55rem;
   border: 1px solid color-mix(in srgb, var(--clay) 58%, transparent);
@@ -1473,7 +1474,8 @@ body.menu-open {
 
 .project__thumb {
   position: relative;
-  aspect-ratio: 4 / 3;
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid var(--glass-edge);
   border-radius: 24px;
@@ -1500,14 +1502,17 @@ body.menu-open {
 }
 
 .project__meta {
-  position: relative;
+  position: absolute;
   z-index: 2;
+  right: 0.65rem;
+  bottom: 0.65rem;
+  left: 0.65rem;
   display: flex;
   flex-direction: column;
-  width: calc(100% - 1.25rem);
-  flex: 1;
-  margin: -2.5rem auto 0.2rem;
-  padding: clamp(1.25rem, 2vw, 1.75rem);
+  width: auto;
+  height: 11rem;
+  margin: 0;
+  padding: clamp(1.1rem, 1.6vw, 1.35rem);
   border: 1px solid var(--glass-edge);
   border-radius: 20px;
   background-color: rgba(251, 248, 242, 0.95);
@@ -1518,6 +1523,7 @@ body.menu-open {
 .project__meta::after {
   content: "";
   display: block;
+  box-sizing: content-box;
   width: 2.5rem;
   height: 1px;
   margin-top: auto;
@@ -1547,7 +1553,7 @@ body.menu-open {
   margin-top: var(--space-sm);
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-size: clamp(1.08rem, 1.35vw, 1.26rem);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.01em;
@@ -1565,7 +1571,6 @@ body.menu-open {
 
 @media (min-width: 620px) {
   .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .project { height: 100%; }
 }
 
 @media (min-width: 960px) {
@@ -1629,10 +1634,22 @@ body.menu-open {
   .projects::-webkit-scrollbar { display: none; }
   .project {
     flex: 0 0 82%;
-    height: auto;
+    height: 23.75rem;
+    aspect-ratio: auto;
     scroll-snap-align: center;
   }
-  .project__thumb { aspect-ratio: 4 / 3; }
+  .project__thumb { aspect-ratio: 1 / 1; }
+  .project__meta {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    height: 11.25rem;
+    padding: 1rem;
+  }
+  .project__title {
+    font-size: 1.08rem;
+    line-height: 1.14;
+  }
   .projects__dots { display: flex; }
 
   .proyectos .section-title {
