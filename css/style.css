@@ -2378,17 +2378,24 @@ select.field__control {
 
 /* ---- Footer: quiet editorial close ---- */
 .site-footer {
+  --footer-bone: #F4F0E8;
+  --footer-ivory: #FBF8F2;
+  --footer-linen: #E7E3D8;
+  --footer-clay: #BBAE9C;
+  --footer-sage: #52797f;
+  --footer-espresso: #2B2722;
+  --footer-accent: color-mix(in srgb, var(--footer-sage) 45%, var(--footer-ivory));
   position: relative;
   overflow: hidden;
-  background-color: var(--linen);
-  color: var(--espresso);
-  padding-block: clamp(4.5rem, 10vh, 8rem) var(--space-lg);
-  border-top: 0.3rem solid var(--sage);
+  background-color: var(--footer-espresso);
+  color: var(--footer-bone);
+  padding-block: clamp(2.5rem, 6vh, 4rem) clamp(1.25rem, 3vh, 2rem);
+  border-top: 0.3rem solid var(--footer-sage);
 }
 
 .site-footer__inner {
   display: grid;
-  gap: clamp(2.5rem, 6vw, 5rem);
+  gap: clamp(1.5rem, 3.5vw, 2.75rem);
   align-items: start;
 }
 
@@ -2401,50 +2408,50 @@ select.field__control {
   align-items: baseline;
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-size: clamp(1.85rem, 3.5vw, 3rem);
+  font-size: clamp(1.65rem, 2.7vw, 2.35rem);
   font-weight: 300;
   line-height: 0.95;
   letter-spacing: -0.03em;
-  color: var(--espresso);
+  color: var(--footer-bone);
 }
 
 .site-footer__logo em {
   margin-left: 0.22em;
   font-style: italic;
-  color: var(--sage-deep);
+  color: var(--footer-accent);
 }
 
 .site-footer__tagline {
   max-width: 28ch;
-  margin-top: var(--space-lg);
-  font-size: clamp(1rem, 1.25vw, 1.15rem);
-  color: var(--espresso-soft);
+  margin-top: 0.75rem;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  color: var(--footer-clay);
 }
 
 .site-footer__heading {
-  margin-bottom: var(--space-md);
+  margin-bottom: 0.75rem;
   font-family: var(--font-util);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.17em;
   text-transform: uppercase;
-  color: var(--sage-deep);
+  color: var(--footer-accent);
 }
 
 .site-footer__nav ul,
 .site-footer__col ul {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.45rem;
 }
 
 .site-footer a {
-  color: var(--espresso-soft);
+  color: var(--footer-linen);
   transition: color var(--dur) var(--ease);
 }
 
 .site-footer a:hover,
 .site-footer a:focus-visible {
-  color: var(--sage-deep);
+  color: var(--footer-bone);
 }
 
 .site-footer__nav a {
@@ -2459,7 +2466,7 @@ select.field__control {
   bottom: -0.15rem;
   left: 0;
   height: 1px;
-  background-color: var(--sage);
+  background-color: var(--footer-sage);
   transform: scaleX(0);
   transform-origin: right center;
   transition: transform var(--dur) var(--ease);
@@ -2472,7 +2479,7 @@ select.field__control {
 }
 
 .site-footer__col li {
-  color: var(--espresso-soft);
+  color: var(--footer-clay);
 }
 
 .site-footer__legal {
@@ -2480,13 +2487,13 @@ select.field__control {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-sm) var(--space-lg);
-  margin-top: clamp(3.5rem, 8vh, 6rem);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--hairline);
+  margin-top: clamp(1.75rem, 4vh, 2.5rem);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244, 240, 232, 0.14);
   font-family: var(--font-util);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: var(--espresso-soft);
+  color: var(--footer-clay);
 }
 
 @media (min-width: 640px) {
@@ -2508,7 +2515,7 @@ select.field__control {
 @media (min-width: 980px) {
   .site-footer__inner {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
 
   .site-footer__brand { grid-column: 1 / 6; }
@@ -2520,8 +2527,8 @@ select.field__control {
 @media (max-width: 639px) {
   .site-footer__nav,
   .site-footer__col {
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--hairline);
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(244, 240, 232, 0.14);
   }
 
   .site-footer__legal {
@@ -2529,8 +2536,8 @@ select.field__control {
   }
 }
 
-/* Keyboard focus on the light footer */
-.site-footer :focus-visible { outline-color: var(--sage-deep); }
+/* Keyboard focus on the dark footer */
+.site-footer :focus-visible { outline-color: var(--footer-sage); }
 
 /* ============================================================
    REDESIGN V2 · PHASE 6B — About Us
