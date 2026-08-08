@@ -3649,3 +3649,200 @@ html.lenis, html.lenis body { height: auto; }
     margin-left: -3.1rem;
   }
 }
+
+
+/* ============================================================
+   SERVICES — unified overlapping media / content composition
+   ============================================================ */
+
+/* Tablet: preserve the overlap without compressing either panel. */
+@media (min-width: 720px) and (max-width: 1099px) {
+  .service {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 40rem;
+    gap: 0;
+  }
+
+  .service__media {
+    z-index: 1;
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .service__lens {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 28px;
+  }
+
+  .service__body {
+    z-index: 2;
+    display: flex;
+    width: calc(100% - 2rem);
+    max-width: none;
+    min-height: 30.5rem;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin: -2.25rem auto 0;
+    padding: clamp(1.6rem, 3vw, 2.25rem);
+    border-radius: 26px;
+    background-color: rgba(255, 253, 249, 0.98);
+  }
+
+  .service__head,
+  .service__lead,
+  .service__list {
+    margin-bottom: 0;
+  }
+
+  .service__title {
+    font-size: clamp(1.9rem, 4vw, 2.15rem);
+  }
+
+  .service__lead {
+    font-size: 0.96rem;
+  }
+
+  .service__list {
+    display: grid;
+    flex: 1;
+    align-content: space-evenly;
+    gap: 0.35rem;
+  }
+
+  .service__list li {
+    font-size: 0.87rem;
+  }
+
+  .service__thesis {
+    margin-top: 0;
+    font-size: 1.06rem;
+  }
+}
+
+/* Desktop: the square visual is deliberately larger than the text card. */
+@media (min-width: 1100px) {
+  .service {
+    grid-template-columns:
+      minmax(0, 1.025fr)
+      minmax(0, 0.975fr);
+    width: 100%;
+    max-width: 66rem;
+    gap: 0;
+    align-items: center;
+  }
+
+  .service__media {
+    z-index: 1;
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .service__lens {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 28px;
+  }
+
+  .service__body {
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    max-width: none;
+    min-height: 32.5rem;
+    flex-direction: column;
+    gap: clamp(0.8rem, 1vw, 1rem);
+    margin: 0 0 0 -2.25rem;
+    padding:
+      clamp(1.55rem, 2vw, 2rem)
+      clamp(1.65rem, 2.15vw, 2.2rem);
+    border-radius: 28px;
+    background-color: rgba(255, 253, 249, 0.98);
+    box-shadow: 0 32px 76px -48px rgba(40, 43, 44, 0.52);
+  }
+
+  .service__head,
+  .service__lead,
+  .service__list {
+    margin-bottom: 0;
+  }
+
+  .service__title {
+    font-size: clamp(2rem, 2.15vw, 2.2rem);
+    line-height: 1.03;
+  }
+
+  .service__lead {
+    font-size: clamp(0.96rem, 0.86vw, 1rem);
+    line-height: 1.5;
+  }
+
+  .service__list {
+    display: grid;
+    flex: 1;
+    align-content: space-evenly;
+    gap: 0.35rem;
+  }
+
+  .service__list li {
+    font-size: clamp(0.87rem, 0.78vw, 0.94rem);
+    line-height: 1.4;
+  }
+
+  .service__thesis {
+    margin-top: 0;
+    font-size: clamp(1.06rem, 0.98vw, 1.12rem);
+    line-height: 1.34;
+  }
+}
+
+@media (min-width: 1500px) {
+  .service {
+    grid-template-columns:
+      minmax(0, 1.025fr)
+      minmax(0, 0.975fr);
+    max-width: 68rem;
+  }
+
+  .service__body {
+    min-height: 32.5rem;
+    margin-left: -2.4rem;
+  }
+}
+
+/* Mobile: full-width square visual with a compact vertical overlap. */
+@media (max-width: 719px) {
+  .service {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: none;
+    gap: 0;
+  }
+
+  .service__media {
+    z-index: 1;
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .service__lens {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 22px;
+  }
+
+  .service__body {
+    z-index: 2;
+    width: calc(100% - 1rem);
+    max-width: none;
+    min-height: 0;
+    margin: -1.25rem auto 0;
+    padding: 1.25rem;
+    border-radius: 22px;
+    background-color: rgba(255, 253, 249, 0.98);
+  }
+}
