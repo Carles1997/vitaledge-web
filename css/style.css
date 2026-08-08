@@ -1815,9 +1815,7 @@ body.menu-open {
 }
 
 .metodologia__layout {
-  display: grid;
-  gap: clamp(2.5rem, 5vw, 5rem);
-  align-items: start;
+  display: block;
 }
 
 .method__intro {
@@ -1825,8 +1823,8 @@ body.menu-open {
 }
 
 .method__intro .section-head {
-  max-width: 36rem;
-  margin-bottom: 0;
+  max-width: 48rem;
+  margin-bottom: clamp(2.5rem, 7vh, 5rem);
 }
 
 .method__intro .section-title {
@@ -1842,10 +1840,11 @@ body.menu-open {
 }
 
 .method {
-  --rail: clamp(3.75rem, 7vw, 5.25rem);
-  --node: clamp(3.25rem, 6vw, 4.5rem);
+  --rail: clamp(4rem, 7vw, 6rem);
+  --node: clamp(3.5rem, 5vw, 4.5rem);
   position: relative;
   min-width: 0;
+  max-width: 68rem;
 }
 
 /* Base connector + sage progress overlay. The progress element retains the
@@ -1875,28 +1874,31 @@ body.menu-open {
 
 .method__steps {
   display: grid;
-  grid-auto-rows: 1fr;
-  gap: clamp(1.35rem, 3vw, 2.25rem);
+  grid-auto-rows: auto;
+  gap: 0;
 }
 
 .method__step {
   position: relative;
   display: grid;
   grid-template-columns: var(--rail) minmax(0, 1fr);
-  column-gap: clamp(0.75rem, 2vw, 1.5rem);
-  align-items: center;
-  height: 100%;
+  column-gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+  height: auto;
   min-width: 0;
+  padding-bottom: clamp(2.5rem, 6vh, 4.5rem);
 }
+
+.method__step:last-child { padding-bottom: 0; }
 
 /* Fine branch line makes every card visibly part of one process. */
 .method__step::after {
   content: "";
   position: absolute;
   z-index: 0;
-  top: 50%;
+  top: calc(var(--node) / 2);
   left: calc(var(--rail) / 2);
-  width: calc((var(--rail) / 2) + clamp(0.75rem, 2vw, 1.5rem));
+  width: calc((var(--rail) / 2) + clamp(1rem, 3vw, 2rem));
   border-top: 1px solid color-mix(in srgb, var(--sage) 44%, transparent);
 }
 
@@ -1925,8 +1927,8 @@ body.menu-open {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 100%;
-  min-height: clamp(7.5rem, 14vw, 9rem);
+  height: auto;
+  min-height: clamp(7.5rem, 10vw, 8.5rem);
   padding: clamp(1.35rem, 3vw, 2.15rem);
   border: 1px solid color-mix(in srgb, var(--clay) 34%, transparent);
   border-radius: var(--radius);
@@ -1965,14 +1967,8 @@ body.menu-open {
 }
 
 @media (min-width: 960px) {
-  .metodologia__layout {
-    grid-template-columns: minmax(0, 0.82fr) minmax(31rem, 1.18fr);
-  }
-
-  .method__intro {
-    position: sticky;
-    top: clamp(7.5rem, 13vh, 9rem);
-    align-self: start;
+  .method {
+    --rail: 6rem;
   }
 }
 
@@ -1987,12 +1983,15 @@ body.menu-open {
     --node: 3.25rem;
   }
 
-  .method__steps { gap: 1.5rem; }
+  .method__steps { gap: 0; }
 
   .method__step {
     column-gap: 0.75rem;
     align-items: start;
+    padding-bottom: 2.5rem;
   }
+
+  .method__step:last-child { padding-bottom: 0; }
 
   .method__step::after {
     top: calc(var(--node) / 2);
