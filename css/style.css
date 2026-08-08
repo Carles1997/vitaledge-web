@@ -1844,7 +1844,9 @@ body.menu-open {
   --node: clamp(3.5rem, 5vw, 4.5rem);
   position: relative;
   min-width: 0;
-  max-width: 68rem;
+  /* The card column is intentionally compact: roughly half its former width,
+     with enough room for the longest methodology copy plus comfortable inset. */
+  max-width: 38rem;
 }
 
 /* Base connector + sage progress overlay. The progress element retains the
