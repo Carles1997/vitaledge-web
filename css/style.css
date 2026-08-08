@@ -1915,17 +1915,6 @@ body.menu-open {
   pointer-events: none;
 }
 
-/* Fine branch line makes every card visibly part of one process. */
-.method__step::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: calc(var(--node) / 2);
-  left: calc(var(--rail) / 2);
-  width: calc((var(--rail) / 2) + clamp(1rem, 3vw, 2rem));
-  border-top: 1px solid color-mix(in srgb, var(--sage) 44%, transparent);
-}
-
 .method__num {
   position: relative;
   z-index: 2;
@@ -1934,10 +1923,10 @@ body.menu-open {
   justify-self: center;
   width: var(--node);
   aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--sage-deep) 48%, var(--linen));
-  border-radius: 50%;
-  background-color: var(--ivory);
-  box-shadow: 0 10px 34px -25px rgba(43, 39, 34, 0.6);
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(var(--ivory), var(--ivory)) center / 100% 2.7rem no-repeat;
+  box-shadow: none;
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-size: clamp(1.35rem, 2.5vw, 2.1rem);
