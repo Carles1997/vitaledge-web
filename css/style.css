@@ -2287,6 +2287,41 @@ select.field__control {
   background-position: right 1rem center;
 }
 
+/* ---- Consent checkboxes ---- */
+.field--consent {
+  gap: 0.7rem;
+  margin-top: 0.35rem;
+}
+
+.consent {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 0.65rem;
+  cursor: pointer;
+}
+
+.consent__box {
+  width: 1.15rem;
+  height: 1.15rem;
+  /* Nudged down so the box sits on the first line of text, not above it. */
+  margin-top: 0.15em;
+  accent-color: var(--sage-deep);
+  cursor: pointer;
+}
+
+.consent__box:focus-visible {
+  outline: 2px solid var(--sage-deep);
+  outline-offset: 2px;
+}
+
+.consent__text {
+  color: var(--espresso-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
 .contact-form__submit {
   justify-content: center;
   width: 100%;

@@ -17,10 +17,18 @@ module.exports = async (req, res) => {
   // Honeypot: bots fill this hidden field — silently accept and drop.
   if (data._honey) { res.status(200).json({ ok: true }); return; }
 
-  const { nombre, empresa, email, telefono, tipo, descripcion, timing } = data;
+  const { nombre, empresa, email, telefono, tipo, descripcion, timing,
+          privacidad, marketing } = data;
 
   if (!nombre || !email || !tipo || !descripcion) {
     res.status(400).json({ error: 'Faltan campos obligatorios.' });
+    return;
+  }
+
+  // The checkbox is `required` in the form, but that is trivially bypassed —
+  // re-check here so we never process data without the acceptance.
+  if (!privacidad) {
+    res.status(400).json({ error: 'Debes aceptar la Política de Privacidad.' });
     return;
   }
 
@@ -50,6 +58,10 @@ module.exports = async (req, res) => {
       </table>
       <p style="margin:16px 0 4px;color:#6B6358;font-size:14px;">Descripción del proyecto</p>
       <p style="white-space:pre-wrap;font-size:14px;">${esc(descripcion)}</p>
+      <table style="border-collapse:collapse;font-size:14px;margin-top:16px;">
+        ${row('Política de Privacidad', 'Aceptada')}
+        ${row('Comunicaciones comerciales', marketing ? 'Sí, consiente' : 'No consiente')}
+      </table>
     </div>`;
 
   try {

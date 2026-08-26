@@ -873,6 +873,30 @@
                      placeholder="Ej. próximo trimestre">
             </p>
 
+            <!-- Two separate consents: accepting the policy is required to
+                 send, wanting marketing is not. Bundling them would condition
+                 the enquiry on marketing consent, which the GDPR does not
+                 allow. TODO: link "Política de Privacidad" once that page
+                 exists (modificación 7). -->
+            <div class="field field--consent">
+              <label class="consent">
+                <input class="consent__box" type="checkbox" id="privacidad" name="privacidad"
+                       value="si" required>
+                <span class="consent__text" data-i18n="form.privacidad">
+                  He leído y acepto la Política de Privacidad.
+                </span>
+              </label>
+
+              <label class="consent">
+                <input class="consent__box" type="checkbox" id="marketing" name="marketing"
+                       value="si">
+                <span class="consent__text" data-i18n="form.marketing">
+                  Sí, quiero recibir comunicaciones comerciales y novedades de
+                  VitalEdge Lab por email.
+                </span>
+              </label>
+            </div>
+
             <button class="btn btn--primary contact-form__submit" type="submit" data-i18n="form.submit">
               Solicitar propuesta
             </button>
