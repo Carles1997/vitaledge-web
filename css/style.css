@@ -3801,3 +3801,158 @@ html.lenis, html.lenis body { height: auto; }
     background-color: rgba(255, 253, 249, 0.98);
   }
 }
+
+/* ============================================================
+   LEGAL — privacidad.html / cookies.html
+   Long-form documents: a single narrow measure, generous
+   leading, and headings that stay subordinate to the page title.
+   ============================================================ */
+
+.legal {
+  background-color: var(--bone);
+  padding-block: clamp(8rem, 16vh, 11rem) clamp(4rem, 9vh, 7rem);
+}
+
+.legal__inner {
+  max-width: 46rem;
+  color: var(--espresso-soft);
+  font-size: clamp(0.98rem, 1.05vw, 1.06rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.legal__head {
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+  padding-bottom: clamp(1.5rem, 4vh, 2.25rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--clay) 46%, transparent);
+}
+
+.legal__title {
+  margin-top: var(--space-sm);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--espresso);
+}
+
+.legal__updated {
+  margin-top: var(--space-md);
+  font-family: var(--font-util);
+  font-size: 0.82rem;
+  color: var(--espresso-soft);
+}
+
+.legal__lead {
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--espresso);
+}
+
+.legal__inner h2 {
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 1.9vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--espresso);
+}
+
+.legal__inner h3 {
+  margin-top: var(--space-lg);
+  margin-bottom: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--espresso);
+}
+
+.legal__inner p { margin-bottom: var(--space-md); }
+
+.legal__inner ul {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.15rem;
+  list-style: disc;
+}
+
+.legal__inner li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.legal__inner strong { color: var(--espresso); font-weight: 500; }
+
+.legal__inner a {
+  color: var(--sage-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--sage-deep) 42%, transparent);
+}
+
+.legal__inner a:hover { text-decoration-color: currentColor; }
+
+.legal__inner code {
+  padding: 0.1em 0.4em;
+  border-radius: 5px;
+  background-color: color-mix(in srgb, var(--linen) 82%, var(--ivory));
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+}
+
+/* The identity block under "Responsable del tratamiento" — no bullets,
+   so the label/value pairs read as a data list rather than prose. */
+.legal__data {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Pulled-out summary so the key fact is not buried in the prose. */
+.legal__callout {
+  margin-bottom: var(--space-lg);
+  padding: clamp(1.15rem, 2.5vw, 1.6rem);
+  border: 1px solid color-mix(in srgb, var(--sage) 46%, var(--linen));
+  border-radius: var(--radius-sm);
+  background-color: color-mix(in srgb, var(--sage) 12%, var(--ivory));
+}
+
+.legal__callout p { margin-bottom: 0; }
+
+/* Wide tables scroll in their own box; the page never scrolls sideways. */
+.legal__table-wrap {
+  margin-bottom: var(--space-md);
+  overflow-x: auto;
+}
+
+.legal__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+.legal__table th,
+.legal__table td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--clay) 42%, transparent);
+  vertical-align: top;
+}
+
+.legal__table th {
+  font-family: var(--font-util);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--espresso);
+  white-space: nowrap;
+}
+
+.legal__signature {
+  margin-top: clamp(3rem, 7vh, 4.5rem);
+  padding-top: var(--space-lg);
+  border-top: 1px solid color-mix(in srgb, var(--clay) 46%, transparent);
+  font-size: 0.9rem;
+}
