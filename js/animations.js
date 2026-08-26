@@ -123,7 +123,9 @@
       autoAlpha: 0,
       duration: 0.65,
       ease: 'power3.out',
-      stagger: 0.06,
+      // No stagger: the tabs are one row of equal cards, and offsetting
+      // them mid-rise reads as broken alignment.
+      stagger: 0,
 
       scrollTrigger: {
         trigger: '.services__index',
