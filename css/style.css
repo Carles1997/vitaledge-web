@@ -2698,17 +2698,32 @@ select.field__control {
     padding-bottom: var(--section-pad);
   }
 
-  .about-hero__visual {
-    width: min(100%, 42rem);
-    aspect-ratio: 5 / 4;
-    justify-self: start;
+  /* Single column, but the mark is not stacked under the copy: it is lifted
+     out of flow and centred behind it, so the text reads over the artwork
+     the way it does on the home hero. */
+  .about-hero__layout {
+    display: block;
   }
 
-  /* Stacked layout: the visual already spans the container, so the mark
-     has no column to bleed out of — keep it inside to avoid clipping. */
+  .about-hero__visual {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    /* Kept under 100% of the viewport so the whole mark stays visible,
+       as it does on the home hero. */
+    width: min(94%, 40rem);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    justify-self: auto;
+    pointer-events: none;
+  }
+
   .about-hero .signature-img--about {
     left: 0;
     width: 100%;
+    /* Softened so the copy sitting on top of it stays legible. */
+    opacity: 0.42;
   }
 }
 
@@ -2729,7 +2744,7 @@ select.field__control {
   }
 
   .about-hero__visual {
-    aspect-ratio: 4 / 3;
+    width: min(94%, 30rem);
   }
 }
 
@@ -3517,14 +3532,13 @@ html.lenis, html.lenis body { height: auto; }
   align-self: stretch;
 
   width: 100%;
-  /* Locked height: all four tabs stay exactly the same size whatever the
-     label length. Sized to hold the longest label at two lines. */
-  height: 5.5rem;
-  min-height: 5.5rem;
-  max-height: 5.5rem;
+  /* No locked height: the grid's equal tracks and stretch already keep the
+     four tabs identical, so letting the row size to its tallest label drops
+     the dead space a fixed height left when the labels fit in two lines. */
+  min-height: 3.4rem;
 
   margin: 0;
-  padding: 0.9rem 1.1rem;
+  padding: 0.72rem 0.95rem;
 
   border: 1px solid
     color-mix(in srgb, var(--clay) 54%, transparent);
