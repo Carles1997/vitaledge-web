@@ -2541,21 +2541,22 @@ select.field__control {
 }
 
 @media (min-width: 760px) and (max-width: 979px) {
+  /* Brand on its own row, then the four link groups share one line. */
   .site-footer__inner {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 980px) {
+  /* One track for the brand and one per link group, so every group sits on
+     the same line. Explicit column numbers used to leave whichever group
+     came last without a track, dropping it to a second row. */
   .site-footer__inner {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 2.1fr) repeat(4, minmax(0, 1fr));
     gap: var(--space-md);
   }
 
-  .site-footer__brand { grid-column: 1 / 6; }
-  .site-footer__nav { grid-column: 7 / 9; }
-  .site-footer__col:nth-of-type(2) { grid-column: 9 / 11; }
-  .site-footer__col:nth-of-type(3) { grid-column: 11 / 13; }
+  .site-footer__brand { grid-column: auto; }
 }
 
 @media (max-width: 639px) {
