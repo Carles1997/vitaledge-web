@@ -52,7 +52,7 @@
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Comunicación visual',
-      'hero.title': 'Transformamos materiales<br>Diseñamos <em class="accent">soluciones</em>',
+      'hero.title': 'La salud no necesita más información.<br>Necesita información que las personas puedan <em class="accent">entender</em>',
       'hero.sub': 'Ayudamos a las marcas del sector salud a comunicar mejor, combinando estrategia, diseño y producción para generar impacto real en las personas.',
       'hero.cta': 'Solicita una propuesta',
       'hero.cta2': 'Ver servicios',
@@ -239,7 +239,7 @@
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Visual communication',
-      'hero.title': 'We transform materials<br>We design <em class="accent">solutions</em>',
+      'hero.title': 'Healthcare does not need more information.<br>It needs information people can <em class="accent">understand</em>',
       'hero.sub': 'We help healthcare brands communicate better, combining strategy, design and production to create real impact on people.',
       'hero.cta': 'Request a proposal',
       'hero.cta2': 'View services',
@@ -426,7 +426,7 @@
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Comunicació visual',
-      'hero.title': 'Transformem materials<br>Dissenyem <em class="accent">solucions</em>',
+      'hero.title': 'La salut no necessita més informació.<br>Necessita informació que les persones puguin <em class="accent">entendre</em>',
       'hero.sub': 'Ajudem les marques del sector salut a comunicar millor, combinant estratègia, disseny i producció per generar un impacte real en les persones.',
       'hero.cta': 'Demana una proposta',
       'hero.cta2': 'Veure serveis',
@@ -613,7 +613,7 @@
 
       /* hero */
       'hero.eyebrow': 'Healthcare · Communication visuelle',
-      'hero.title': 'Nous transformons les matériaux<br>Nous concevons des <em class="accent">solutions</em>',
+      'hero.title': 'La santé n\'a pas besoin de plus d\'informations.<br>Elle a besoin d\'informations que les gens puissent <em class="accent">comprendre</em>',
       'hero.sub': 'Nous aidons les marques du secteur de la santé à mieux communiquer, en combinant stratégie, design et production pour générer un impact réel sur les personnes.',
       'hero.cta': 'Demander une proposition',
       'hero.cta2': 'Voir les services',

@@ -609,15 +609,17 @@ body.menu-open {
   filter: blur(8px);
 }
 
-/* Keep the full painted mark visible; multiply removes its white canvas. */
+/* Keep the full painted mark visible; multiply removes its white canvas.
+   Insets stay positive so `contain` always fits the whole mark inside the
+   hero — nothing is clipped by the section's overflow. */
 .hero::after {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: 2.5rem -2vw -2rem 22vw;
+  inset: 5rem 2vw 3.5rem 24vw;
   background: url('../assets/IMG_1505.PNG') right center / contain no-repeat;
   mix-blend-mode: multiply;
-  opacity: 0.92;
+  opacity: 0.9;
   pointer-events: none;
 }
 
@@ -629,19 +631,12 @@ body.menu-open {
   padding-block: clamp(7rem, 14vh, 9.5rem) clamp(3rem, 6vh, 5rem);
 }
 
+/* Frameless: the copy sits directly on the hero atmosphere so the painted
+   mark reads as one layer with it instead of being boxed away. */
 .hero__panel {
   position: relative;
-  width: min(100%, 46rem);
-  padding: clamp(2rem, 4vw, 3.75rem);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 46%),
-    var(--glass-soft);
-  border: 1px solid var(--glass-edge);
-  border-radius: clamp(24px, 3vw, 36px);
-  box-shadow: var(--shadow-float),
-              inset 0 1px 0 rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(var(--glass-blur)) saturate(125%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(125%);
+  width: min(100%, 52rem);
+  padding: 0;
 }
 
 .hero__panel::before {
@@ -656,13 +651,15 @@ body.menu-open {
 
 .hero__eyebrow { margin-bottom: var(--space-sm); }
 
+/* The headline is a full statement, not a two-word claim — it scales below
+   --fs-hero so all four languages still land inside one viewport. */
 .hero__title {
-  font-size: var(--fs-hero);
+  font-size: clamp(2.1rem, 4vw, 3.7rem);
   font-weight: 300;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.015em;
   margin-bottom: var(--space-md);
-  max-width: 14ch;
+  max-width: 22ch;
 }
 .hero__title .accent {
   font-weight: 400;
@@ -722,28 +719,22 @@ body.menu-open {
   .hero__actions .btn { flex: 1 1 auto; }
 
   .hero::after {
-    inset: 9rem -22vw -3rem -12vw;
+    inset: 9rem 1.5vw 2rem 4vw;
     background-position: center bottom;
-    opacity: 0.62;
+    opacity: 0.55;
   }
   .hero__inner {
     align-items: end;
     padding-block: clamp(8rem, 14vh, 9.5rem) clamp(2rem, 6vh, 4rem);
   }
-  .hero__panel {
-    width: 100%;
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 48%),
-      rgba(251, 248, 242, 0.74);
-  }
+  .hero__panel { width: 100%; }
 }
 
 @media (max-width: 540px) {
   .nav__logo { font-size: 1.12rem; }
   .lang-switch__globe { display: none; }
   .lang-switch__btn { padding-inline: 0.65rem; }
-  .nav,
-  .hero__panel {
+  .nav {
     backdrop-filter: blur(10px) saturate(120%);
     -webkit-backdrop-filter: blur(10px) saturate(120%);
   }
@@ -758,9 +749,8 @@ body.menu-open {
       radial-gradient(circle at 76% 24%, color-mix(in srgb, var(--sage) 26%, transparent), transparent 34%),
       radial-gradient(circle at 20% 84%, color-mix(in srgb, var(--sage) 13%, transparent), transparent 34%);
   }
-  .hero::after { inset: 8rem -52vw -1rem -34vw; opacity: 0.48; }
+  .hero::after { inset: 8rem 1rem 1rem 1rem; opacity: 0.4; }
   .hero__inner { padding-block: 7.6rem 1.25rem; }
-  .hero__panel { padding: 1.65rem; border-radius: 24px; }
   .hero__panel::before { margin-bottom: var(--space-md); }
   .hero__title {
     font-size: clamp(1.85rem, 9vw, 3rem);
