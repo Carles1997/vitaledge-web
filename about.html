@@ -118,12 +118,12 @@
           </p>
         </div>
 
-        <div class="about-hero__visual" data-reveal aria-hidden="true">
+        <!-- No data-reveal: animating opacity/transform here would create a
+             stacking context and trap the mark's multiply blend, leaving the
+             artwork's white canvas visible as a rectangle. -->
+        <div class="about-hero__visual" aria-hidden="true">
           <img class="signature-img signature-img--about" src="assets/IMG_1505.PNG" alt=""
                width="1600" height="900" decoding="async" fetchpriority="high">
-          <span class="about-hero__lens"></span>
-          <span class="about-hero__panel about-hero__panel--top"></span>
-          <span class="about-hero__panel about-hero__panel--bottom"></span>
         </div>
       </div>
     </section>
@@ -156,7 +156,9 @@
           <h2 id="valores-title" class="section-title" data-i18n="about.valores.title">En qué creemos</h2>
         </header>
 
-        <ul class="values-grid" data-reveal="group">
+        <!-- No stagger: it leaves the first cards at their final position
+             while the rest are still rising, which reads as misalignment. -->
+        <ul class="values-grid" data-reveal="group" data-reveal-nostagger>
           <li class="value-card">
             <h3 class="value-card__title"><span class="value-card__marker" aria-hidden="true"></span><span data-i18n="about.val.1.label">Especialización</span></h3>
             <p class="value-card__text" data-i18n="about.val.1.text">Solo healthcare.</p>
@@ -250,6 +252,6 @@
 
   <script src="js/i18n.js?v=20260826-hero" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/animations.js" defer></script>
+  <script src="js/animations.js?v=20260826-hero" defer></script>
 </body>
 </html>

@@ -2590,29 +2590,32 @@ select.field__control {
   aspect-ratio: 1;
 }
 
+/* No z-index: a stacking context here would also trap the mark's blend. */
 .about-hero__layout {
   position: relative;
-  z-index: 1;
   display: grid;
-  gap: clamp(3.5rem, 8vw, 8rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
   align-items: center;
 }
 
+/* Lifted above the mark, which now bleeds across the column boundary. */
 .about-hero__copy {
+  position: relative;
+  z-index: 2;
   min-width: 0;
 }
 
 .about-hero__title {
-  max-width: 10ch;
   margin-top: var(--space-sm);
-  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-size: clamp(2.6rem, 4.6vw, 4.2rem);
   font-weight: 300;
   line-height: 1.04;
   letter-spacing: -0.035em;
+  text-wrap: nowrap;
 }
 
 .about-hero__lead {
-  max-width: 48ch;
+  max-width: 56ch;
   margin-top: var(--space-lg);
   font-size: clamp(1.05rem, 1.35vw, 1.25rem);
   line-height: 1.6;
@@ -2620,102 +2623,31 @@ select.field__control {
   text-wrap: pretty;
 }
 
+/* Frameless, like the home hero: the painted mark sits straight on the
+   section and is free to bleed past the column into the copy. */
+/* No `isolation` here: the mark's multiply blend must reach the section's
+   bone background to drop the artwork's white canvas. Isolating it would
+   blend against nothing and leave a white rectangle. */
 .about-hero__visual {
   position: relative;
-  isolation: isolate;
-  width: min(100%, 36rem);
+  width: min(100%, 44rem);
   aspect-ratio: 4 / 5;
   justify-self: end;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--sage) 28%, var(--linen));
-  border-radius: 50% 50% var(--radius) var(--radius);
-  background-color: color-mix(in srgb, var(--linen) 72%, var(--ivory));
-  box-shadow: 0 38px 90px -58px rgba(43, 39, 34, 0.54);
-}
-
-.about-hero__visual::before {
-  content: "";
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: inherit;
-  pointer-events: none;
 }
 
 .about-hero .signature-img--about {
   top: 50%;
-  left: -42%;
+  left: -46%;
   right: auto;
-  width: 156%;
+  width: 150%;
   max-width: none;
   transform: translateY(-50%);
-  opacity: 0.78;
-}
-
-.about-hero__lens {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 66%;
-  width: 57%;
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--sage-deep) 38%, transparent);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.about-hero__lens::before,
-.about-hero__lens::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--sage-deep);
-}
-
-.about-hero__lens::before {
-  top: 12%;
-  left: 15%;
-  width: 0.42rem;
-  aspect-ratio: 1;
-}
-
-.about-hero__lens::after {
-  right: 3%;
-  bottom: 22%;
-  width: 0.28rem;
-  aspect-ratio: 1;
-}
-
-.about-hero__panel {
-  position: absolute;
-  z-index: 2;
-  display: block;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: var(--radius-sm);
-  background-color: color-mix(in srgb, var(--ivory) 70%, transparent);
-  box-shadow: var(--shadow-float);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.about-hero__panel--top {
-  top: 13%;
-  left: 8%;
-  width: 26%;
-  aspect-ratio: 1.45;
-}
-
-.about-hero__panel--bottom {
-  right: 8%;
-  bottom: 10%;
-  width: 34%;
-  aspect-ratio: 2.1;
+  opacity: 0.9;
 }
 
 @media (min-width: 960px) {
   .about-hero__layout {
-    grid-template-columns: minmax(0, 0.9fr) minmax(28rem, 1.1fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr);
   }
 }
 
@@ -2731,9 +2663,11 @@ select.field__control {
     justify-self: start;
   }
 
+  /* Stacked layout: the visual already spans the container, so the mark
+     has no column to bleed out of — keep it inside to avoid clipping. */
   .about-hero .signature-img--about {
-    left: -35%;
-    width: 142%;
+    left: 0;
+    width: 100%;
   }
 }
 
@@ -2747,19 +2681,14 @@ select.field__control {
     right: -24rem;
   }
 
+  /* Too narrow to hold the title on one line — let it wrap again. */
   .about-hero__title {
-    max-width: 10ch;
-    font-size: clamp(2.2rem, 11vw, 3.25rem);
+    font-size: clamp(2rem, 9vw, 2.9rem);
+    text-wrap: balance;
   }
 
   .about-hero__visual {
     aspect-ratio: 4 / 3;
-    border-radius: 50% 50% var(--radius-sm) var(--radius-sm);
-  }
-
-  .about-hero__panel {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }
 
@@ -2897,15 +2826,21 @@ select.field__control {
   margin-bottom: clamp(2rem, 5vh, 4rem);
 }
 
+/* The 12ch cap forced a two-line break; the heading is short enough to
+   hold one line at every desktop width. */
 .valores .section-title {
-  max-width: 12ch;
+  max-width: none;
   font-size: var(--fs-h2);
   line-height: 1.1;
   letter-spacing: -0.02em;
+  text-wrap: nowrap;
 }
 
+/* One card per row on phones, two on tablets, always three on desktop —
+   equal tracks, so rows line up exactly in every language. */
 .values-grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -2913,10 +2848,9 @@ select.field__control {
   position: relative;
   display: flex;
   min-width: 0;
-  min-height: 13rem;
   flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-lg);
+  justify-content: flex-start;
+  gap: var(--space-sm);
   padding: clamp(1.5rem, 3.5vw, 2.75rem);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--clay) 35%, transparent);
@@ -2924,17 +2858,6 @@ select.field__control {
   background-color: color-mix(in srgb, var(--ivory) 88%, transparent);
   box-shadow: 0 24px 65px -52px rgba(43, 39, 34, 0.54);
   transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-}
-
-.value-card:nth-child(2),
-.value-card:nth-child(6) {
-  background-color: color-mix(in srgb, var(--linen) 74%, var(--ivory));
-}
-
-.value-card:nth-child(5) {
-  border-color: color-mix(in srgb, var(--sage) 66%, var(--linen));
-  background-color: color-mix(in srgb, var(--sage) 16%, var(--ivory));
-  color: var(--espresso);
 }
 
 .value-card__title {
@@ -2961,18 +2884,9 @@ select.field__control {
 }
 
 .value-card__text {
-  max-width: 34ch;
+  max-width: 32ch;
   color: var(--espresso-soft);
   line-height: 1.55;
-}
-
-.value-card:nth-child(5) .value-card__marker {
-  background-color: var(--sage-deep);
-  box-shadow: 0 0 0 0.42rem color-mix(in srgb, var(--sage) 12%, transparent);
-}
-
-.value-card:nth-child(5) .value-card__text {
-  color: var(--espresso-soft);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2984,35 +2898,15 @@ select.field__control {
 }
 
 @media (min-width: 700px) {
-  .values-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-
-  .value-card:nth-child(1),
-  .value-card:nth-child(2) { grid-column: span 3; }
-  .value-card:nth-child(3),
-  .value-card:nth-child(6) { grid-column: span 2; }
-  .value-card:nth-child(4),
-  .value-card:nth-child(5) { grid-column: span 4; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 1060px) {
-  .values-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
-
-  .value-card { min-height: 16rem; }
-  .value-card:nth-child(1) { grid-column: span 5; }
-  .value-card:nth-child(2) { grid-column: span 3; }
-  .value-card:nth-child(3) { grid-column: span 4; }
-  .value-card:nth-child(4) { grid-column: span 4; }
-  .value-card:nth-child(5) { grid-column: span 5; }
-  .value-card:nth-child(6) { grid-column: span 3; }
+  .values-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 699px) {
   .value-card {
-    min-height: 12rem;
     border-radius: var(--radius-sm);
   }
 }

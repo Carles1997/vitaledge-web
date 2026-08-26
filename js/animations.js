@@ -49,12 +49,15 @@
   gsap.utils.toArray('[data-reveal]').forEach((el) => {
     const isGroup = el.getAttribute('data-reveal') === 'group';
     const targets = isGroup ? el.children : el;
+    // data-reveal-nostagger: rise as one block, for grids where the offset
+    // between staggered items reads as broken alignment.
+    const stagger = isGroup && !el.hasAttribute('data-reveal-nostagger') ? 0.08 : 0;
     gsap.from(targets, {
       y: 28,
       autoAlpha: 0,
       duration: 0.9,
       ease: 'power3.out',
-      stagger: isGroup ? 0.08 : 0,
+      stagger,
       scrollTrigger: { trigger: el, start: 'top 80%', once: true }
     });
   });
