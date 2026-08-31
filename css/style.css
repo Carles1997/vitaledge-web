@@ -2672,6 +2672,25 @@ select.field__control {
   .about-hero__layout {
     grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr);
   }
+
+  /* Let the artwork itself set the column's height. The 4/5 box was sized
+     for the old framed panel and reserved far more height than the mark
+     needs, which both pushed the mark below the copy's first line and left
+     dead space under it. Static flow ties the two together exactly. */
+  .about-hero__visual {
+    aspect-ratio: auto;
+  }
+
+  .about-hero .signature-img--about {
+    position: static;
+    display: block;
+    top: auto;
+    left: auto;
+    /* Same leftward bleed the absolute `left: -46%` gave; percentage
+       margins resolve against the same containing block width. */
+    margin-left: -46%;
+    transform: none;
+  }
 }
 
 @media (max-width: 959px) {
