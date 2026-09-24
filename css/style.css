@@ -2156,11 +2156,12 @@ a.contact-info__line:focus-visible::after {
 .contact-form::before {
   content: "";
   position: absolute;
-  top: 0.55rem;
-  right: clamp(1.1rem, 2vw, 1.6rem);
-  left: clamp(1.1rem, 2vw, 1.6rem);
-  height: 0.22rem;
-  border-radius: 999px;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 0.3rem;
+  border-top-left-radius: var(--form-radius);
+  border-top-right-radius: var(--form-radius);
   background-color: var(--sage);
 }
 
