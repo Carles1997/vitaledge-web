@@ -2141,28 +2141,15 @@ a.contact-info__line:focus-visible::after {
   min-width: 0;
   gap: clamp(0.7rem, 1.2vw, 0.85rem);
   padding: clamp(1.15rem, 1.8vw, 1.5rem);
-  /* No overflow: hidden — the success/error message is a normal grid item
-     and must never be at risk of being clipped by the panel edge, however
-     long it runs or however the box reflows. The accent bar below rounds
-     its own top corners instead of relying on the panel clipping it. */
+  /* Keep overflow visible for form status messages; build the accent into
+     the frame border so it follows the exact same rounded top corners. */
   border: 1px solid color-mix(in srgb, var(--sage) 32%, var(--linen));
+  border-top: 0.3rem solid var(--sage);
   border-radius: var(--form-radius);
   background-color: color-mix(in srgb, var(--ivory) 91%, transparent);
   box-shadow: 0 38px 90px -58px rgba(43, 39, 34, 0.52);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-}
-
-.contact-form::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 0.3rem;
-  border-top-left-radius: var(--form-radius);
-  border-top-right-radius: var(--form-radius);
-  background-color: var(--sage);
 }
 
 .field-row {
