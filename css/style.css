@@ -832,8 +832,10 @@ body.menu-open {
 }
 .intro__head .accent { font-style: normal; }
 
+/* Starts at column 9, where the media ends: the banner carries text right up
+   to its edges, so the panel must sit beside it, never over it. */
 .intro__copy {
-  grid-column: 8 / 13;
+  grid-column: 9 / 13;
   grid-row: 2;
   align-self: stretch;
   position: relative;
@@ -872,32 +874,33 @@ body.menu-open {
   line-height: 1.5;
 }
 
+/* The banner is a composed graphic with text on all three cards, so the box
+   takes its exact proportions instead of stretching to the copy's height —
+   object-fit: cover then has nothing to crop. */
 .intro__media {
   grid-column: 1 / 9;
   grid-row: 2;
   position: relative;
   z-index: 1;
-  align-self: stretch;
-  height: auto;
-  min-height: clamp(12rem, 18vw, 15rem);
+  align-self: start;
+  aspect-ratio: 1672 / 941;
   margin-top: clamp(1.25rem, 3vh, 2rem);
   overflow: hidden;
   border: 1px solid var(--glass-edge);
   border-radius: var(--radius);
-  background-color: var(--linen);
+  /* The banner's own edge tone, so a sub-pixel gap never shows linen. */
+  background-color: #10171e;
   box-shadow: var(--shadow-soft);
 }
 
+/* Edge highlight only — the old sage/ivory wash was made for a photograph
+   and would haze the banner's white text. */
 .intro__media::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(105deg,
-    color-mix(in srgb, var(--sage) 11%, transparent),
-    transparent 52%,
-    rgba(251, 248, 242, 0.18));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
   pointer-events: none;
 }
 
@@ -981,15 +984,16 @@ body.menu-open {
     max-width: none;
     font-size: clamp(1.85rem, 4vw, 2.75rem);
   }
+  /* Too narrow for the banner and the copy side by side without one covering
+     the other: the banner takes the full row, the copy follows below it. */
   .intro__copy {
-    grid-column: 5 / 9;
+    grid-column: 1 / -1;
+    grid-row: 3;
     padding: 1.3rem;
-    margin-top: clamp(1.25rem, 3vh, 2rem);
+    margin-top: var(--space-md);
   }
   .intro__media {
-    grid-column: 1 / 6;
-    height: auto;
-    min-height: clamp(11rem, 24vw, 13rem);
+    grid-column: 1 / -1;
   }
   .diff__row {
     grid-template-columns: minmax(12rem, 3fr) minmax(0, 5fr);
@@ -1017,15 +1021,15 @@ body.menu-open {
     order: 2;
     position: relative;
     width: 100%;
-    height: auto;
-    aspect-ratio: 1.7 / 1;
     margin-top: var(--space-lg);
     border-radius: var(--radius-sm);
   }
+  /* No negative top margin: the panel used to ride up over the image, which
+     would hide the bottom of the banner's cards. */
   .intro__copy {
     order: 3;
-    width: calc(100% - 1rem);
-    margin: -2rem 0 0 auto;
+    width: 100%;
+    margin: var(--space-md) 0 0;
     padding: 1.25rem;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
