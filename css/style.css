@@ -1418,10 +1418,17 @@ body.menu-open {
   gap: clamp(1.25rem, 2vw, 2rem);
 }
 
+/* Explicit width plus align-self: start. With aspect-ratio on a grid item
+   that is also stretched, Safari (seen on iPad) can derive the card's width
+   from its still-unknown height instead of from the column, collapsing it
+   to a sliver with the text spilling over the next row. A definite width
+   and no block-axis stretch leave aspect-ratio only one way to resolve. */
 .project {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-self: start;
   aspect-ratio: 0.82 / 1;
   min-width: 0;
   padding: 0.55rem;
@@ -1433,9 +1440,11 @@ body.menu-open {
               box-shadow 0.65s var(--ease);
 }
 
+/* Same reason: its width comes from width: 100%, not from flex stretch. */
 .project__thumb {
   position: relative;
   flex: 0 0 auto;
+  width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid var(--glass-edge);
